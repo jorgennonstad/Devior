@@ -362,7 +362,7 @@ footer ul li span{
 }
 
 .orange {
-  background-image: url('./flowers.jpg'); /* Path to your laptop image */
+  background-image: url('./work.jpg'); /* Path to your laptop image */
   background-size: cover; /* Ensures the image covers the element */
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents the image from repeating */
@@ -377,6 +377,14 @@ footer ul li span{
   z-index: 1;
 }
 
+.screen-wrapper h2{
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 200;
+}
+.screen-wrapper h2 span{
+  font-weight: 500;
+}
 .screen {
   height: 500px;
   width: 700px;

@@ -116,6 +116,7 @@ export default function Home() {
       </div>
       <div className='screen-wrapper'>
        {/* New Section with Orange Panel and Laptop */}
+       <h2>From <span>Bussiness</span> to <span>Web</span></h2>
        <div className="panel orangeWrapper" ref={orangeWrapperRef}>
         <div className='screen'></div>
         <section className="panel orange" ref={orangePanelRef}>
