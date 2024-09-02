@@ -357,11 +357,10 @@ footer ul li span{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 68.2%;
-  height: 94%;
+  width: 1032px;
+  height: 675px;
   position: absolute;
-  top: 2.5%;
-  left: 15.9%;
+  top: 29px;
   z-index: 1;
 }
 
@@ -388,3 +387,5 @@ footer ul li span{
   display: inline-block;
   background-color: rgba(255, 255, 255, 1);
 }
+
+

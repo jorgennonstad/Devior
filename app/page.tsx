@@ -33,53 +33,6 @@ export default function Home() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Existing GSAP animations
-    gsap.fromTo(".introPage", 
-      {
-        scale: 1.5 // Start zoomed out
-      }, 
-      {
-        scale: 1, // End at normal size
-        scrollTrigger: {
-          trigger: ".introPage",
-          start: "top top",
-          end: "bottom top",
-          scrub: true
-        }
-      }
-    );
-
-    gsap.fromTo(".introPage", 
-      {
-        opacity: 0,
-        y: -100
-      }, 
-      {
-        opacity: 1,
-        y: 0,
-        scrollTrigger: {
-          trigger: ".introPage",
-          start: "top center",
-          end: "bottom top",
-          scrub: true
-        }
-      }
-    );
-
-    gsap.fromTo("h1",
-      {
-        fontSize: "3rem"
-      },
-      {
-        fontSize: "1.5rem",
-        scrollTrigger: {
-          trigger: "h1",
-          start: "top top",
-          end: "bottom top",
-          scrub: true
-        }
-      }
-    );
 
     const cursor = document.getElementById("cursor");
     const tip = document.getElementById("tip");
@@ -110,13 +63,13 @@ export default function Home() {
         scrub: true,
         pin: true,
         start: "top top",
-        end: "+=200%",
+        end: "+=50%",
       },
     });
 
     tl.fromTo(
       orangePanelRef.current,
-      { scale: 0.8 },
+      { scale: 0.9 },
       { scale: 0.5, ease: "none" }
     ).to(
       orangePanelRef.current,
@@ -160,8 +113,8 @@ export default function Home() {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis</p>
           </div>
         </div>
-    
       </div>
+      <div className='screen-wrapper'>
        {/* New Section with Orange Panel and Laptop */}
        <div className="panel orangeWrapper" ref={orangeWrapperRef}>
         <div className='screen'></div>
@@ -170,6 +123,7 @@ export default function Home() {
             <span className="line line-2" ref={lineRef}></span>Content
           </h2>
         </section>
+      </div>
       </div>
       <div className='projectsPage'>
         <h2>Our projects</h2>
