@@ -7,9 +7,15 @@ import './page.css'; // Ensure the path is correct
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
+// Import the image for the new section
+import laptopImage from './laptop.png'; // Import the image
+
 export default function Home() {
   const [projects, setProjects] = useState([]);
   const dataRef = useRef(null); // Create a ref to attach to the element
+  const orangeWrapperRef = useRef(null);
+  const orangePanelRef = useRef(null);
+  const lineRef = useRef(null);
 
   useEffect(() => {
     async function fetchProjects() {
@@ -27,7 +33,7 @@ export default function Home() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Zoom effect for introPage on scroll
+    // Existing GSAP animations
     gsap.fromTo(".introPage", 
       {
         scale: 1.5 // Start zoomed out
@@ -43,7 +49,6 @@ export default function Home() {
       }
     );
 
-    // Optional: Fade-in effect for introPage
     gsap.fromTo(".introPage", 
       {
         opacity: 0,
@@ -61,7 +66,6 @@ export default function Home() {
       }
     );
 
-    // Optional: Font size effect for h1 on scroll
     gsap.fromTo("h1",
       {
         fontSize: "3rem"
@@ -91,14 +95,48 @@ export default function Home() {
       }
     }
 
-    // Add event listener on mount
     document.addEventListener('mousemove', handleMouseMove);
 
-    // Cleanup event listener on unmount
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []); // Empty dependency array means this runs only on mount
+  }, []);
+
+  useEffect(() => {
+    // GSAP animations for the new section
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: orangeWrapperRef.current,
+        scrub: true,
+        pin: true,
+        start: "top top",
+        end: "+=200%",
+      },
+    });
+
+    tl.fromTo(
+      orangePanelRef.current,
+      { scale: 0.8 },
+      { scale: 0.5, ease: "none" }
+    ).to(
+      orangePanelRef.current,
+      { scale: 0.5, ease: "none" }
+    );
+
+    tl.from(
+      lineRef.current,
+      {
+        scaleX: 0,
+        ease: "none",
+        transformOrigin: "left top",
+      },
+      0
+    );
+
+    return () => {
+      if (ScrollTrigger) ScrollTrigger.killAll();
+    };
+  }, []);
 
   return (
     <div>
@@ -122,6 +160,16 @@ export default function Home() {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis</p>
           </div>
         </div>
+    
+      </div>
+       {/* New Section with Orange Panel and Laptop */}
+       <div className="panel orangeWrapper" ref={orangeWrapperRef}>
+        <div className='screen'></div>
+        <section className="panel orange" ref={orangePanelRef}>
+          <h2>
+            <span className="line line-2" ref={lineRef}></span>Content
+          </h2>
+        </section>
       </div>
       <div className='projectsPage'>
         <h2>Our projects</h2>
@@ -140,33 +188,33 @@ export default function Home() {
         </div>
       </div>
       <div className='who-are-we-page'>
-            <h2>Who are we?</h2>
-            <div className='who-info'>
-              <div className='img-container'>
-                <div></div>
-                <div></div>
-              </div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis</p>
-            </div>
+        <h2>Who are we?</h2>
+        <div className='who-info'>
+          <div className='img-container'>
+            <div></div>
+            <div></div>
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis</p>
+        </div>
       </div>
       <div className='contact-us-page'>
-            <h2>Contact us</h2>
-            <div className='contact-area'>
-              <form action="#">
-                <label htmlFor="Name">Name or Company Name</label>
-                <input type="text" name="name" id="name" />
+        <h2>Contact us</h2>
+        <div className='contact-area'>
+          <form action="#">
+            <label htmlFor="Name">Name or Company Name</label>
+            <input type="text" name="name" id="name" />
 
-                <label htmlFor="mail">Email:</label>
-                <input type="mail" name="mail" id="mail" />
+            <label htmlFor="mail">Email:</label>
+            <input type="mail" name="mail" id="mail" />
 
-                <label htmlFor="phone">Phone:</label>
-                <input type="phone" name="phone" id="phone" />
+            <label htmlFor="phone">Phone:</label>
+            <input type="phone" name="phone" id="phone" />
 
-                <label htmlFor="description">Description:</label>
-                <textarea name="description" id="description" cols="30" rows="10"></textarea>
+            <label htmlFor="description">Description:</label>
+            <textarea name="description" id="description" cols="30" rows="10"></textarea>
 
-              </form>
-            </div>
+          </form>
+        </div>
       </div>
       <footer>
         <h2><FaPaintBrush /> Devior</h2>
@@ -181,6 +229,8 @@ export default function Home() {
           <li><span>Orgnr:</span> 4206969</li>
         </ul>
       </footer>
+
+
     </div>
   );
 }
