@@ -140,7 +140,7 @@ body {
 .projectsPage{
   background-color: white;
   text-align: center;
-  padding: 7vh;
+  padding: 0vh;
 }
 
 .projectsPage a{
@@ -374,7 +374,7 @@ footer ul li span{
   width: 700px;
   position: absolute;
   top: 105px;
-  left: 50%;
+  left: 50vw;
   transform: translateX(-50%);
   background-image: url('./mac.png'); /* Path to your laptop image */
   background-size:contain; /* Ensures the image covers the element */

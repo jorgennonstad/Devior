@@ -122,6 +122,7 @@ export default function Home() {
           <h2>
             <span className="line line-2" ref={lineRef}></span>
           </h2>
+      <p>HELLO</p>
         </section>
       </div>
       </div>
