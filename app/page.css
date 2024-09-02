@@ -365,7 +365,7 @@ footer ul li span{
   width: 1102px;
   height: 700px;
   position: absolute;
-  top: 8px;
+  top: 0px;
   z-index: 1;
 }
 
@@ -373,7 +373,7 @@ footer ul li span{
   height: 500px;
   width: 700px;
   position: absolute;
-  top: 110px;
+  top: 105px;
   left: 50%;
   transform: translateX(-50%);
   background-image: url('./mac.png'); /* Path to your laptop image */
@@ -393,7 +393,7 @@ footer ul li span{
   background-color: rgba(255, 255, 255, 1);
 }
 
-.screen-wrapper {
+.devices-wrapper {
   background-color: white;
   display: flex;
   justify-content: center; /* Center align the devices horizontally */
