@@ -1,113 +1,186 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useState, useRef } from 'react';
+import { FaPaintBrush, FaCode, FaExpand } from 'react-icons/fa'; // Importing specific icons
+import { getProjects } from '../sanity/sanity-utils'; // Adjust the path if needed
+import './page.css'; // Ensure the path is correct
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
 export default function Home() {
+  const [projects, setProjects] = useState([]);
+  const dataRef = useRef(null); // Create a ref to attach to the element
+
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const data = await getProjects();
+        setProjects(data);
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+      }
+    }
+
+    fetchProjects();
+  }, []);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Zoom effect for introPage on scroll
+    gsap.fromTo(".introPage", 
+      {
+        scale: 1.5 // Start zoomed out
+      }, 
+      {
+        scale: 1, // End at normal size
+        scrollTrigger: {
+          trigger: ".introPage",
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      }
+    );
+
+    // Optional: Fade-in effect for introPage
+    gsap.fromTo(".introPage", 
+      {
+        opacity: 0,
+        y: -100
+      }, 
+      {
+        opacity: 1,
+        y: 0,
+        scrollTrigger: {
+          trigger: ".introPage",
+          start: "top center",
+          end: "bottom top",
+          scrub: true
+        }
+      }
+    );
+
+    // Optional: Font size effect for h1 on scroll
+    gsap.fromTo("h1",
+      {
+        fontSize: "3rem"
+      },
+      {
+        fontSize: "1.5rem",
+        scrollTrigger: {
+          trigger: "h1",
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      }
+    );
+
+    const cursor = document.getElementById("cursor");
+    const tip = document.getElementById("tip");
+
+    function handleMouseMove(e) {
+      if (cursor) {
+        cursor.style.top = `${e.pageY}px`;
+        cursor.style.left = `${e.pageX}px`;
+      }
+
+      if (tip) {
+        tip.style.display = "none";
+      }
+    }
+
+    // Add event listener on mount
+    document.addEventListener('mousemove', handleMouseMove);
+
+    // Cleanup event listener on unmount
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []); // Empty dependency array means this runs only on mount
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div>
+      <div className='introPage'>
+        <h1 className='fadeInUp'>DEVIOR</h1>
+        <h2 className='fadeInUp delay1'>Digitilize your business</h2>
+      </div>
+      <div className='offerPage'>
+        <h2>What we offer</h2>
+        <div className='offercontainer'>
+          <div className='offer'>
+            <h3><FaPaintBrush /> Design</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis </p>
+          </div>
+          <div className='offer'>
+            <h3><FaExpand /> Flexibility</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis</p>
+          </div>
+          <div className='offer'>
+            <h3><FaCode /> Code</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis</p>
+          </div>
         </div>
       </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className='projectsPage'>
+        <h2>Our projects</h2>
+        <div className='projects-container'>
+          {projects.map((project) => (
+            <a key={project._id} href={project.url} target="_blank" rel="noopener noreferrer" className="project-link">
+              <div className="project-card">
+                <img src={project.thumbnail} alt={project.name} className="project-image" />
+                <div className="project-info">
+                  <h2 className="project-title">{project.name}</h2>
+                  <p className="project-bio">{project.bio}</p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className='who-are-we-page'>
+            <h2>Who are we?</h2>
+            <div className='who-info'>
+              <div className='img-container'>
+                <div></div>
+                <div></div>
+              </div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis</p>
+            </div>
       </div>
-    </main>
+      <div className='contact-us-page'>
+            <h2>Contact us</h2>
+            <div className='contact-area'>
+              <form action="#">
+                <label htmlFor="Name">Name or Company Name</label>
+                <input type="text" name="name" id="name" />
+
+                <label htmlFor="mail">Email:</label>
+                <input type="mail" name="mail" id="mail" />
+
+                <label htmlFor="phone">Phone:</label>
+                <input type="phone" name="phone" id="phone" />
+
+                <label htmlFor="description">Description:</label>
+                <textarea name="description" id="description" cols="30" rows="10"></textarea>
+
+              </form>
+            </div>
+      </div>
+      <footer>
+        <h2><FaPaintBrush /> Devior</h2>
+        <div className='socials'>
+          <div>F</div>
+          <div>X</div>
+          <div>IN</div>
+        </div>
+        <ul>
+          <li><span>Adr:</span> Storgata 2, 1821 Gjøvik </li>
+          <li><span>Tlf:</span> +47 123 45 567</li>
+          <li><span>Orgnr:</span> 4206969</li>
+        </ul>
+      </footer>
+    </div>
   );
 }

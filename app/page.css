@@ -1,0 +1,353 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: rgb(9, 9, 11);
+}
+
+#cursor {
+  z-index: 0;
+  background-color: #000000;
+  border-radius: 25px;
+  
+  height: 50px;
+  width: 50px;
+  transform: translate(-50%, -50%);
+  
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  filter: invert(1);
+  mix-blend-mode: difference;
+}
+
+#tip {
+  background-color: white;
+  color: black;
+  border-radius: 15px;
+  
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  
+  
+  animation: blink 1s step-start 0s infinite;
+  -webkit-animation: blink 1s step-start 0s infinite;
+  
+}
+
+/* Intro page */
+
+.introPage {
+  height: 100vh;
+  padding-top: 10px;
+  background-image: url('../public/img/liquid-fade.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+
+  /* Parallax effect */
+  background-attachment: fixed; /* This makes the background image fixed in place, creating a parallax effect */
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeInUp {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.delay1 {
+  animation-delay: 0.5s;
+}
+
+.introPage h1, .introPage h2 {
+  color: white; /* Ensure visibility against the background */
+}
+
+.introPage h1 {
+  margin-top: 30vh;
+  margin-bottom: 10px;
+  font-size: 8rem;
+}
+
+.introPage h2 {
+  font-size: 3rem;
+}
+
+
+/* offerPage */
+.offerPage{
+  text-align: center;
+  padding: 0 150px 150px 150px;
+}
+
+.offerPage h2 {
+  margin-top: 15vh;
+  font-size: 3.5rem;
+  font-weight: 400;
+  background: url('../public/img/liquid-fade.png') no-repeat center center;
+  background-size: 500px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.offercontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Distribute space evenly between columns */
+  margin: 0 auto;
+  width: 90%;
+  color: white;
+  text-align: left;
+}
+
+.offercontainer .offer {
+  flex: 1; /* Makes each offer take up an equal portion of the container */
+  margin: 0 10px; /* Optional: adds space between columns */
+}
+
+.offer{
+  min-width: 300px;
+  max-width: 400px;
+}
+
+.offer h3{
+  font-size: 30.46px;
+}
+
+.offer p{
+  font-weight: 200;
+  font-size: 20px;
+}
+
+/* To ensure there’s no gap at the edges of the container */
+.offercontainer .offer:first-child {
+  margin-left: 0;
+}
+
+.offercontainer .offer:last-child {
+  margin-right: 0;
+}
+
+/* projects */
+.projectsPage{
+  background-color: white;
+  text-align: center;
+  padding: 7vh;
+}
+
+.projectsPage a{
+  text-decoration: none;
+}
+
+.projectsPage > h2 {
+  margin-top: 15vh;
+  font-size: 3.5rem;
+  font-weight: 500;
+  background: url('../public/img/liquid-fade.png') no-repeat center center;
+  background-size: 500px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px; /* Space between cards */
+  padding: 0 150px 0 150px;
+  justify-content: center; /* Center the cards */
+  text-align: left;
+}
+
+.project-card {
+  overflow: hidden;
+  width: 400px; /* Fixed width for consistency */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: translateY(-10px); /* Lift effect on hover */
+}
+
+.project-link {
+  display: block;
+}
+
+.project-image {
+  width: 100%;
+  height: 200px; /* Set a fixed height for consistency */
+  object-fit: cover;
+  transition: transform 0.3s ease; /* Smooth zoom effect */
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05); /* Zoom effect on hover */
+}
+
+.project-info {
+  padding: 10px;
+}
+
+.project-title {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  margin-top: 0;
+  text-align: left;
+  color: #333;
+}
+
+.project-bio {
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  margin-top: 0;
+  color: #666;
+}
+
+
+/* Who are we page */
+
+.who-are-we-page {
+  background-color: white;
+  text-align: center;
+  padding: 90px 30vw 150px;
+}
+
+.who-are-we-page h2{
+  margin-top: 0;
+  font-size: 3.5rem;
+  font-weight: 400;
+  background: url('../public/img/liquid-fade.png') no-repeat center center;
+  background-size: 500px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.who-info{
+  text-align: left;
+}
+
+.who-info .img-container{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.who-info .img-container div{
+  margin: 20px auto;
+  border: solid red 1px;
+  min-width: 275px;
+  min-height: 300px;
+}
+
+
+/* Contact us page */
+
+.contact-us-page {
+  background-color: rgb(9, 9, 11);
+  background-image: url('../public/img/purpleFlower.png');
+  background-size: 45%;
+  background-repeat: no-repeat;
+  background-position:center;
+  text-align: center;
+  padding: 7vh 30vw 150px;
+}
+
+.contact-us-page h2{
+  margin-top: 0;
+  font-size: 3.5rem;
+  font-weight: 400;
+  background: url('../public/img/liquid-fade.png') no-repeat center center;
+  background-size: 500px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.contact-us-page div{
+  background-color: white;
+  width: 80%;
+  margin:  0 auto;
+}
+
+.contact-us-page div form{
+  width: 60%;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 1.2rem;
+  font-weight: 200;
+  padding: 15px 0 35px 0;
+}
+.contact-us-page div form input{
+  width: 100%;
+  height: 40px;
+  background-color: rgb(237, 237, 237);
+  border: none;
+}
+
+.contact-us-page div form textarea{
+  width: 100%;
+  background-color: rgb(237, 237, 237);
+  border: none;
+}
+
+.contact-us-page div form label{
+  display: block;
+  margin-top: 30px;
+}
+
+/* Footer */
+footer{
+  background-color: rgb(233, 233, 233);
+  padding: 20px 150px 20px 150px;
+  text-align: center;
+}
+
+.socials{
+  width: 30%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.socials div{
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 60px;
+}
+
+footer ul{
+  width: 50%;
+  list-style: none;
+  margin: 0 auto;
+}
+
+footer ul li{
+  font-weight: 300;
+  margin: 5px;
+}
+
+footer ul li span{
+  font-weight: 500;
+}
