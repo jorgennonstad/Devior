@@ -345,6 +345,14 @@ footer ul li span{
   align-items: center;
   justify-content: center;
   position: relative;
+  transform: translateZ(0); /* Trigger GPU acceleration */
+  will-change: transform, opacity; /* Optimize for future changes */
+}
+
+.orangeWrapper,
+.orange {
+  backface-visibility: hidden; /* Prevents flickering */
+  perspective: 1000px; /* Ensures smooth 3D transformations */
 }
 
 .orangeWrapper {
