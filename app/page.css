@@ -1,7 +1,7 @@
 body {
   padding: 0;
   margin: 0;
-  background-color: rgb(9, 9, 11);
+  background-color: white;
 }
 
 #cursor {
@@ -83,6 +83,7 @@ body {
 
 /* offerPage */
 .offerPage{
+  background-color: white;
   text-align: center;
   padding: 0 150px 150px 150px;
 }
@@ -104,7 +105,7 @@ body {
   justify-content: center;
   margin: 0 auto;
   width: 90%;
-  color: white;
+  color: blacks;
   text-align: left;
 }
 
@@ -353,26 +354,30 @@ footer ul li span{
 }
 
 .orange {
-  background-color: #e67e22;
+  background-image: url('./flowers.jpg'); /* Path to your laptop image */
+  background-size: cover; /* Ensures the image covers the element */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1032px;
-  height: 675px;
+  width: 1102px;
+  height: 700px;
   position: absolute;
-  top: 29px;
+  top: 8px;
   z-index: 1;
 }
 
 .screen {
-  height: 700px;
+  height: 500px;
   width: 700px;
   position: absolute;
-  top: 3%;
+  top: 110px;
   left: 50%;
   transform: translateX(-50%);
-  background-image: url('./laptop.png'); /* Path to your laptop image */
-  background-size: cover; /* Ensures the image covers the element */
+  background-image: url('./mac.png'); /* Path to your laptop image */
+  background-size:contain; /* Ensures the image covers the element */
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents the image from repeating */
   z-index: 0;
@@ -388,4 +393,9 @@ footer ul li span{
   background-color: rgba(255, 255, 255, 1);
 }
 
-
+.screen-wrapper {
+  background-color: white;
+  display: flex;
+  justify-content: center; /* Center align the devices horizontally */
+  gap: 20px; /* Space between the devices */
+}

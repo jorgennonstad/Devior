@@ -120,7 +120,7 @@ export default function Home() {
         <div className='screen'></div>
         <section className="panel orange" ref={orangePanelRef}>
           <h2>
-            <span className="line line-2" ref={lineRef}></span>Content
+            <span className="line line-2" ref={lineRef}></span>
           </h2>
         </section>
       </div>
