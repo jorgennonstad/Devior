@@ -43,7 +43,6 @@ html {
 /* Navigation Bar Styles */
 .navbar {
   width: 100%;
-  background-color: white;
   position: absolute;
   top: 0;
   left: 0;
@@ -80,16 +79,14 @@ html {
   height: 100vh;
   padding-top: 10px;
   background-color: white;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
   margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   text-align: center;
-  background-attachment: fixed;
+  position: relative; /* Ensure it's positioned relative for absolute children */
+  overflow: hidden; /* Hide anything outside of the container */
 }
 
 @keyframes fadeInUp {
@@ -498,4 +495,19 @@ footer ul li span{
   display: flex;
   justify-content: center; /* Center align the devices horizontally */
   gap: 20px; /* Space between the devices */
+}
+
+/* Position the animated balls background correctly */
+.metasvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* Prevents interaction with the SVG */
+  z-index: 0; /* Ensure it's behind the other content */
+}
+
+.glow {
+  filter: url(#gooify);
 }
