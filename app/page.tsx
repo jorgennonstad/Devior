@@ -7,9 +7,6 @@ import './page.css'; // Ensure the path is correct
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
-// Import the image for the new section
-import laptopImage from './laptop.png'; // Import the image
-
 export default function Home() {
   const [projects, setProjects] = useState([]);
   const dataRef = useRef(null); // Create a ref to attach to the element
@@ -19,6 +16,61 @@ export default function Home() {
   const offerPageRef = useRef(null);
   const headerRefs = useRef([]); // Create a ref to store multiple h2 elements
   const projectCardRefs = useRef([]); // Create a ref for the project cards
+  const [circlePositions, setCirclePositions] = useState({
+    circle1: { x: 400, y: 200, xSpeed: 0.2, ySpeed: 0.34 },
+    circle2: { x: 600, y: 400, xSpeed: -0.5, ySpeed: 0.5 },
+    circle3: { x: 800, y: 600, xSpeed: 0.3, ySpeed: 0.6 },
+    circle4: { x: 1000, y: 500, xSpeed: -0.1, ySpeed: 0.6 },
+    circle5: { x: 900, y: 300, xSpeed: -0.2, ySpeed: 0.3 },
+  });
+
+  const bounds = useRef({
+    minX: -150,
+    minY: -150,
+    maxX: window.innerWidth + 100,
+    maxY: window.innerHeight + 100,
+  });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      updateAllCircles();
+    }, 10);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const updateAllCircles = () => {
+    setCirclePositions((prevState) => {
+      const newPositions = { ...prevState };
+      Object.keys(newPositions).forEach((circleKey) => {
+        const circle = newPositions[circleKey];
+        updateCirclePosition(circle);
+      });
+      return newPositions;
+    });
+  };
+
+  const updateCirclePosition = (circle) => {
+    circle.x += circle.xSpeed;
+    circle.y += circle.ySpeed;
+
+    if (circle.x < bounds.current.minX) {
+      circle.x = bounds.current.minX + Math.random() * 10;
+      circle.xSpeed = Math.abs(circle.xSpeed);
+    } else if (circle.x > bounds.current.maxX) {
+      circle.x = bounds.current.maxX - Math.random() * 10;
+      circle.xSpeed = -Math.abs(circle.xSpeed);
+    }
+
+    if (circle.y < bounds.current.minY) {
+      circle.y = bounds.current.minY + Math.random() * 10;
+      circle.ySpeed = Math.abs(circle.ySpeed);
+    } else if (circle.y > bounds.current.maxY) {
+      circle.y = bounds.current.maxY - Math.random() * 10;
+      circle.ySpeed = -Math.abs(circle.ySpeed);
+    }
+  };
+
 
   // Refs to store ScrollTriggers
   const laptopScrollTrigger = useRef(null);
@@ -142,9 +194,45 @@ export default function Home() {
       projectScrollTriggers.current.forEach((trigger) => trigger.kill());
     };
   }, [projects]);
+
+  const circleRadii = [170, 90, 120, 140, 70];
+
   return (
     <div>
       <div className='introPage'>
+      <div className="metaballs">
+          <svg className="metasvg">
+            <defs>
+              <filter id="gooify" width="400%" x="-10%" height="400%" y="-150%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur" />
+                <feColorMatrix
+                  in="blur"
+                  mode="matrix"
+                  values="1 0 0 0 0
+                          0 1 0 0 0
+                          0 0 1 0 0
+                          0 0 0 25 -10"
+                />
+              </filter>
+              <linearGradient id="yourGradientId" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#ff1900" />
+                <stop offset="100%" stopColor="#eec80c" />
+              </linearGradient>
+            </defs>
+            <g filter="url(#gooify)">
+              {Object.entries(circlePositions).map(([key, circle], index) => (
+                <circle
+                  key={key}
+                  className="blobb glow"
+                  fill="url(#yourGradientId)"
+                  cx={circle.x}
+                  cy={circle.y}
+                  r={circleRadii[index]}
+                />
+              ))}
+            </g>
+          </svg>
+        </div>
         <h1 className='fadeInUp'>DEVIOR</h1>
         <h2 className='fadeInUp delay1'>Digitilize your business</h2>
       </div>
