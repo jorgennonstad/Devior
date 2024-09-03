@@ -6,20 +6,19 @@ body {
 
 /* Intro page */
 .introPage {
-  position: relative;
   height: 100vh;
   padding-top: 10px;
+  background-color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   text-align: center;
-  overflow: hidden;
-}
-
-.videoBackground {
-  
+  background-attachment: fixed;
 }
 
 @keyframes fadeInUp {
@@ -46,16 +45,19 @@ body {
   color: black;
 }
 
+.introPage h2{
+  color: #ff3c00;
+}
+
 .introPage h1 {
   margin-top: 30vh;
   margin-bottom: 10px;
-  font-size: 8rem;
+  font-size: 10rem;
 }
 
 .introPage h2 {
   font-size: 3rem;
 }
-
 
 /* offerPage */
 .offerPage{
@@ -64,15 +66,27 @@ body {
   padding: 0 150px 150px 150px;
 }
 
+.icon-color {
+  color: #ff3c00;
+}
+
+
+.header-container {
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
 .offerPage h2 {
-  margin-top: 15vh;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: 400;
-  background: url('../public/img/liquid-fade.png') no-repeat center center;
   background-size: 500px;
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: black;
+  /* Ensure the text is aligned and positioned properly */
+  position: relative;
 }
 
 .offercontainer {
@@ -127,11 +141,10 @@ body {
   margin-top: 15vh;
   font-size: 3.5rem;
   font-weight: 500;
-  background: url('../public/img/liquid-fade.png') no-repeat center center;
   background-size: 500px;
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: black;
 }
 
 .projects-container {
@@ -144,6 +157,7 @@ body {
 }
 
 .project-card {
+  position: relative; /* Ensure the pseudo-element is positioned relative to the card */
   overflow: hidden;
   width: 400px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -162,12 +176,32 @@ body {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  filter: grayscale(70%); /* Make the image black and white */
+  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition for both transform and filter */
 }
 
 .project-card:hover .project-image {
   transform: scale(1.05);
+  filter: grayscale(0%); /* Return to color on hover */
 }
+
+/* Add the line under the image on hover */
+.project-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background-color: #ff4500; /* Red-orange color */
+  transition: width 0.3s ease; /* Smooth transition for the line */
+}
+
+.project-card:hover::after {
+  width: 100%; /* Expand the line to full width on hover */
+}
+
+
 
 .project-info {
   padding: 10px;
@@ -316,6 +350,7 @@ footer ul li span{
 
 /* New Section with Orange Panel and Laptop */
 .panel {
+  padding-top: 100px;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -346,10 +381,10 @@ footer ul li span{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1102px;
-  height: 700px;
+  width: 1150px;
+  height: 650px;
   position: absolute;
-  top: 0px;
+  top: 120px;
   z-index: 1;
 }
 
@@ -357,15 +392,17 @@ footer ul li span{
   text-align: center;
   font-size: 2rem;
   font-weight: 200;
+  margin: 0;
 }
 .screen-wrapper h2 span{
-  font-weight: 500;
+  
+  color: #ff3c00;
 }
 .screen {
-  height: 500px;
-  width: 700px;
+  height: 600px;
+  width: 740px;
   position: absolute;
-  top: 105px;
+  top: 205px;
   left: 50vw;
   transform: translateX(-50%);
   background-image: url('./mac.png'); /* Path to your laptop image */
