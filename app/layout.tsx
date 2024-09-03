@@ -17,8 +17,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {children}
-        <div id="cursor"></div>
-        <div id="tip"></div>
       </body>
     </html>
   );
