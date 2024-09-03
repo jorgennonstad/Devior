@@ -32,6 +32,29 @@ export default function Home() {
     maxY: window.innerHeight + 100,
   });
 
+  const introPageRef = useRef(null);
+
+  useEffect(() => {
+    const updateBounds = () => {
+      if (introPageRef.current) {
+        const introPageHeight = introPageRef.current.offsetHeight;
+        bounds.current = {
+          minX: -150,
+          minY: -150,
+          maxX: window.innerWidth + 100,
+          maxY: introPageHeight - 180, // Adjusted for circles
+        };
+      }
+    };
+
+    // Initial update
+    updateBounds();
+
+    // Update bounds on window resize
+    window.addEventListener('resize', updateBounds);
+    return () => window.removeEventListener('resize', updateBounds);
+  }, []);
+
   useEffect(() => {
     const interval = setInterval(() => {
       updateAllCircles();
@@ -72,11 +95,9 @@ export default function Home() {
     }
   };
 
-
   // Refs to store ScrollTriggers
   const laptopScrollTrigger = useRef(null);
   const projectScrollTriggers = useRef([]);
-
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -84,7 +105,7 @@ export default function Home() {
       behavior: 'smooth' // Smooth scroll effect
     });
   };
-  
+
   useEffect(() => {
     async function fetchProjects() {
       try {
@@ -214,7 +235,6 @@ export default function Home() {
     };
   }, [projects]);
 
-
   useEffect(() => {
     const handleScroll = () => {
       const introPageHeight = document.querySelector('.introPage').offsetHeight;
@@ -234,28 +254,25 @@ export default function Home() {
     };
   }, []);
 
-  
-  
   const circleRadii = [170, 90, 120, 140, 70];
 
   return (
     <div>
       <button className="back-to-top" onClick={scrollToTop}>
-  &uarr; Top
-</button>
+        &uarr; Top
+      </button>
       <header>
-<nav className="navbar">
-  <ul className="navbar-list">
-    <li className="navbar-item"><a href="#offerPage">What We Offer</a></li>
-    <li className="navbar-item"><a href="#projectsPage">Our Projects</a></li>
-    <li className="navbar-item"><a href="#whoAreWePage">Who Are We</a></li>
-    <li className="navbar-item"><a href="#contactUsPage">Contact</a></li>
-  </ul>
-</nav>
-
+        <nav className="navbar">
+          <ul className="navbar-list">
+            <li className="navbar-item"><a href="#offerPage">What We Offer</a></li>
+            <li className="navbar-item"><a href="#projectsPage">Our Projects</a></li>
+            <li className="navbar-item"><a href="#whoAreWePage">Who Are We</a></li>
+            <li className="navbar-item"><a href="#contactUsPage">Contact</a></li>
+          </ul>
+        </nav>
       </header>
-      <div className='introPage'>
-      <div className="metaballs">
+      <div className='introPage' ref={introPageRef}>
+        <div className="metaballs">
           <svg className="metasvg">
             <defs>
               <filter id="gooify" width="400%" x="-10%" height="400%" y="-150%">
@@ -315,15 +332,15 @@ export default function Home() {
         </div>
       </div>
       <div className='screen-wrapper'>
-       {/* New Section with Orange Panel and Laptop */}
-       <div className="panel orangeWrapper" ref={orangeWrapperRef}>
-        <div className='screen'></div>
-        <section className="panel orange" ref={orangePanelRef}>
-          <h2>
-            <span className="line line-2" ref={lineRef}></span>
-          </h2>
-        </section>
-      </div>
+        {/* New Section with Orange Panel and Laptop */}
+        <div className="panel orangeWrapper" ref={orangeWrapperRef}>
+          <div className='screen'></div>
+          <section className="panel orange" ref={orangePanelRef}>
+            <h2>
+              <span className="line line-2" ref={lineRef}></span>
+            </h2>
+          </section>
+        </div>
       </div>
       <div id='projectsPage' className='projectsPage'>
         <h2>Our projects</h2>
