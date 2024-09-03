@@ -15,13 +15,13 @@ html {
   background-color: #ff3c00; /* Background color */
   color: white; /* Text color */
   border: none;
-  border-radius: 50%;
+  border-radius: 10px;
   width: 50px; /* Button size */
   height: 50px; /* Button size */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   opacity: 0;
@@ -301,11 +301,10 @@ html {
   margin-top: 0;
   font-size: 3.5rem;
   font-weight: 400;
-  background: url('../public/img/liquid-fade.png') no-repeat center center;
   background-size: 500px;
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: black;
 }
 
 .who-info{
@@ -318,12 +317,27 @@ html {
   flex-wrap: wrap;
 }
 
-.who-info .img-container div{
+.who-info .img-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   margin: 20px auto;
-  border: solid red 1px;
-  min-width: 275px;
-  min-height: 300px;
 }
+
+.who-info .img-container img {
+  width: 275px;
+  height: 300px;
+  object-fit: cover; /* Ensures the image is cropped to fill the container */
+  object-position: center; /* Centers the image within the container */
+  border-radius: 10px; /* Optional: adds rounded corners */
+}
+
+.who-info .img-container{
+  text-align: center;
+  font-weight: 500;
+  margin: 0;
+}
+
 
 /* Contact us page */
 .contact-us-page {

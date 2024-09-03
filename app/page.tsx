@@ -2,13 +2,14 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { FaPaintBrush, FaCode, FaExpand } from 'react-icons/fa'; // Importing specific icons
-import { getProjects } from '../sanity/sanity-utils'; // Adjust the path if needed
+import { getProjects, getAboutInfo } from '../sanity/sanity-utils'; // Adjust the path if needed
 import './page.css'; // Ensure the path is correct
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
 export default function Home() {
   const [projects, setProjects] = useState([]);
+  const [aboutInfo, setAboutInfo] = useState(null); // State for About info
   const dataRef = useRef(null); // Create a ref to attach to the element
   const orangeWrapperRef = useRef(null);
   const orangePanelRef = useRef(null);
@@ -94,7 +95,17 @@ export default function Home() {
       }
     }
 
+    async function fetchAboutInfo() {
+      try {
+        const aboutData = await getAboutInfo();
+        setAboutInfo(aboutData);
+      } catch (error) {
+        console.error('Error fetching about info:', error);
+      }
+    }
+
     fetchProjects();
+    fetchAboutInfo(); // Fetch about info
   }, []);
 
   useEffect(() => {
@@ -338,15 +349,26 @@ export default function Home() {
         </div>
       </div>
       <div id='whoAreWePage' className='who-are-we-page'>
-        <h2>Who are we?</h2>
-        <div className='who-info'>
-          <div className='img-container'>
-            <div></div>
-            <div></div>
-          </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis</p>
+  <h2>Who are we?</h2>
+  {aboutInfo ? (
+    <div className='who-info'>
+      <div className='img-container'>
+        <div className="person">
+          <img src={aboutInfo.imageOneUrl} alt={aboutInfo.imageOneAlt} />
+          <p>{aboutInfo.imageOneName}, {aboutInfo.imageOneAge}</p>
+        </div>
+        <div className="person">
+          <img src={aboutInfo.imageTwoUrl} alt={aboutInfo.imageTwoAlt} />
+          <p>{aboutInfo.imageTwoName}, {aboutInfo.imageTwoAge}</p>
         </div>
       </div>
+      <p>{aboutInfo.bio}</p>
+    </div>
+  ) : (
+    <p>Loading about info...</p>
+  )}
+</div>
+
       <div id='contactUsPage' className='contact-us-page'>
         <h2>Contact us</h2>
         <div className='contact-area'>
