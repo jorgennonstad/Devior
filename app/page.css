@@ -3,6 +3,77 @@ body {
   margin: 0;
   background-color: white;
 }
+html {
+  scroll-behavior: smooth;
+}
+
+/* Add this to your CSS file */
+.back-to-top {
+  position: fixed;
+  bottom: 20px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
+  background-color: #ff3c00; /* Background color */
+  color: white; /* Text color */
+  border: none;
+  border-radius: 50%;
+  width: 50px; /* Button size */
+  height: 50px; /* Button size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 999;
+}
+
+.back-to-top:hover {
+  background-color: #e03e00; /* Darker color on hover */
+}
+
+/* Show button when scrolling past introPage */
+.show {
+  opacity: 10;
+}
+
+
+
+/* Navigation Bar Styles */
+.navbar {
+  width: 100%;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.navbar-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 20px;
+  margin: 0;
+}
+
+.navbar-item {
+  margin: 0 20px;
+}
+
+.navbar-item a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.navbar-item a:hover {
+  color: #ff3c00;
+}
 
 /* Intro page */
 .introPage {

@@ -24,6 +24,14 @@ export default function Home() {
   const laptopScrollTrigger = useRef(null);
   const projectScrollTriggers = useRef([]);
 
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Smooth scroll effect
+    });
+  };
+  
   useEffect(() => {
     async function fetchProjects() {
       try {
@@ -99,7 +107,7 @@ export default function Home() {
           start: "top 100%",  // Adjust this value to make the animation start further up
           end: "bottom 95%", // Keep this or adjust as needed
           scrub: 1,
-          markers: true, // Optional: remove or set to false to hide markers
+          markers: false, // Optional: remove or set to false to hide markers
         }
       }
     );
@@ -131,7 +139,7 @@ export default function Home() {
             start: "top 80%", // Start animation when the card is in the top 80% of the viewport
             end: "bottom 70%",
             toggleActions: "play none none reverse", // Play animation when scrolled in, reverse when scrolled out
-            markers: true, // Set to true to see markers in development
+            markers: false, // Set to true to see markers in development
           },
         }
       ).scrollTrigger; // Return the ScrollTrigger instance
@@ -142,8 +150,45 @@ export default function Home() {
       projectScrollTriggers.current.forEach((trigger) => trigger.kill());
     };
   }, [projects]);
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const introPageHeight = document.querySelector('.introPage').offsetHeight;
+      const scrollPosition = window.scrollY;
+  
+      if (scrollPosition > introPageHeight) {
+        document.querySelector('.back-to-top').classList.add('show');
+      } else {
+        document.querySelector('.back-to-top').classList.remove('show');
+      }
+    };
+  
+    window.addEventListener('scroll', handleScroll);
+  
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  
+  
   return (
     <div>
+      <button className="back-to-top" onClick={scrollToTop}>
+  &uarr; Top
+</button>
+      <header>
+<nav className="navbar">
+  <ul className="navbar-list">
+    <li className="navbar-item"><a href="#offerPage">What We Offer</a></li>
+    <li className="navbar-item"><a href="#projectsPage">Our Projects</a></li>
+    <li className="navbar-item"><a href="#whoAreWePage">Who Are We</a></li>
+    <li className="navbar-item"><a href="#contactUsPage">Contact</a></li>
+  </ul>
+</nav>
+
+      </header>
       <div className='introPage'>
         <h1 className='fadeInUp'>DEVIOR</h1>
         <h2 className='fadeInUp delay1'>Digitilize your business</h2>
@@ -156,7 +201,7 @@ export default function Home() {
           <h2 ref={(el) => headerRefs.current[3] = el}>What we offer</h2>
           <h2 ref={(el) => headerRefs.current[4] = el}>What we offer</h2>
         </div>
-        <div className='offercontainer'>
+        <div id="offerPage" className='offercontainer'>
           <div className='offer'>
             <h3><FaPaintBrush className="icon-color"/> Design</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis </p>
@@ -182,7 +227,7 @@ export default function Home() {
         </section>
       </div>
       </div>
-      <div className='projectsPage'>
+      <div id='projectsPage' className='projectsPage'>
         <h2>Our projects</h2>
         <div className='projects-container'>
           {projects.map((project, index) => (
@@ -205,7 +250,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div className='who-are-we-page'>
+      <div id='whoAreWePage' className='who-are-we-page'>
         <h2>Who are we?</h2>
         <div className='who-info'>
           <div className='img-container'>
@@ -215,7 +260,7 @@ export default function Home() {
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis</p>
         </div>
       </div>
-      <div className='contact-us-page'>
+      <div id='contactUsPage' className='contact-us-page'>
         <h2>Contact us</h2>
         <div className='contact-area'>
           <form action="#">
@@ -247,8 +292,6 @@ export default function Home() {
           <li><span>Orgnr:</span> 4206969</li>
         </ul>
       </footer>
-
-
     </div>
   );
 }
