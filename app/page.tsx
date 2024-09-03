@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
 import { useEffect, useState, useRef } from 'react';
-import { FaPaintBrush, FaCode, FaExpand } from 'react-icons/fa';
-import { getProjects } from '../sanity/sanity-utils';
-import './page.css';
+import { FaPaintBrush, FaCode, FaExpand } from 'react-icons/fa'; // Importing specific icons
+import { getProjects } from '../sanity/sanity-utils'; // Adjust the path if needed
+import './page.css'; // Ensure the path is correct
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
 export default function Home() {
   const [projects, setProjects] = useState([]);
-  const dataRef = useRef(null);
+  const dataRef = useRef(null); // Create a ref to attach to the element
   const orangeWrapperRef = useRef(null);
   const orangePanelRef = useRef(null);
   const lineRef = useRef(null);
   const offerPageRef = useRef(null);
-  const headerRefs = useRef([]);
-  const projectCardRefs = useRef([]);
+  const headerRefs = useRef([]); // Create a ref to store multiple h2 elements
+  const projectCardRefs = useRef([]); // Create a ref for the project cards
   const [circlePositions, setCirclePositions] = useState({
     circle1: { x: 400, y: 200, xSpeed: 0.2, ySpeed: 0.34 },
     circle2: { x: 600, y: 400, xSpeed: -0.5, ySpeed: 0.5 },
@@ -41,7 +41,7 @@ export default function Home() {
           minX: -150,
           minY: -150,
           maxX: window.innerWidth + 100,
-          maxY: introPageHeight - 190, // Adjust based on circle size
+          maxY: introPageHeight - 180, // Adjusted for circles
         };
       }
     };
@@ -94,10 +94,14 @@ export default function Home() {
     }
   };
 
+  // Refs to store ScrollTriggers
+  const laptopScrollTrigger = useRef(null);
+  const projectScrollTriggers = useRef([]);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth' // Smooth scroll effect
     });
   };
 
@@ -119,6 +123,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    // GSAP animations for the laptop section
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: orangeWrapperRef.current,
@@ -148,9 +153,12 @@ export default function Home() {
       0
     );
 
+    laptopScrollTrigger.current = tl.scrollTrigger; // Store the ScrollTrigger instance
+
     return () => {
-      if (tl.scrollTrigger) {
-        tl.scrollTrigger.kill();
+      // Clean up specific ScrollTrigger
+      if (laptopScrollTrigger.current) {
+        laptopScrollTrigger.current.kill();
       }
     };
   }, []);
@@ -158,6 +166,7 @@ export default function Home() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    // Initialize animations for header h2 elements
     const headerAnimation = gsap.fromTo(
       headerRefs.current,
       { x: "200%", opacity: 0 },
@@ -168,15 +177,16 @@ export default function Home() {
         stagger: 0.20,
         scrollTrigger: {
           trigger: offerPageRef.current,
-          start: "top 100%",
-          end: "bottom 95%",
+          start: "top 100%",  // Adjust this value to make the animation start further up
+          end: "bottom 95%", // Keep this or adjust as needed
           scrub: 1,
-          markers: false,
+          markers: false, // Optional: remove or set to false to hide markers
         }
       }
     );
 
     return () => {
+      // Clean up specific ScrollTrigger
       if (headerAnimation.scrollTrigger) {
         headerAnimation.scrollTrigger.kill();
       }
@@ -186,29 +196,31 @@ export default function Home() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    projectCardRefs.current.forEach((card, index) => {
-      gsap.fromTo(
+    // Slide-up animation for project cards
+    projectScrollTriggers.current = projectCardRefs.current.map((card, index) => {
+      return gsap.fromTo(
         card,
-        { y: 50, opacity: 0 },
+        { y: 50, opacity: 0 }, // Start position slightly below with opacity 0
         {
           y: 0,
           opacity: 1,
           duration: 1,
-          delay: index * 0.2,
+          delay: index * 0.2, // Stagger effect between cards
           ease: "power3.out",
           scrollTrigger: {
             trigger: card,
-            start: "top 80%",
+            start: "top 80%", // Start animation when the card is in the top 80% of the viewport
             end: "bottom 70%",
-            toggleActions: "play none none reverse",
-            markers: false,
+            toggleActions: "play none none reverse", // Play animation when scrolled in, reverse when scrolled out
+            markers: false, // Set to true to see markers in development
           },
         }
-      );
+      ).scrollTrigger; // Return the ScrollTrigger instance
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      // Clean up each ScrollTrigger
+      projectScrollTriggers.current.forEach((trigger) => trigger.kill());
     };
   }, [projects]);
 
@@ -216,16 +228,16 @@ export default function Home() {
     const handleScroll = () => {
       const introPageHeight = document.querySelector('.introPage').offsetHeight;
       const scrollPosition = window.scrollY;
-
+  
       if (scrollPosition > introPageHeight) {
         document.querySelector('.back-to-top').classList.add('show');
       } else {
         document.querySelector('.back-to-top').classList.remove('show');
       }
     };
-
+  
     window.addEventListener('scroll', handleScroll);
-
+  
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -295,20 +307,21 @@ export default function Home() {
         </div>
         <div id="offerPage" className='offercontainer'>
           <div className='offer'>
-            <h3><FaPaintBrush className="icon-color" /> Design</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis.</p>
+            <h3><FaPaintBrush className="icon-color"/> Design</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis </p>
           </div>
           <div className='offer'>
-            <h3><FaExpand className="icon-color" /> Flexibility</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis.</p>
+            <h3><FaExpand className="icon-color"/> Flexibility</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis</p>
           </div>
           <div className='offer'>
-            <h3><FaCode className="icon-color" /> Code</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis.</p>
+            <h3><FaCode className="icon-color"/> Code</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis</p>
           </div>
         </div>
       </div>
       <div className='screen-wrapper'>
+        {/* New Section with Orange Panel and Laptop */}
         <div className="panel orangeWrapper" ref={orangeWrapperRef}>
           <div className='screen'></div>
           <section className="panel orange" ref={orangePanelRef}>
@@ -348,7 +361,7 @@ export default function Home() {
             <div></div>
             <div></div>
           </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis</p>
         </div>
       </div>
       <div id='contactUsPage' className='contact-us-page'>
@@ -378,7 +391,7 @@ export default function Home() {
           <div>IN</div>
         </div>
         <ul>
-          <li><span>Adr:</span> Storgata 2, 1821 Gjøvik</li>
+          <li><span>Adr:</span> Storgata 2, 1821 Gjøvik </li>
           <li><span>Tlf:</span> +47 123 45 567</li>
           <li><span>Orgnr:</span> 4206969</li>
         </ul>
