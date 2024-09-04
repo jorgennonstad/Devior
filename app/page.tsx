@@ -38,22 +38,25 @@ export default function Home() {
     const updateBounds = () => {
       if (introPageRef.current) {
         const introPageHeight = introPageRef.current.offsetHeight;
+        const navbarHeight = 220; // Adjust this value based on your navbar height
+        
         bounds.current = {
           minX: -150,
-          minY: -150,
+          minY: navbarHeight, // Adjust to ensure circles don't go under the navbar
           maxX: window.innerWidth + 100,
           maxY: introPageHeight - 180, // Adjusted for circles
         };
       }
     };
-
+  
     // Initial update
     updateBounds();
-
+  
     // Update bounds on window resize
     window.addEventListener('resize', updateBounds);
     return () => window.removeEventListener('resize', updateBounds);
   }, []);
+  
 
   useEffect(() => {
     const interval = setInterval(() => {
