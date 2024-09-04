@@ -18,12 +18,13 @@ export default function Home() {
   const headerRefs = useRef([]); // Create a ref to store multiple h2 elements
   const projectCardRefs = useRef([]); // Create a ref for the project cards
   const [circlePositions, setCirclePositions] = useState({
-    circle1: { x: 400, y: 200, xSpeed: 0.2, ySpeed: 0.34 },
-    circle2: { x: 600, y: 400, xSpeed: -0.5, ySpeed: 0.5 },
-    circle3: { x: 800, y: 600, xSpeed: 0.3, ySpeed: 0.6 },
-    circle4: { x: 1000, y: 500, xSpeed: -0.1, ySpeed: 0.6 },
-    circle5: { x: 900, y: 300, xSpeed: -0.2, ySpeed: 0.3 },
+    circle1: { x: 400, y: 200, xSpeed: 0.1, ySpeed: 0.17 },  // Reduced speeds
+    circle2: { x: 600, y: 400, xSpeed: -0.25, ySpeed: 0.25 }, // Reduced speeds
+    circle3: { x: 800, y: 600, xSpeed: 0.15, ySpeed: 0.3 },   // Reduced speeds
+    circle4: { x: 1000, y: 500, xSpeed: -0.05, ySpeed: 0.3 }, // Reduced speeds
+    circle5: { x: 900, y: 300, xSpeed: -0.1, ySpeed: 0.15 },  // Reduced speeds
   });
+  
 
   const bounds = useRef({
     minX: -150,
