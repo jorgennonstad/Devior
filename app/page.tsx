@@ -298,8 +298,8 @@ export default function Home() {
                 />
               </filter>
               <linearGradient id="yourGradientId" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#080a0d" />
-                <stop offset="100%" stopColor="#444a4f" />
+                <stop offset="0%" stopColor="#000" />
+                <stop offset="100%" stopColor="#000" />
               </linearGradient>
             </defs>
             <g filter="url(#gooify)">
