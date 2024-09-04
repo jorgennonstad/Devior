@@ -79,25 +79,32 @@ export default function Home() {
   };
 
   const updateCirclePosition = (circle) => {
+    const dampingFactor = 0.9; // Reduce the speed gradually by 10%
+    const bounceBuffer = 1.5;  // The buffer space to prevent flickering
+  
+    // Update position
     circle.x += circle.xSpeed;
     circle.y += circle.ySpeed;
-
-    if (circle.x < bounds.current.minX) {
-      circle.x = bounds.current.minX + Math.random() * 10;
-      circle.xSpeed = Math.abs(circle.xSpeed);
-    } else if (circle.x > bounds.current.maxX) {
-      circle.x = bounds.current.maxX - Math.random() * 10;
-      circle.xSpeed = -Math.abs(circle.xSpeed);
+  
+    // Smoothly reverse X direction if hitting bounds
+    if (circle.x < bounds.current.minX + bounceBuffer) {
+      circle.x = bounds.current.minX + bounceBuffer;
+      circle.xSpeed = -circle.xSpeed * dampingFactor;
+    } else if (circle.x > bounds.current.maxX - bounceBuffer) {
+      circle.x = bounds.current.maxX - bounceBuffer;
+      circle.xSpeed = -circle.xSpeed * dampingFactor;
     }
-
-    if (circle.y < bounds.current.minY) {
-      circle.y = bounds.current.minY + Math.random() * 10;
-      circle.ySpeed = Math.abs(circle.ySpeed);
-    } else if (circle.y > bounds.current.maxY) {
-      circle.y = bounds.current.maxY - Math.random() * 10;
-      circle.ySpeed = -Math.abs(circle.ySpeed);
+  
+    // Smoothly reverse Y direction if hitting bounds
+    if (circle.y < bounds.current.minY + bounceBuffer) {
+      circle.y = bounds.current.minY + bounceBuffer;
+      circle.ySpeed = -circle.ySpeed * dampingFactor;
+    } else if (circle.y > bounds.current.maxY - bounceBuffer) {
+      circle.y = bounds.current.maxY - bounceBuffer;
+      circle.ySpeed = -circle.ySpeed * dampingFactor;
     }
   };
+  
 
   // Refs to store ScrollTriggers
   const laptopScrollTrigger = useRef(null);
