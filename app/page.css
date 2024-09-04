@@ -68,6 +68,7 @@ html {
   font-weight: 500;
   color: black;
   transition: color 0.3s ease;
+  
 }
 
 .navbar-item a:hover {
@@ -121,10 +122,14 @@ html {
   margin-top: 30vh;
   margin-bottom: 10px;
   font-size: 10rem;
+  mix-blend-mode:difference;
+  color: white;
 }
 
 .introPage h2 {
   font-size: 3rem;
+  mix-blend-mode: difference;
+  color: white;
 }
 
 /* offerPage */
@@ -292,50 +297,61 @@ html {
 
 /* Who are we page */
 .who-are-we-page {
-  background-color: white;
+  background-color: #f9f9f9; /* Light background for better readability */
   text-align: center;
-  padding: 90px 30vw 150px;
+  padding: 90px 20vw 150px; /* Adjusted padding for better spacing */
+  color: #333; /* Slightly softer color for text */
 }
 
-.who-are-we-page h2{
+.who-are-we-page h2 {
   margin-top: 0;
   font-size: 3.5rem;
-  font-weight: 400;
-  background-size: 500px;
+  font-weight: 600; /* Bolder font for the header */
+  background-image: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%); /* Gradient text */
   -webkit-background-clip: text;
-  background-clip: text;
-  color: black;
+  color: transparent;
 }
 
-.who-info{
+.who-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: left;
 }
 
-.who-info .img-container{
+.img-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
-}
-
-.who-info .img-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   margin: 20px auto;
+  gap: 30px; /* Space between images */
 }
 
-.who-info .img-container img {
+.person {
+  text-align: center;
+}
+
+.person img {
   width: 275px;
   height: 300px;
-  object-fit: cover; /* Ensures the image is cropped to fill the container */
-  object-position: center; /* Centers the image within the container */
-  border-radius: 10px; /* Optional: adds rounded corners */
+  object-fit: cover;
+  object-position: center;
+  border-radius: 15px; /* Softer corners */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s ease; /* Smooth zoom effect */
 }
 
-.who-info .img-container{
-  text-align: center;
-  font-weight: 500;
-  margin: 0;
+.person img:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.bio-container {
+  max-width: 800px;
+  margin: 40px auto 0; /* Added margin for better spacing */
+  font-size: 1.25rem; /* Larger font size for better readability */
+  line-height: 1.6; /* Improved line spacing */
+  color: #555; /* Softer text color for the bio */
+  text-align: center; /* Centered text for bio */
 }
 
 
