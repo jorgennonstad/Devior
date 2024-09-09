@@ -462,7 +462,9 @@ html {
 }
 
 .message-section {
+  background-color: #f9fafb;
   padding: 1.25rem;
+  border-radius: 1.5rem;
   max-width: 600px; /* Ensure the container width is limited */
   width: 100%; /* Ensure it uses full width of its parent container */
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
@@ -470,8 +472,6 @@ html {
   display: flex; /* Use flexbox to center the content */
   flex-direction: column; /* Stack items vertically */
   align-items: center; /* Center items horizontally */
-  border: 2px solid rgba(0,0,0,1);
-  box-shadow: 15px 15px 1px #0000, 15px 15px 1px 2px rgba(0,0,0,1)
 }
 
 .message-textarea {
@@ -479,8 +479,8 @@ html {
   height: 8rem; /* Adjust height as needed */
   padding: 1rem;
   margin-bottom: 2.5rem;
-  border: 3px solid black;
-  font-size: 1.1rem;
+  border: 1px solid #e5e7eb;
+  font-size: 1.125rem;
   color: #4b5563;
   background-color: transparent;
   box-sizing: border-box; /* Include padding in the width */
@@ -508,13 +508,11 @@ html {
   height: 3rem;
   padding-left: 1rem;
   margin-bottom: 2.5rem;
-  border: none;
-  border-bottom: 3px solid black;
+  border: 1px solid #e5e7eb;
   font-size: 1.125rem;
   color: #4b5563;
   background-color: transparent;
   box-sizing: border-box; /* Include padding in the width */
-  font-size: 1.5rem;
 }
 
 .submit-button {
@@ -533,7 +531,7 @@ html {
 }
 
 .submit-button:hover {
-  background-color: #ff3c00;
+  background-color: #2b2a2f;
 }
 
 /* Footer */
