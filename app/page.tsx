@@ -6,7 +6,6 @@ import { getProjects, getAboutInfo } from '../sanity/sanity-utils'; // Adjust th
 import './page.css'; // Ensure the path is correct
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import BackgroundAnimation from './components/metabals/metabals'; // Adjust the import path
 
 export default function Home() {
   const [projects, setProjects] = useState([]);
@@ -319,7 +318,7 @@ export default function Home() {
     };
   }, []);
 
-  const circleRadii = [];
+  const circleRadii = [270, 190];
 
   return (
     <div>
@@ -337,7 +336,6 @@ export default function Home() {
         </nav>
       </header>
       <div className='introPage' ref={introPageRef}>
-        <BackgroundAnimation />
         <div className="metaballs">
           <svg className="metasvg">
             <defs>

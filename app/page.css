@@ -461,7 +461,6 @@ html {
 }
 
 .message-section {
-  background-color: #f9fafb;
   padding: 1.25rem;
   border-radius: 1.5rem;
   max-width: 600px; /* Ensure the container width is limited */
@@ -478,7 +477,7 @@ html {
   height: 8rem; /* Adjust height as needed */
   padding: 1rem;
   margin-bottom: 2.5rem;
-  border: 1px solid #e5e7eb;
+  border: 3px solid black;
   font-size: 1.125rem;
   color: #4b5563;
   background-color: transparent;
@@ -507,8 +506,9 @@ html {
   height: 3rem;
   padding-left: 1rem;
   margin-bottom: 2.5rem;
-  border: 1px solid #e5e7eb;
-  font-size: 1.125rem;
+  border: none;
+  border-bottom: 3px solid black;
+  font-size: 1.5rem;
   color: #4b5563;
   background-color: transparent;
   box-sizing: border-box; /* Include padding in the width */
