@@ -351,6 +351,8 @@ export default function Home() {
                 />
               </filter>
               <linearGradient id="yourGradientId" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#000" />
+                <stop offset="100%" stopColor="#000" />
                 <stop offset="0%" stopColor="#00000" />
                 <stop offset="100%" stopColor="#00000" />
               </linearGradient>
@@ -468,25 +470,20 @@ export default function Home() {
 </div>
 
 
-      <div id='contactUsPage' className='contact-us-page'>
-        <h2>Contact us</h2>
-        <div className='contact-area'>
-          <form action="#">
-            <label htmlFor="Name">Name or Company Name</label>
-            <input type="text" name="name" id="name" />
+<form action="https://fabform.io/f/xxxxx" method="post">
+  <section className="container">
+    <div className="phonie"></div> {/* Ensure the phone image is within the message section */}
+    <div className="message-section">
+      <h2 className="message-title">Contact us</h2>
+      <input type="text" className="input-field" placeholder="Name" />
+      <input type="text" className="input-field" placeholder="Email" />
+      <input type="text" className="input-field" placeholder="Phone" />
+      <textarea className="message-textarea" placeholder="Message"></textarea>
+      <button className="submit-button">Send</button>
+    </div>
+  </section>
+</form>
 
-            <label htmlFor="mail">Email:</label>
-            <input type="mail" name="mail" id="mail" />
-
-            <label htmlFor="phone">Phone:</label>
-            <input type="phone" name="phone" id="phone" />
-
-            <label htmlFor="description">Description:</label>
-            <textarea name="description" id="description" cols="30" rows="10"></textarea>
-
-          </form>
-        </div>
-      </div>
       <footer>
         <h2><FaPaintBrush /> Devior</h2>
         <div className='socials'>
