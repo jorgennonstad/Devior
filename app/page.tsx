@@ -469,7 +469,6 @@ export default function Home() {
   )}
 </div>
 
-
 <form action="https://fabform.io/f/xxxxx" method="post">
   <section className="container">
     <div className="phonie"></div> {/* Ensure the phone image is within the message section */}
