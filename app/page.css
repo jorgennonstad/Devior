@@ -433,59 +433,107 @@ html {
 
 
 
-/* Contact us page */
-.contact-us-page {
-  background-color: rgb(9, 9, 11);
-  background-image: url('../public/img/purpleFlower.png');
-  background-size: 45%;
-  background-repeat: no-repeat;
-  background-position:center;
+/* Contact page */
+.container {
+  display: flex; /* Use flexbox to align items */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Space out items */
+  padding: 20px; /* Optional: Add padding around the container */
+}
+
+.phonie {
+  background-image: url('./phonie.png'); /* Ensure the path to your phone image is correct */
+  height: 400px; /* Adjust the height as needed */
+  width: 300px; /* Adjust the width as needed */
+  background-size: cover; /* Ensure the image covers the element */
+  background-position: center; /* Center the image within the element */
+  background-repeat: no-repeat; /* Prevent repeating the image */
+  transform: translateY(-50%); /* Center it vertically */
+  animation: float 3s ease-in-out infinite; /* Apply the floating animation */
+  margin-top: 420px;
+  margin-right: 100px;
+}
+
+/* Optional: Floating animation for the phone image */
+@keyframes float {
+  0% { transform: translateY(-50%); }
+  50% { transform: translateY(-45%); }
+  100% { transform: translateY(-50%); }
+}
+
+.message-section {
+  padding: 1.25rem;
+  max-width: 600px; /* Ensure the container width is limited */
+  width: 100%; /* Ensure it uses full width of its parent container */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  position: relative; /* Ensure it's positioned relative for stacking context */
+  display: flex; /* Use flexbox to center the content */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  border: 2px solid rgba(0,0,0,1);
+  box-shadow: 15px 15px 1px #0000, 15px 15px 1px 2px rgba(0,0,0,1)
+}
+
+.message-textarea {
+  width: calc(100% - 1rem); /* Adjust width to account for padding */
+  height: 8rem; /* Adjust height as needed */
+  padding: 1rem;
+  margin-bottom: 2.5rem;
+  border: 3px solid black;
+  font-size: 1.1rem;
+  color: #4b5563;
+  background-color: transparent;
+  box-sizing: border-box; /* Include padding in the width */
+  resize: none; /* Allow vertical resizing */
+}
+
+.input-field::placeholder,
+.message-textarea::placeholder {
+  font-family: 'Arial', sans-serif; /* Replace with your desired font-family */
+  font-size: 1.125rem; /* Match the font size with your input fields */
+  color: #7b8087; /* Match the placeholder text color with your input fields */
+  opacity: 1; /* Ensures that the placeholder is not faded */
+}
+
+.message-title {
+  color: #000000;
+  font-size: 2.25rem;
+  font-weight: 600;
+  margin-bottom: 2.75rem;
   text-align: center;
-  padding: 7vh 30vw 150px;
 }
 
-.contact-us-page h2{
-  margin-top: 0;
-  font-size: 3.5rem;
-  font-weight: 400;
-  background: url('../public/img/liquid-fade.png') no-repeat center center;
-  background-size: 500px;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.contact-us-page div{
-  background-color: white;
-  width: 80%;
-  margin:  0 auto;
-}
-
-.contact-us-page div form{
-  width: 60%;
-  margin: 0 auto;
-  text-align: left;
-  font-size: 1.2rem;
-  font-weight: 200;
-  padding: 15px 0 35px 0;
-}
-
-.contact-us-page div form input{
-  width: 100%;
-  height: 40px;
-  background-color: rgb(237, 237, 237);
+.input-field {
+  width: calc(100% - 1rem); /* Adjust width to account for padding */
+  height: 3rem;
+  padding-left: 1rem;
+  margin-bottom: 2.5rem;
   border: none;
+  border-bottom: 3px solid black;
+  font-size: 1.125rem;
+  color: #4b5563;
+  background-color: transparent;
+  box-sizing: border-box; /* Include padding in the width */
+  font-size: 1.5rem;
 }
 
-.contact-us-page div form textarea{
-  width: 100%;
-  background-color: rgb(237, 237, 237);
+.submit-button {
+  width: 200px; /* Set a fixed width */
+  height: 2.5rem; /* Set a fixed height */
+  background-color: black;
+  color: #ffffff;
   border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  box-sizing: border-box; /* Include padding in the width */
+  margin: 1rem 0; /* Add margin to space it from other elements */
+  margin: auto;
 }
 
-.contact-us-page div form label{
-  display: block;
-  margin-top: 30px;
+.submit-button:hover {
+  background-color: #ff3c00;
 }
 
 /* Footer */
@@ -619,106 +667,4 @@ footer ul li span{
 
 .glow {
   filter: url(#gooify);
-}
-
-
-/* Contact page */
-.container {
-  display: flex; /* Use flexbox to align items */
-  align-items: center; /* Center items vertically */
-  justify-content: center; /* Space out items */
-  padding: 20px; /* Optional: Add padding around the container */
-}
-
-.phonie {
-  background-image: url('./phonie.png'); /* Ensure the path to your phone image is correct */
-  height: 400px; /* Adjust the height as needed */
-  width: 300px; /* Adjust the width as needed */
-  background-size: cover; /* Ensure the image covers the element */
-  background-position: center; /* Center the image within the element */
-  background-repeat: no-repeat; /* Prevent repeating the image */
-  transform: translateY(-50%); /* Center it vertically */
-  animation: float 3s ease-in-out infinite; /* Apply the floating animation */
-  margin-top: 420px;
-  margin-right: 100px;
-}
-
-/* Optional: Floating animation for the phone image */
-@keyframes float {
-  0% { transform: translateY(-50%); }
-  50% { transform: translateY(-45%); }
-  100% { transform: translateY(-50%); }
-}
-
-.message-section {
-  background-color: #f9fafb;
-  padding: 1.25rem;
-  border-radius: 1.5rem;
-  max-width: 600px; /* Ensure the container width is limited */
-  width: 100%; /* Ensure it uses full width of its parent container */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
-  position: relative; /* Ensure it's positioned relative for stacking context */
-  display: flex; /* Use flexbox to center the content */
-  flex-direction: column; /* Stack items vertically */
-  align-items: center; /* Center items horizontally */
-}
-
-.message-textarea {
-  width: calc(100% - 1rem); /* Adjust width to account for padding */
-  height: 8rem; /* Adjust height as needed */
-  padding: 1rem;
-  margin-bottom: 2.5rem;
-  border: 1px solid #e5e7eb;
-  font-size: 1.125rem;
-  color: #4b5563;
-  background-color: transparent;
-  box-sizing: border-box; /* Include padding in the width */
-  resize: none; /* Allow vertical resizing */
-}
-
-.input-field::placeholder,
-.message-textarea::placeholder {
-  font-family: 'Arial', sans-serif; /* Replace with your desired font-family */
-  font-size: 1.125rem; /* Match the font size with your input fields */
-  color: #7b8087; /* Match the placeholder text color with your input fields */
-  opacity: 1; /* Ensures that the placeholder is not faded */
-}
-
-.message-title {
-  color: #000000;
-  font-size: 2.25rem;
-  font-weight: 600;
-  margin-bottom: 2.75rem;
-  text-align: center;
-}
-
-.input-field {
-  width: calc(100% - 1rem); /* Adjust width to account for padding */
-  height: 3rem;
-  padding-left: 1rem;
-  margin-bottom: 2.5rem;
-  border: 1px solid #e5e7eb;
-  font-size: 1.125rem;
-  color: #4b5563;
-  background-color: transparent;
-  box-sizing: border-box; /* Include padding in the width */
-}
-
-.submit-button {
-  width: 200px; /* Set a fixed width */
-  height: 2.5rem; /* Set a fixed height */
-  background-color: black;
-  color: #ffffff;
-  border: none;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-  box-sizing: border-box; /* Include padding in the width */
-  margin: 1rem 0; /* Add margin to space it from other elements */
-  margin: auto;
-}
-
-.submit-button:hover {
-  background-color: #2b2a2f;
 }

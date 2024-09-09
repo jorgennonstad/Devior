@@ -469,15 +469,15 @@ export default function Home() {
   )}
 </div>
 
-<form action="https://fabform.io/f/xxxxx" method="post">
+<form id="contactUsPage" action="#" method="post">
   <section className="container">
     <div className="phonie"></div> {/* Ensure the phone image is within the message section */}
     <div className="message-section">
       <h2 className="message-title">Contact us</h2>
-      <input type="text" className="input-field" placeholder="Name" />
-      <input type="text" className="input-field" placeholder="Email" />
-      <input type="text" className="input-field" placeholder="Phone" />
-      <textarea className="message-textarea" placeholder="Message"></textarea>
+      <input type="text" className="input-field" placeholder="Name" required/>
+      <input type="text" className="input-field" placeholder="Email" required/>
+      <input type="text" className="input-field" placeholder="Phone" required/>
+      <textarea className="message-textarea" placeholder="Message" required></textarea>
       <button className="submit-button">Send</button>
     </div>
   </section>
