@@ -1,0 +1,19 @@
+.large-header {
+    position:absolute; /* Ensures it covers the viewport without taking space */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    z-index: -1; /* Keep it behind other elements */
+  }
+  
+  canvas {
+    display: block;
+    width: 100%; /* Make the canvas cover the full width */
+    height: 100%; /* Make the canvas cover the full height */
+    position: absolute;
+  }
+  
