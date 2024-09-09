@@ -49,6 +49,7 @@ html {
   z-index: 1000;
 }
 
+
 .navbar-list {
   display: flex;
   justify-content: center;
@@ -195,136 +196,183 @@ html {
   margin-right: 0;
 }
 
-/* projects */
-.projectsPage{
-  background-color: white;
-  text-align: center;
-  padding: 0vh;
-}
-
-.projectsPage a{
-  text-decoration: none;
-}
-
+/* Project */
+/* Overall container styling */
 .projectsPage > h2 {
-  margin-top: 15vh;
+  margin-top: 0;
   font-size: 3.5rem;
-  font-weight: 500;
-  background-size: 500px;
-  -webkit-background-clip: text;
-  background-clip: text;
+  font-weight: 600;
   color: black;
+  text-align: center;
 }
 
 .projects-container {
+  padding: 0 60px;
   display: flex;
   flex-wrap: wrap;
-  gap: 35px;
-  padding: 0 150px 0 150px;
   justify-content: center;
-  text-align: left;
+  gap: 50px; /* Space between items */
+}
+
+/* Styling for each project link */
+.project-link {
+  text-decoration: none;
+  color: inherit;
+  width: calc(50% - 50px); /* Two items per row with a gap */
 }
 
 .project-card {
-  position: relative; /* Ensure the pseudo-element is positioned relative to the card */
+  position: relative;
   overflow: hidden;
-  width: 400px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
 }
 
-.project-card:hover {
-  transform: translateY(-10px);
-}
-
-.project-link {
-  display: block;
-}
-
-.project-image {
+/* Container for images */
+.image-container {
+  position: relative;
   width: 100%;
-  height: 200px;
+  padding-top: 66.67%; /* Maintain aspect ratio (3:2) */
+}
+
+/* Styling for the images */
+.project-image,
+.project-hover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  filter: grayscale(70%); /* Make the image black and white */
-  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition for both transform and filter */
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Hide hover image initially */
+.project-hover-image {
+  opacity: 0;
+}
+
+/* Show hover image on hover */
+.project-card:hover .project-hover-image {
+  opacity: 1;
 }
 
 .project-card:hover .project-image {
-  transform: scale(1.05);
-  filter: grayscale(0%); /* Return to color on hover */
+  opacity: 0;
 }
 
-/* Add the line under the image on hover */
-.project-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 4px;
-  background-color: #ff4500; /* Red-orange color */
-  transition: width 0.3s ease; /* Smooth transition for the line */
-}
-
-.project-card:hover::after {
-  width: 100%; /* Expand the line to full width on hover */
-}
-
-
-
+/* Project info styling */
 .project-info {
-  padding: 10px;
+  padding-top: 15px;
 }
 
 .project-title {
-  font-size: 1.5rem;
-  margin-bottom: 5px;
-  margin-top: 0;
-  text-align: left;
-  color: #333;
+  font-size: 1.2em;
+  margin: 0;
 }
 
 .project-bio {
-  font-size: 0.9rem;
-  margin-bottom: 16px;
-  margin-top: 0;
-  color: #666;
+  font-size: 0.9em;
+  color: #555;
 }
+
+/* Media Queries */
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+  .projectsPage > h2 {
+    font-size: 2.5rem;
+  }
+
+  .projects-container {
+    padding: 50px 20px;
+    gap: 30px; /* Reduced space between items */
+  }
+
+  .project-link {
+    width: calc(50% - 30px); /* Adjust for reduced gap */
+  }
+
+  .project-title {
+    font-size: 1em;
+  }
+
+  .project-bio {
+    font-size: 0.8em;
+  }
+}
+
+/* Phone (480px and below) */
+@media (max-width: 480px) {
+  .projectsPage > h2 {
+    font-size: 1.8rem;
+  }
+
+  .projects-container {
+    padding: 30px 10px;
+    gap: 20px; /* Further reduced space between items */
+  }
+  .project-card{
+    margin: 20px 0;
+  }
+
+  .project-link {
+    width: 100%; /* Full width for single column */
+  }
+
+  .project-title {
+    font-size: 0.9em;
+  }
+
+  .project-bio {
+    font-size: 0.7em;
+  }
+}
+
 
 /* Who are we page */
 .who-are-we-page {
-  background-color: #f9f9f9; /* Light background for better readability */
+  background-color: white;
   text-align: center;
-  padding: 90px 20vw 150px; /* Adjusted padding for better spacing */
-  color: #333; /* Slightly softer color for text */
+  padding: 20vh 20vw 150px;
+  color: #333;
 }
 
 .who-are-we-page h2 {
   margin-top: 0;
   font-size: 3.5rem;
-  font-weight: 600; /* Bolder font for the header */
-  background-image: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%); /* Gradient text */
-  -webkit-background-clip: text;
-  color: transparent;
+  font-weight: 600;
+  color: black;
 }
 
 .who-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;;
   text-align: left;
 }
 
 .img-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   margin: 20px auto;
-  gap: 30px; /* Space between images */
+  gap: 50px;
 }
 
 .person {
+  position: relative;
   text-align: center;
+}
+
+.person h1 {
+  position: absolute;
+  z-index: 1;
+  transform: translate(-25%, -65%);
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  line-height: 1.2;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #ff4500; /* Optional: ensure the text is visible on the image */
 }
 
 .person img {
@@ -332,23 +380,57 @@ html {
   height: 300px;
   object-fit: cover;
   object-position: center;
-  border-radius: 15px; /* Softer corners */
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  transition: transform 0.3s ease; /* Smooth zoom effect */
+  filter: grayscale(100%) contrast(120%);
+  box-shadow: 10px 15px 25px 0 rgba(0,0,0,.2);
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  display: block;
+  margin-top: -10px;
 }
 
-.person img:hover {
-  transform: scale(1.05); /* Slight zoom on hover */
+.person:hover img {
+  box-shadow: 1px 1px 10px 0 rgba(0,0,0,.1);
+}
+
+.person .glow-wrap {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  margin-top: -10px;
+}
+
+.person .glow {
+  display: block;
+  position: absolute;
+  width: 40%;
+  height: 200%;
+  background: rgba(255,255,255,.2);
+  top: 0;
+  filter: blur(5px);
+  transform: rotate(45deg) translate(-450%, 0);
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.person:hover .glow {
+  transform: rotate(45deg) translate(450%, 0);
+  transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.person:hover img,
+.person:hover .glow-wrap {
+  margin-top: 0;
 }
 
 .bio-container {
   max-width: 800px;
-  margin: 40px auto 0; /* Added margin for better spacing */
-  font-size: 1.25rem; /* Larger font size for better readability */
-  line-height: 1.6; /* Improved line spacing */
-  color: #555; /* Softer text color for the bio */
-  text-align: center; /* Centered text for bio */
+  margin: 40px auto 0;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #555;
+  text-align: center;
 }
+
 
 
 /* Contact us page */
@@ -467,6 +549,7 @@ footer ul li span{
 }
 
 .orange {
+  border-radius: 10px;
   background-image: url('./work.jpg'); /* Path to your laptop image */
   background-size: cover; /* Ensures the image covers the element */
   background-position: center; /* Centers the image */

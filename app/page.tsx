@@ -16,7 +16,8 @@ export default function Home() {
   const lineRef = useRef(null);
   const offerPageRef = useRef(null);
   const headerRefs = useRef([]); // Create a ref to store multiple h2 elements
-  const projectCardRefs = useRef([]); // Create a ref for the project cards
+  const projectCardRefs = useRef([]); // Create a ref for the project projectCardRef
+  const whoAreWeRef = useRef(null); // Ref for "Who are we?" section
   const [circlePositions, setCirclePositions] = useState({
     circle1: { x: 400, y: 200, xSpeed: 0.1, ySpeed: 0.17 },  // Reduced speeds
     circle2: { x: 600, y: 400, xSpeed: -0.25, ySpeed: 0.25 }, // Reduced speeds
@@ -35,6 +36,58 @@ export default function Home() {
 
   const introPageRef = useRef(null);
 
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Slide-up animation for project cards
+    projectScrollTriggers.current = projectCardRefs.current.map((card, index) => {
+      return gsap.fromTo(
+        card,
+        { y: 50, opacity: 0 }, // Start position slightly below with opacity 0
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          delay: index * 0.2, // Stagger effect between cards
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%", // Start animation when the card is in the top 80% of the viewport
+            end: "bottom 70%",
+            toggleActions: "play none none none", // Play animation when scrolled in, reverse when scrolled out
+            markers: false, // Set to true to see markers in development
+          },
+        }
+      ).scrollTrigger; // Return the ScrollTrigger instance
+    });
+
+    // GSAP animation for "Who are we?" section
+    const whoAreWeAnimation = gsap.fromTo(
+      whoAreWeRef.current.querySelectorAll('.person, .bio-container'),
+      { y: 50, opacity: 0 }, // Initial state
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.3, // Stagger effect for multiple elements
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: whoAreWeRef.current,
+          start: "top 80%", // Adjust start position as needed
+          end: "bottom 70%",
+          scrub: 1, // Smooth animation as you scroll
+          markers: false, // Set to true to see markers in development
+        },
+      }
+    );
+
+    return () => {
+      // Clean up each ScrollTrigger
+      projectScrollTriggers.current.forEach((trigger) => trigger.kill());
+      whoAreWeAnimation.scrollTrigger.kill(); // Clean up the ScrollTrigger for the "Who are we?" section
+    };
+  }, [projects, aboutInfo]); // Dependency array includes 'aboutInfo' to re-run when data is fetched
+  
   useEffect(() => {
     const updateBounds = () => {
       if (introPageRef.current) {
@@ -193,7 +246,7 @@ export default function Home() {
       headerRefs.current,
       { x: "200%", opacity: 0 },
       {
-        x: "-10%",
+        x: "0%",
         opacity: 1,
         duration: 1,
         stagger: 0.20,
@@ -231,9 +284,9 @@ export default function Home() {
           ease: "power3.out",
           scrollTrigger: {
             trigger: card,
-            start: "top 80%", // Start animation when the card is in the top 80% of the viewport
+            start: "top 20%", // Start animation when the card is in the top 80% of the viewport
             end: "bottom 70%",
-            toggleActions: "play none none reverse", // Play animation when scrolled in, reverse when scrolled out
+            toggleActions: "play none none none", // Play animation when scrolled in, reverse when scrolled out
             markers: false, // Set to true to see markers in development
           },
         }
@@ -265,7 +318,7 @@ export default function Home() {
     };
   }, []);
 
-  const circleRadii = [170, 90, 120, 140, 70];
+  const circleRadii = [];
 
   return (
     <div>
@@ -298,8 +351,8 @@ export default function Home() {
                 />
               </filter>
               <linearGradient id="yourGradientId" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#080a0d" />
-                <stop offset="100%" stopColor="#444a4f" />
+                <stop offset="0%" stopColor="#00000" />
+                <stop offset="100%" stopColor="#00000" />
               </linearGradient>
             </defs>
             <g filter="url(#gooify)">
@@ -316,7 +369,7 @@ export default function Home() {
             </g>
           </svg>
         </div>
-        <h1 className='fadeInUp'>DEVIOR</h1>
+        <h1 className='fadeInUp'>DEVIRO</h1>
         <h2 className='fadeInUp delay1'>Digitilize your business</h2>
       </div>
       <div className='offerPage' ref={offerPageRef}>
@@ -354,40 +407,55 @@ export default function Home() {
         </div>
       </div>
       <div id='projectsPage' className='projectsPage'>
-        <h2>Our projects</h2>
-        <div className='projects-container'>
-          {projects.map((project, index) => (
-            <a
-              key={project._id}
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-link"
-              ref={(el) => projectCardRefs.current[index] = el}
-            >
-              <div className="project-card">
-                <img src={project.thumbnail} alt={project.name} className="project-image" />
-                <div className="project-info">
-                  <h2 className="project-title">{project.name}</h2>
-                  <p className="project-bio">{project.bio}</p>
-                </div>
-              </div>
-            </a>
-          ))}
+  <h2>Our Projects</h2>
+  <div className='projects-container'>
+    {projects.map((project, index) => (
+      <a
+        key={project._id}
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="project-link"
+        ref={(el) => projectCardRefs.current[index] = el}
+      >
+        <div className="project-card">
+          <div className="image-container">
+            <img
+              src={project.thumbnail}
+              alt={project.name}
+              className="project-image"
+            />
+            <img
+              src={project.hoverImage}
+              alt={project.name}
+              className="project-hover-image"
+            />
+          </div>
+          <div className="project-info">
+            <h2 className="project-title">{project.name}</h2>
+            <p className="project-bio">{project.bio}</p>
+          </div>
         </div>
-      </div>
-      <div id='whoAreWePage' className='who-are-we-page'>
+      </a>
+    ))}
+  </div>
+</div>
+
+
+      <div id='whoAreWePage' className='who-are-we-page' ref={whoAreWeRef}>
   <h2>Who are we?</h2>
   {aboutInfo ? (
     <div className='who-info'>
       <div className='img-container'>
         <div className="person">
+          <h1>{aboutInfo.imageOneName}</h1>
           <img src={aboutInfo.imageOneUrl} alt={aboutInfo.imageOneAlt} />
-          <p>{aboutInfo.imageOneName}, {aboutInfo.imageOneAge}</p>
+          <div class="glow-wrap"><i class="glow"></i></div>
         </div>
         <div className="person">
+          <h1>{aboutInfo.imageTwoName}</h1>
           <img src={aboutInfo.imageTwoUrl} alt={aboutInfo.imageTwoAlt} />
-          <p>{aboutInfo.imageTwoName}, {aboutInfo.imageTwoAge}</p>
+          <div class="glow-wrap"><i class="glow"></i></div>
         </div>
       </div>
       <div className="bio-container">
@@ -398,6 +466,7 @@ export default function Home() {
     <p>Loading about info...</p>
   )}
 </div>
+
 
       <div id='contactUsPage' className='contact-us-page'>
         <h2>Contact us</h2>
