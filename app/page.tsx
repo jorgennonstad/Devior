@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from 'react';
-import { FaPaintBrush, FaCode, FaExpand, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa'; // Importing specific icons
+import { FaPaintBrush, FaCode, FaExpand, FaEnvelope, FaPhone, FaMapMarkerAlt, FaArrowUp } from 'react-icons/fa'; // Importing specific icons
 import { getProjects, getAboutInfo } from '../sanity/sanity-utils'; // Adjust the path if needed
 import './page.css'; // Ensure the path is correct
 import gsap from 'gsap';
@@ -301,15 +301,15 @@ export default function Home() {
   return (
     <div>
       <button className="back-to-top" onClick={scrollToTop}>
-        &uarr; Top
+        <FaArrowUp className="arrow-icon" />
       </button>
       <header>
         <nav className="navbar">
           <ul className="navbar-list">
-            <li className="navbar-item"><a href="#offerPage">What We Offer</a></li>
-            <li className="navbar-item"><a href="#projectsPage">Our Projects</a></li>
-            <li className="navbar-item"><a href="#whoAreWePage">Who Are We</a></li>
-            <li className="navbar-item"><a href="#contactUsPage">Contact</a></li>
+            <li className="navbar-item"><a href="#offerPage">Hva vi tilbyr</a></li>
+            <li className="navbar-item"><a href="#projectsPage">Prosjekter</a></li>
+            <li className="navbar-item"><a href="#whoAreWePage">Om oss</a></li>
+            <li className="navbar-item"><a href="#contactUsPage">Kontakt</a></li>
           </ul>
         </nav>
       </header>
@@ -350,15 +350,15 @@ export default function Home() {
           </svg>
         </div>
         <h1 className='fadeInUp'>DEVIRO</h1>
-        <h2 className='fadeInUp delay1'>Digitilize your business</h2>
+        <h2 className='fadeInUp delay1'>Digitaliser ditt selskap</h2>
       </div>
       <div className='offerPage' ref={offerPageRef}>
         <div className='header-container'>
-          <h2 ref={(el) => headerRefs.current[0] = el}>What we offer</h2>
-          <h2 ref={(el) => headerRefs.current[1] = el}>What we offer</h2>
-          <h2 ref={(el) => headerRefs.current[2] = el}>What we offer</h2>
-          <h2 ref={(el) => headerRefs.current[3] = el}>What we offer</h2>
-          <h2 ref={(el) => headerRefs.current[4] = el}>What we offer</h2>
+          <h2 ref={(el) => headerRefs.current[0] = el}>Hva vi tilbyr</h2>
+          <h2 ref={(el) => headerRefs.current[1] = el}>Hva vi tilbyr</h2>
+          <h2 ref={(el) => headerRefs.current[2] = el}>Hva vi tilbyr</h2>
+          <h2 ref={(el) => headerRefs.current[3] = el}>Hva vi tilbyr</h2>
+          <h2 ref={(el) => headerRefs.current[4] = el}>Hva vi tilbyr</h2>
         </div>
         <div id="offerPage" className='offercontainer'>
           <div className='offer'>
@@ -366,11 +366,11 @@ export default function Home() {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis </p>
           </div>
           <div className='offer'>
-            <h3><FaExpand className="icon-color"/> Flexibility</h3>
+            <h3><FaExpand className="icon-color"/> Fleksibilitet</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis</p>
           </div>
           <div className='offer'>
-            <h3><FaCode className="icon-color"/> Code</h3>
+            <h3><FaCode className="icon-color"/> Kode</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis</p>
           </div>
         </div>
@@ -387,7 +387,7 @@ export default function Home() {
         </div>
       </div>
       <div id='projectsPage' className='projectsPage'>
-  <h2>Our Projects</h2>
+  <h2>Våre prosjekter</h2>
   <div className='projects-container'>
     {projects.map((project, index) => (
       <a
@@ -423,7 +423,7 @@ export default function Home() {
 
 
 <div id="whoAreWePage" className="who-are-we-page" ref={whoAreWeRef}>
-      <h2>Who are we?</h2>
+      <h2>Hvem er vi?</h2>
   <div className="content-container">
     <div className="text-container">
       {aboutInfo ? (
@@ -431,7 +431,7 @@ export default function Home() {
           <p>{aboutInfo.bio}</p>
         </div>
       ) : (
-        <p>Loading about info...</p>
+        <p>Laster inn...</p>
       )}
     </div>
     
@@ -493,7 +493,7 @@ export default function Home() {
 </div>
 
       <footer>
-        <h2><FaPaintBrush /> Deviro</h2>
+        <h2><img className="footerLogo" src="./favicon.ico" alt="Deviro Logo" /> Deviro</h2>
         <ul>
           <li><span>Adr:</span> Storgata 2, 1821 Gjøvik </li>
           <li><span>Tlf:</span> +47 123 45 567</li>
