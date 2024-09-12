@@ -296,7 +296,7 @@ export default function Home() {
     };
   }, []);
 
-  const circleRadii = [170, 140];
+  const circleRadii = [170, 140, 110];
 
   return (
     <div>
