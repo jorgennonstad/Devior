@@ -9,33 +9,45 @@ html {
 
 /* Add this to your CSS file */
 .back-to-top {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 50%; /* Change to circular button */
+  background-color: #333;
+  color: #fff; /* Ensure icon color is visible */
   position: fixed;
-  bottom: 20px; /* Adjust as needed */
-  right: 20px; /* Adjust as needed */
-  background-color: #ff3c00; /* Background color */
-  color: white; /* Text color */
-  border: none;
-  border-radius: 10px;
-  width: 50px; /* Button size */
-  height: 50px; /* Button size */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  bottom: 30px;
+  right: 30px;
+  transition: background-color .3s, opacity .5s, visibility .5s;
   opacity: 0;
-  transition: opacity 0.3s;
-  z-index: 999;
+  visibility: hidden;
+  z-index: 1000;
+  border: none; /* Remove any border */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+}
+
+.back-to-top .arrow-icon {
+  transition: transform .3s;
+}
+
+/* Move only the arrow icon up on hover */
+.back-to-top:hover .arrow-icon {
+  transform: translateY(-5px); /* Move the icon up slightly */
 }
 
 .back-to-top:hover {
-  background-color: #e03e00; /* Darker color on hover */
+  cursor: pointer;
+  background-color: #333; /* Darker background on hover */
 }
 
-/* Show button when scrolling past introPage */
-.show {
-  opacity: 10;
+.back-to-top:active {
+  background-color: #555; /* Even darker on active */
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
 }
 
 
@@ -483,31 +495,49 @@ html {
 
 /* Footer */
 footer {
-  background: #f8f9fa; /* Light background color */
-  padding: 20px;
-  text-align: center;
-  border-top: 1px solid #ddd; /* Optional: add a border to separate from content */
+  background-color: #222; /* Dark background */
+  color: #fff; /* White text */
+  padding: 40px 20px; /* Padding around the footer */
+  text-align: center; /* Center the text */
 }
 
 footer h2 {
-  font-size: 1.5rem; /* Adjust the size of the heading */
-  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
 }
 
 footer ul {
-  list-style: none; /* Remove bullets from list items */
-  padding: 0;
-  margin: 0;
+  list-style: none; /* Remove bullets */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
 }
 
-footer li {
-  margin: 5px 0; /* Add some spacing between list items */
-  font-size: 1rem; /* Adjust font size for better readability */
+footer ul li {
+  margin: 10px 0; /* Spacing between list items */
+  font-size: 16px; /* Adjust font size */
 }
 
-footer span {
-  font-weight: bold; /* Make labels bold */
+footer ul li span {
+  font-weight: bold; /* Bold for the label text (Adr:, Tlf:, etc.) */
 }
+
+footer ul li a {
+  color: #f39c12; /* Custom link color */
+  text-decoration: none; /* Remove underline */
+}
+
+footer ul li a:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+
+.footerLogo {
+  height: 30px;
+  width: 30px;
+  margin-right: 5px;
+}
+
 
 /* New Section with Orange Panel and Laptop */
 .panel {
