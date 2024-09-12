@@ -273,6 +273,59 @@ html {
   color: #555;
 }
 
+/* Media Queries */
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+  .projectsPage > h2 {
+    font-size: 2.5rem;
+  }
+
+  .projects-container {
+    padding: 50px 20px;
+    gap: 30px; /* Reduced space between items */
+  }
+
+  .project-link {
+    width: calc(50% - 30px); /* Adjust for reduced gap */
+  }
+
+  .project-title {
+    font-size: 1em;
+  }
+
+  .project-bio {
+    font-size: 0.8em;
+  }
+}
+
+/* Phone (480px and below) */
+@media (max-width: 480px) {
+  .projectsPage > h2 {
+    font-size: 1.8rem;
+  }
+
+  .projects-container {
+    padding: 30px 10px;
+    gap: 20px; /* Further reduced space between items */
+  }
+  .project-card{
+    margin: 20px 0;
+  }
+
+  .project-link {
+    width: 100%; /* Full width for single column */
+  }
+
+  .project-title {
+    font-size: 0.9em;
+  }
+
+  .project-bio {
+    font-size: 0.7em;
+  }
+}
+
 /* Who are we page */
 /* General layout */
 .who-are-we-page {
@@ -637,14 +690,6 @@ footer span {
     font-size: 1.7rem;
   }
 
-  .who-are-we-page h2 {
-    font-size: 1.7rem;
-  }
-  .navbar {
-    padding: 10px;
-    font-size: 14px; /* Decrease font size */
-  }
-
   .navbar-list {
     display: flex;
     flex-direction: column; /* Stack the items vertically */
@@ -671,52 +716,4 @@ footer span {
     font-size: 12px;
     padding: 8px;
   }
-
-  .projectsPage > h2 {
-    font-size: 1.8rem;
-  }
-
-  .projects-container {
-    padding: 30px 10px;
-    gap: 20px; /* Further reduced space between items */
-  }
-  .project-card{
-    margin: 20px 0;
-  }
-
-  .project-link {
-    width: 100%; /* Full width for single column */
-  }
-
-  .project-title {
-    font-size: 0.9em;
-  }
-
-  .project-bio {
-    font-size: 0.7em;
-  }
-
-  .projectsPage > h2 {
-    font-size: 2.5rem;
-  }
-
-  .projects-container {
-    padding: 50px 20px;
-    gap: 30px; /* Reduced space between items */
-  }
-
-  .project-link {
-    width: calc(50% - 30px); /* Adjust for reduced gap */
-  }
-
-  .project-title {
-    font-size: 1em;
-  }
-
-  .project-bio {
-    font-size: 0.8em;
-  }
 }
-
-
-
