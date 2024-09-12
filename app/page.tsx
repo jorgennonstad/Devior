@@ -39,28 +39,6 @@ export default function Home() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Slide-up animation for project cards
-    projectScrollTriggers.current = projectCardRefs.current.map((card, index) => {
-      return gsap.fromTo(
-        card,
-        { y: 50, opacity: 0 }, // Start position slightly below with opacity 0
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          delay: index * 0.2, // Stagger effect between cards
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 80%", // Start animation when the card is in the top 80% of the viewport
-            end: "bottom 70%",
-            toggleActions: "play none none none", // Play animation when scrolled in, reverse when scrolled out
-            markers: false, // Set to true to see markers in development
-          },
-        }
-      ).scrollTrigger; // Return the ScrollTrigger instance
-    });
-
     // GSAP animation for "Who are we?" section
     const whoAreWeAnimation = gsap.fromTo(
       whoAreWeRef.current.querySelectorAll('.person, .bio-container'),
@@ -75,7 +53,6 @@ export default function Home() {
           trigger: whoAreWeRef.current,
           start: "top 80%", // Adjust start position as needed
           end: "bottom 70%",
-          scrub: 1, // Smooth animation as you scroll
           markers: false, // Set to true to see markers in development
         },
       }
@@ -270,34 +247,35 @@ export default function Home() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-
-    // Slide-up animation for project cards
-    projectScrollTriggers.current = projectCardRefs.current.map((card, index) => {
-      return gsap.fromTo(
-        card,
-        { y: 50, opacity: 0 }, // Start position slightly below with opacity 0
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          delay: index * 0.2, // Stagger effect between cards
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 20%", // Start animation when the card is in the top 80% of the viewport
-            end: "bottom 70%",
-            toggleActions: "play none none none", // Play animation when scrolled in, reverse when scrolled out
-            markers: false, // Set to true to see markers in development
-          },
+  
+    // Slide-up animation for the entire project container
+    const projectContainerAnimation = gsap.fromTo(
+      projectCardRefs.current, // Apply animation to all project cards at once
+      { y: 50, opacity: 0 },   // Start state: slightly below and transparent
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,   // Animation duration
+        ease: "power3.out",
+        stagger: 0.2,  // Optional: stagger the effect a bit for each project card
+        scrollTrigger: {
+          trigger: ".projects-container", // Trigger for the entire container
+          start: "top 80%",  // Start animation when container hits 80% of the viewport
+          end: "bottom 70%", // End when container is 70% from the bottom
+          toggleActions: "play none none none", // Play when scrolling in, don't reverse
+          markers: false,   // Set to true to see debugging markers
         }
-      ).scrollTrigger; // Return the ScrollTrigger instance
-    });
-
+      }
+    );
+  
     return () => {
-      // Clean up each ScrollTrigger
-      projectScrollTriggers.current.forEach((trigger) => trigger.kill());
+      // Clean up the ScrollTrigger instance when the component unmounts
+      if (projectContainerAnimation.scrollTrigger) {
+        projectContainerAnimation.scrollTrigger.kill();
+      }
     };
-  }, [projects]);
+  }, [projects]); // Re-run this effect when the projects data changes
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -444,36 +422,46 @@ export default function Home() {
 </div>
 
 
-      <div id='whoAreWePage' className='who-are-we-page' ref={whoAreWeRef}>
-  <h2>Who are we?</h2>
-  {aboutInfo ? (
-    <div className='who-info'>
-      <div className='img-container'>
-        <div className="person">
-          <h1>{aboutInfo.imageOneName}</h1>
-          <img src={aboutInfo.imageOneUrl} alt={aboutInfo.imageOneAlt} />
-          <div class="glow-wrap"><i class="glow"></i></div>
+<div id="whoAreWePage" className="who-are-we-page" ref={whoAreWeRef}>
+      <h2>Who are we?</h2>
+  <div className="content-container">
+    <div className="text-container">
+      {aboutInfo ? (
+        <div className="bio-container">
+          <p>{aboutInfo.bio}</p>
         </div>
-        <div className="person">
-          <h1>{aboutInfo.imageTwoName}</h1>
-          <img src={aboutInfo.imageTwoUrl} alt={aboutInfo.imageTwoAlt} />
-          <div class="glow-wrap"><i class="glow"></i></div>
-        </div>
-      </div>
-      <div className="bio-container">
-        <p>{aboutInfo.bio}</p>
-      </div>
+      ) : (
+        <p>Loading about info...</p>
+      )}
     </div>
-  ) : (
-    <p>Loading about info...</p>
-  )}
+    
+    {aboutInfo && (
+      <div className="images-container">
+        <div className="person">
+          <div className="image-wrapper">
+            <img src={aboutInfo.imageOneUrl} alt={aboutInfo.imageOneAlt} />
+            <div className="glow-wrap"><i className="glow"></i></div>
+          </div>
+          <h1>{aboutInfo.imageOneName}</h1>
+        </div>
+        <div className="person">
+          <div className="image-wrapper">
+            <img src={aboutInfo.imageTwoUrl} alt={aboutInfo.imageTwoAlt} />
+            <div className="glow-wrap"><i className="glow"></i></div>
+          </div>
+          <h1>{aboutInfo.imageTwoName}</h1>
+        </div>
+      </div>
+    )}
+  </div>
 </div>
 
+
 <form id="contactUsPage" action="#" method="post">
+      <h2 className="message-title">Contact us</h2>
   <section className="container">
     <div className="phonie"></div> {/* Ensure the phone image is within the message section */}
     <div className="message-section">
-      <h2 className="message-title">Contact us</h2>
       <input type="text" className="input-field" placeholder="Name" required/>
       <input type="text" className="input-field" placeholder="Email" required/>
       <input type="text" className="input-field" placeholder="Phone" required/>
