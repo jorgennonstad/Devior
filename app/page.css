@@ -325,6 +325,7 @@ html {
 .person {
   text-align: center;
   width: 200px;
+  filter: grayscale(50%);
 }
 
 .image-wrapper {
@@ -380,106 +381,89 @@ html {
 
 
 
-
 /* Contact page */
-.container {
-  display: flex; /* Use flexbox to align items */
-  align-items: center; /* Center items vertically */
-  justify-content: center; /* Space out items */
-  padding: 20px; /* Optional: Add padding around the container */
+
+.contactUsPage {
+  padding: 0 50px;
+  justify-content: center;
 }
 
-.phonie {
-  background-image: url('./phonie.png'); /* Ensure the path to your phone image is correct */
-  height: 400px; /* Adjust the height as needed */
-  width: 300px; /* Adjust the width as needed */
-  background-size: cover; /* Ensure the image covers the element */
-  background-position: center; /* Center the image within the element */
-  background-repeat: no-repeat; /* Prevent repeating the image */
-  animation: float 3s ease-in-out infinite; /* Apply the floating animation */
-  margin-right: 100px;
+.contactHeader{
+  text-align: center;
 }
 
-/* Optional: Floating animation for the phone image */
-@keyframes float {
-  0% { transform: translateY(-50px); }
-  50% { transform: translateY(-45px); }
-  100% { transform: translateY(-50px); }
-}
-
-.message-section {
-  padding: 1.25rem;
-  border-radius: 1.5rem;
-  max-width: 600px; /* Ensure the container width is limited */
-  width: 100%; /* Ensure it uses full width of its parent container */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
-  position: relative; /* Ensure it's positioned relative for stacking context */
-  display: flex; /* Use flexbox to center the content */
-  flex-direction: column; /* Stack items vertically */
-  align-items: center; /* Center items horizontally */
-}
-
-.message-textarea {
-  width: calc(100% - 1rem); /* Adjust width to account for padding */
-  height: 8rem; /* Adjust height as needed */
-  padding: 1rem;
-  margin-bottom: 2.5rem;
-  border: 3px solid black;
-  font-size: 1.125rem;
-  color: #4b5563;
-  background-color: transparent;
-  box-sizing: border-box; /* Include padding in the width */
-  resize: none; /* Allow vertical resizing */
-}
-
-.input-field::placeholder,
-.message-textarea::placeholder {
-  font-family: 'Arial', sans-serif; /* Replace with your desired font-family */
-  font-size: 1.125rem; /* Match the font size with your input fields */
-  color: #7b8087; /* Match the placeholder text color with your input fields */
-  opacity: 1; /* Ensures that the placeholder is not faded */
+.contactHeader p{
+  margin-bottom: 50px;
 }
 
 .message-title {
   color: #000000;
   font-size: 3.5rem;
   font-weight: 600;
-  margin-bottom: 2.75rem;
+  margin-bottom: 0;
   margin-top: 100px;
   text-align: center;
 }
 
-.input-field {
-  width: calc(100% - 1rem); /* Adjust width to account for padding */
-  height: 3rem;
-  padding-left: 1rem;
-  margin-bottom: 2.5rem;
-  border: none;
-  border-bottom: 3px solid black;
-  font-size: 1.5rem;
-  color: #4b5563;
-  background-color: transparent;
-  box-sizing: border-box; /* Include padding in the width */
+.contactBody {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 90px;
 }
 
-.submit-button {
-  width: 200px; /* Set a fixed width */
-  height: 2.5rem; /* Set a fixed height */
-  background-color: black;
-  color: #ffffff;
-  border: none;
-  font-size: 1rem;
-  font-weight: 600;
+.contactBox {
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-width: 300px;
+}
+
+.contactBox svg{
+  color: red;
+}
+
+.contactBox p {
+  margin: 5px 0;
+}
+
+.contactBox a {
+  text-decoration: underline;
+  
+  color: black;
+}
+
+.contactBoxIcon {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.contactButton {
+  background-color: white;
+  color: #ff3c00;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.9rem;
+  border: solid 1px #ff3c00;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-  box-sizing: border-box; /* Include padding in the width */
-  margin: 1rem 0; /* Add margin to space it from other elements */
-  margin: auto;
+  margin-top: 15px;
 }
 
-.submit-button:hover {
-  background-color: #2b2a2f;
+.contactButton:hover {
+  background-color: #ff3c00;
+  color: white;
 }
+
 
 /* Footer */
 footer {
@@ -658,6 +642,11 @@ footer span {
 
 
 
+@media (max-width: 1100px) {
+  .contactBody{
+    flex-direction: column;
+  }
+}
 
 /* Media queries */
 /* Tablet (768px and below) */

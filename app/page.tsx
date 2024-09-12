@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from 'react';
-import { FaPaintBrush, FaCode, FaExpand } from 'react-icons/fa'; // Importing specific icons
+import { FaPaintBrush, FaCode, FaExpand, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa'; // Importing specific icons
 import { getProjects, getAboutInfo } from '../sanity/sanity-utils'; // Adjust the path if needed
 import './page.css'; // Ensure the path is correct
 import gsap from 'gsap';
@@ -457,19 +457,40 @@ export default function Home() {
 </div>
 
 
-<form id="contactUsPage" action="#" method="post">
+<div id="contactUsPage" className='contactUsPage' action="#" method="post">
+  <div className='contactHeader'>
       <h2 className="message-title">Contact us</h2>
-  <section className="container">
-    <div className="phonie"></div> {/* Ensure the phone image is within the message section */}
-    <div className="message-section">
-      <input type="text" className="input-field" placeholder="Name" required/>
-      <input type="text" className="input-field" placeholder="Email" required/>
-      <input type="text" className="input-field" placeholder="Phone" required/>
-      <textarea className="message-textarea" placeholder="Message" required></textarea>
-      <button className="submit-button">Send</button>
-    </div>
-  </section>
-</form>
+      <p>What are you waiting for? shoot us a message!</p>
+  </div>
+  <div className='contactBody'>
+  <div className='contactBox'>
+    <FaEnvelope className="contactBoxIcon" /> {/* Icon for Email */}
+    <p>Email</p>
+    <a href='mailto:deviro.contact@gmail.com' target='_blank'>deviro.contact@gmail.com</a> {/* mailto for email */}
+    <a href='mailto:deviro.contact@gmail.com' target='_blank'>
+      <button className="contactButton">Contact</button>
+    </a>
+  </div>
+  
+  <div className='contactBox'>
+    <FaPhone className="contactBoxIcon" /> {/* Icon for Phone */}
+    <p>Phone</p>
+    <a href='tel:+4712345567'>+47 123 45 567</a> {/* tel for phone */}
+    <a href='tel:+4712345567'>
+      <button className="contactButton">Call</button>
+    </a>
+  </div>
+  
+  <div className='contactBox'>
+    <FaMapMarkerAlt className="contactBoxIcon" /> {/* Icon for Address */}
+    <p>Office</p>
+    <a href="https://www.google.com/maps/place/Storgata+2,+1821,+2815+Gj%C3%B8vik/@60.7961651,10.6904173,17z/data=!3m1!4b1!4m5!3m4!1s0x4641da3d35be1823:0x7108834441c40703!8m2!3d60.7961625!4d10.6929922?entry=ttu&g_ep=EgoyMDI0MDkxMC4wIKXMDSoASAFQAw%3D%3D" target='_blank'>Storgata 2, 1821 Gjøvik</a>
+    <a href="https://www.google.com/maps/place/Storgata+2,+1821,+2815+Gj%C3%B8vik/@60.7961651,10.6904173,17z/data=!3m1!4b1!4m5!3m4!1s0x4641da3d35be1823:0x7108834441c40703!8m2!3d60.7961625!4d10.6929922?entry=ttu&g_ep=EgoyMDI0MDkxMC4wIKXMDSoASAFQAw%3D%3D" target='_blank'>
+    <button className="contactButton">Location</button>
+    </a>
+  </div>
+</div>
+</div>
 
       <footer>
         <h2><FaPaintBrush /> Deviro</h2>
