@@ -387,15 +387,6 @@ html {
   align-items: center; /* Center items vertically */
   justify-content: center; /* Space out items */
   padding: 20px; /* Optional: Add padding around the container */
-  height: 50vh;
-}
-
-.container h2{
-  margin-top: 0;
-  font-size: 3.5rem;
-  font-weight: 600;
-  color: black;
-  text-align: center;
 }
 
 .phonie {
@@ -405,17 +396,15 @@ html {
   background-size: cover; /* Ensure the image covers the element */
   background-position: center; /* Center the image within the element */
   background-repeat: no-repeat; /* Prevent repeating the image */
-  transform: translateY(-50%); /* Center it vertically */
   animation: float 3s ease-in-out infinite; /* Apply the floating animation */
-  margin-top: 450px;
   margin-right: 100px;
 }
 
 /* Optional: Floating animation for the phone image */
 @keyframes float {
-  0% { transform: translateY(-50%); }
-  50% { transform: translateY(-45%); }
-  100% { transform: translateY(-50%); }
+  0% { transform: translateY(-50px); }
+  50% { transform: translateY(-45px); }
+  100% { transform: translateY(-50px); }
 }
 
 .message-section {
