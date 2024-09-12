@@ -283,7 +283,7 @@ html {
   padding: 50px;
 }
 .who-are-we-page h2 {
-  margin-top: 0;
+  margin-top: 100px;
   font-size: 3.5rem;
   font-weight: 600;
   color: black;
@@ -331,7 +331,7 @@ html {
   position: relative;
   margin: 0 auto;
   width: 200px;
-  height: 200px;
+  height: 300px;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -445,6 +445,7 @@ html {
   font-size: 3.5rem;
   font-weight: 600;
   margin-bottom: 2.75rem;
+  margin-top: 100px;
   text-align: center;
 }
 
