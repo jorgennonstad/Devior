@@ -273,59 +273,6 @@ html {
   color: #555;
 }
 
-/* Media Queries */
-
-/* Tablet (768px and below) */
-@media (max-width: 768px) {
-  .projectsPage > h2 {
-    font-size: 2.5rem;
-  }
-
-  .projects-container {
-    padding: 50px 20px;
-    gap: 30px; /* Reduced space between items */
-  }
-
-  .project-link {
-    width: calc(50% - 30px); /* Adjust for reduced gap */
-  }
-
-  .project-title {
-    font-size: 1em;
-  }
-
-  .project-bio {
-    font-size: 0.8em;
-  }
-}
-
-/* Phone (480px and below) */
-@media (max-width: 480px) {
-  .projectsPage > h2 {
-    font-size: 1.8rem;
-  }
-
-  .projects-container {
-    padding: 30px 10px;
-    gap: 20px; /* Further reduced space between items */
-  }
-  .project-card{
-    margin: 20px 0;
-  }
-
-  .project-link {
-    width: 100%; /* Full width for single column */
-  }
-
-  .project-title {
-    font-size: 0.9em;
-  }
-
-  .project-bio {
-    font-size: 0.7em;
-  }
-}
-
 
 /* Who are we page */
 .who-are-we-page {
@@ -449,7 +396,7 @@ html {
   background-repeat: no-repeat; /* Prevent repeating the image */
   transform: translateY(-50%); /* Center it vertically */
   animation: float 3s ease-in-out infinite; /* Apply the floating animation */
-  margin-top: 420px;
+  margin-top: 450px;
   margin-right: 100px;
 }
 
@@ -534,39 +481,31 @@ html {
 }
 
 /* Footer */
-footer{
-  background-color: rgb(233, 233, 233);
-  padding: 20px 150px 20px 150px;
+footer {
+  background: #f8f9fa; /* Light background color */
+  padding: 20px;
   text-align: center;
+  border-top: 1px solid #ddd; /* Optional: add a border to separate from content */
 }
 
-.socials{
-  width: 30%;
-  margin: 20px auto;
-  display: flex;
-  justify-content: space-around;
+footer h2 {
+  font-size: 1.5rem; /* Adjust the size of the heading */
+  margin-bottom: 10px;
 }
 
-.socials div{
-  background-color: white;
-  width: 50px;
-  height: 50px;
-  border-radius: 60px;
+footer ul {
+  list-style: none; /* Remove bullets from list items */
+  padding: 0;
+  margin: 0;
 }
 
-footer ul{
-  width: 50%;
-  list-style: none;
-  margin: 0 auto;
+footer li {
+  margin: 5px 0; /* Add some spacing between list items */
+  font-size: 1rem; /* Adjust font size for better readability */
 }
 
-footer ul li{
-  font-weight: 300;
-  margin: 5px;
-}
-
-footer ul li span{
-  font-weight: 500;
+footer span {
+  font-weight: bold; /* Make labels bold */
 }
 
 /* New Section with Orange Panel and Laptop */
@@ -665,3 +604,109 @@ footer ul li span{
 .glow {
   filter: url(#gooify);
 }
+
+@media (max-width: 480px) {
+
+  .metasvg circle {
+    r: 100; /* Smaller radius for mobile */
+  }
+  
+  .phonie {
+    display: none;
+  }
+
+  .introPage h1 {
+    font-size: 5rem; /* Adjust the size for mobile */
+  }
+
+  .introPage h2 {
+    font-size: 1.5rem; /* Adjust the size for mobile */
+  }
+
+  .header-container h2 {
+    font-size: 1.7rem;
+  }
+
+  .who-are-we-page h2 {
+    font-size: 1.7rem;
+  }
+  .navbar {
+    padding: 10px;
+    font-size: 14px; /* Decrease font size */
+  }
+
+  .navbar-list {
+    display: flex;
+    flex-direction: column; /* Stack the items vertically */
+    align-items: center;
+  }
+
+  .navbar-item {
+    margin: 5px 0; /* Add spacing between items */
+    font-size: 16px; /* Adjust size if needed */
+  }
+
+  .navbar-item a {
+    padding: 10px;
+  }
+
+  .navbar-item a {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  /* Adjust the button size */
+  .back-to-top {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .projectsPage > h2 {
+    font-size: 1.8rem;
+  }
+
+  .projects-container {
+    padding: 30px 10px;
+    gap: 20px; /* Further reduced space between items */
+  }
+  .project-card{
+    margin: 20px 0;
+  }
+
+  .project-link {
+    width: 100%; /* Full width for single column */
+  }
+
+  .project-title {
+    font-size: 0.9em;
+  }
+
+  .project-bio {
+    font-size: 0.7em;
+  }
+
+  .projectsPage > h2 {
+    font-size: 2.5rem;
+  }
+
+  .projects-container {
+    padding: 50px 20px;
+    gap: 30px; /* Reduced space between items */
+  }
+
+  .project-link {
+    width: calc(50% - 30px); /* Adjust for reduced gap */
+  }
+
+  .project-title {
+    font-size: 1em;
+  }
+
+  .project-bio {
+    font-size: 0.8em;
+  }
+}
+
+
+

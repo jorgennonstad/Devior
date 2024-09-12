@@ -8,6 +8,7 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [projects, setProjects] = useState([]);
   const [aboutInfo, setAboutInfo] = useState(null); // State for About info
   const dataRef = useRef(null); // Create a ref to attach to the element
@@ -26,6 +27,9 @@ export default function Home() {
     circle5: { x: 900, y: 300, xSpeed: -0.1, ySpeed: 0.15 },  // Reduced speeds
   });
   
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   const bounds = useRef({
     minX: -150,
@@ -326,14 +330,26 @@ export default function Home() {
         &uarr; Top
       </button>
       <header>
-        <nav className="navbar">
-          <ul className="navbar-list">
-            <li className="navbar-item"><a href="#offerPage">What We Offer</a></li>
-            <li className="navbar-item"><a href="#projectsPage">Our Projects</a></li>
-            <li className="navbar-item"><a href="#whoAreWePage">Who Are We</a></li>
-            <li className="navbar-item"><a href="#contactUsPage">Contact</a></li>
+      <nav className="navbar">
+        <div className="navbar-container">
+          <div className="logo">Deviro</div>
+          
+          {/* Burger Menu Icon */}
+          <div className={`burger-icon ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+          </div>
+
+          {/* Navigation Menu */}
+          <ul className={`navbar-list ${menuOpen ? 'active' : ''}`}>
+            <li className="navbar-item"><a href="#offerPage">Hva vi tilbyr</a></li>
+            <li className="navbar-item"><a href="#projectsPage">Prosjekter</a></li>
+            <li className="navbar-item"><a href="#whoAreWePage">Om oss</a></li>
+            <li className="navbar-item"><a href="#contactUsPage">Kontakt</a></li>
           </ul>
-        </nav>
+        </div>
+      </nav>
       </header>
       <div className='introPage' ref={introPageRef}>
         <div className="metaballs">
@@ -372,15 +388,15 @@ export default function Home() {
           </svg>
         </div>
         <h1 className='fadeInUp'>DEVIRO</h1>
-        <h2 className='fadeInUp delay1'>Digitilize your business</h2>
+        <h2 className='fadeInUp delay1'>Digitaliser ditt selskap</h2>
       </div>
       <div className='offerPage' ref={offerPageRef}>
         <div className='header-container'>
-          <h2 ref={(el) => headerRefs.current[0] = el}>What we offer</h2>
-          <h2 ref={(el) => headerRefs.current[1] = el}>What we offer</h2>
-          <h2 ref={(el) => headerRefs.current[2] = el}>What we offer</h2>
-          <h2 ref={(el) => headerRefs.current[3] = el}>What we offer</h2>
-          <h2 ref={(el) => headerRefs.current[4] = el}>What we offer</h2>
+          <h2 ref={(el) => headerRefs.current[0] = el}>Hva vi tilbyr</h2>
+          <h2 ref={(el) => headerRefs.current[1] = el}>Hva vi tilbyr</h2>
+          <h2 ref={(el) => headerRefs.current[2] = el}>Hva vi tilbyr</h2>
+          <h2 ref={(el) => headerRefs.current[3] = el}>Hva vi tilbyr</h2>
+          <h2 ref={(el) => headerRefs.current[4] = el}>Hva vi tilbyr</h2>
         </div>
         <div id="offerPage" className='offercontainer'>
           <div className='offer'>
@@ -388,11 +404,11 @@ export default function Home() {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis </p>
           </div>
           <div className='offer'>
-            <h3><FaExpand className="icon-color"/> Flexibility</h3>
+            <h3><FaExpand className="icon-color"/> Fleksibilitet</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis</p>
           </div>
           <div className='offer'>
-            <h3><FaCode className="icon-color"/> Code</h3>
+            <h3><FaCode className="icon-color"/> Kode</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis</p>
           </div>
         </div>
@@ -409,7 +425,7 @@ export default function Home() {
         </div>
       </div>
       <div id='projectsPage' className='projectsPage'>
-  <h2>Our Projects</h2>
+  <h2>Våre prosjekter</h2>
   <div className='projects-container'>
     {projects.map((project, index) => (
       <a
@@ -445,7 +461,7 @@ export default function Home() {
 
 
       <div id='whoAreWePage' className='who-are-we-page' ref={whoAreWeRef}>
-  <h2>Who are we?</h2>
+  <h2>Hvem er vi?</h2>
   {aboutInfo ? (
     <div className='who-info'>
       <div className='img-container'>
@@ -465,7 +481,7 @@ export default function Home() {
       </div>
     </div>
   ) : (
-    <p>Loading about info...</p>
+    <p>Laster inn...</p>
   )}
 </div>
 
@@ -473,11 +489,11 @@ export default function Home() {
   <section className="container">
     <div className="phonie"></div> {/* Ensure the phone image is within the message section */}
     <div className="message-section">
-      <h2 className="message-title">Contact us</h2>
-      <input type="text" className="input-field" placeholder="Name" required/>
+      <h2 className="message-title">Kontakt oss</h2>
+      <input type="text" className="input-field" placeholder="Navn/bedriftsnavn" required/>
       <input type="text" className="input-field" placeholder="Email" required/>
-      <input type="text" className="input-field" placeholder="Phone" required/>
-      <textarea className="message-textarea" placeholder="Message" required></textarea>
+      <input type="text" className="input-field" placeholder="Tlf. Nummer" required/>
+      <textarea className="message-textarea" placeholder="Melding" required></textarea>
       <button className="submit-button">Send</button>
     </div>
   </section>
@@ -485,11 +501,6 @@ export default function Home() {
 
       <footer>
         <h2><FaPaintBrush /> Deviro</h2>
-        <div className='socials'>
-          <div>F</div>
-          <div>X</div>
-          <div>IN</div>
-        </div>
         <ul>
           <li><span>Adr:</span> Storgata 2, 1821 Gjøvik </li>
           <li><span>Tlf:</span> +47 123 45 567</li>
