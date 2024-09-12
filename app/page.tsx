@@ -473,11 +473,6 @@ export default function Home() {
 
       <footer>
         <h2><FaPaintBrush /> Deviro</h2>
-        <div className='socials'>
-          <div>F</div>
-          <div>X</div>
-          <div>IN</div>
-        </div>
         <ul>
           <li><span>Adr:</span> Storgata 2, 1821 Gjøvik </li>
           <li><span>Tlf:</span> +47 123 45 567</li>
