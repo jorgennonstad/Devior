@@ -794,7 +794,7 @@ footer span {
   }
 }
 
-@media (max-width: 480px) {
-
+@media (max-width: 890px) {
+.phonie{display: none;}
   
 }
