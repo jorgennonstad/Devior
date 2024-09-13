@@ -386,15 +386,15 @@ export default function Home() {
         <div id="offerPage" className='offercontainer'>
           <div className='offer'>
             <h3><FaPaintBrush className="icon-color"/> Design</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis </p>
+            <p>Vi skaper nettsider med fokus på optimal brukeropplevelse, kreativitet og livlighet, skreddersydd etter dine behov. Vi tar imot inspirasjon og ønsker fra deg for å sikre at designet reflekterer din virksomhets unike identitet. I tillegg tilbyr vi prototyper slik at du kan se og teste designet før det blir implementert, slik at vi sammen kan sørge for at sluttresultatet er akkurat slik du ønsker</p>
           </div>
           <div className='offer'>
             <h3><FaExpand className="icon-color"/> Fleksibilitet</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis</p>
+            <p>Ved å bruke Sanity, en moderne plattform for innholdsadministrasjon, gir vi deg muligheten til å enkelt oppdatere og tilpasse innholdet på nettsiden din uten å måtte håndtere koding. Enten du ønsker å legge til nye elementer på menyen, oppdatere priser eller endre overskrifter, kan du gjøre dette på en intuitiv måte gjennom et brukervennlig grensesnitt</p>
           </div>
           <div className='offer'>
             <h3><FaCode className="icon-color"/> Kode</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id ornare nulla, quis laoreet risus. Praesent sed venenatis</p>
+            <p>Vi koder nettsider som fungerer feilfritt på laptop, nettbrett og mobil, og sikrer en optimal brukeropplevelse på alle enheter. I tillegg kan vi utvikle prosjekter med WordPress eller Shopify hvis det er ønskelig, slik at du får den løsningen som passer best for dine behov</p>
           </div>
         </div>
       </div>

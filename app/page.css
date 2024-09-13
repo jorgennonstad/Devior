@@ -270,6 +270,7 @@ html {
 }
 
 .offercontainer {
+  gap: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -299,10 +300,18 @@ html {
   font-size: 30.46px;
 }
 
-.offer p{
-  font-weight: 200;
+.offer p {
+  font-weight: 400;
   font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5; /* Correct property name */
+  color: #333; /* Added for better contrast */
+  margin-bottom: 1em; /* Added space below paragraphs */
+  white-space: pre-wrap; /* Preserves whitespace and line breaks */
+  word-break: keep-all; /* Prevents breaking words at the end of lines */
+  overflow-wrap: normal; /* Ensures words do not break inappropriately */
 }
+
 
 .offercontainer .offer:first-child {
   margin-left: 0;
@@ -420,6 +429,7 @@ html {
 .text-container {
   flex: 1;
   padding-right: 50px;
+  white-space: pre-wrap; /* Preserves whitespace and line breaks */
 }
 
 
