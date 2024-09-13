@@ -16,6 +16,7 @@ export default function Home() {
   const orangePanelRef = useRef(null);
   const lineRef = useRef(null);
   const offerPageRef = useRef(null);
+  const offerContainerRef = useRef(null);
   const headerRefs = useRef([]); // Create a ref to store multiple h2 elements
   const projectCardRefs = useRef([]); // Create a ref for the project projectCardRef
   const whoAreWeRef = useRef(null); // Ref for "Who are we?" section
@@ -91,6 +92,28 @@ export default function Home() {
     // Update bounds on window resize
     window.addEventListener('resize', updateBounds);
     return () => window.removeEventListener('resize', updateBounds);
+  }, []);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animation for offerContainer to pop up
+    gsap.fromTo(
+      offerContainerRef.current,
+      { y: 50, opacity: 0 }, // Start state: below and transparent
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: offerContainerRef.current,
+          start: 'top 80%',  // Animation starts when the container is 80% from the top of the viewport
+          end: 'bottom 60%', // Animation completes before it's fully scrolled past
+          toggleActions: 'play none none none',
+        },
+      }
+    );
   }, []);
   
 
@@ -375,29 +398,23 @@ export default function Home() {
         <h1 className='fadeInUp'> DEVIRO</h1>
         <h2 className='fadeInUp delay1'>Digitaliser ditt selskap</h2>
       </div>
-      <div className='offerPage' ref={offerPageRef}>
-        <div className='header-container'>
-          <h2 ref={(el) => headerRefs.current[0] = el}>Hva vi tilbyr</h2>
-          <h2 ref={(el) => headerRefs.current[1] = el}>Hva vi tilbyr</h2>
-          <h2 ref={(el) => headerRefs.current[2] = el}>Hva vi tilbyr</h2>
-          <h2 ref={(el) => headerRefs.current[3] = el}>Hva vi tilbyr</h2>
-          <h2 ref={(el) => headerRefs.current[4] = el}>Hva vi tilbyr</h2>
+      <div id="offerPage" className='offerPage'>
+      <h2>Hva vi tilbyr</h2>
+      <div className='offercontainer' ref={offerContainerRef}>
+        <div className='offer'>
+          <h3><FaPaintBrush className="icon-color" /> Design</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
-        <div id="offerPage" className='offercontainer'>
-          <div className='offer'>
-            <h3><FaPaintBrush className="icon-color"/> Design</h3>
-            <p>Vi skaper nettsider med fokus på optimal brukeropplevelse, kreativitet og livlighet, skreddersydd etter dine behov. Vi tar imot inspirasjon og ønsker fra deg for å sikre at designet reflekterer din virksomhets unike identitet. I tillegg tilbyr vi prototyper slik at du kan se og teste designet før det blir implementert, slik at vi sammen kan sørge for at sluttresultatet er akkurat slik du ønsker</p>
-          </div>
-          <div className='offer'>
-            <h3><FaExpand className="icon-color"/> Fleksibilitet</h3>
-            <p>Ved å bruke Sanity, en moderne plattform for innholdsadministrasjon, gir vi deg muligheten til å enkelt oppdatere og tilpasse innholdet på nettsiden din uten å måtte håndtere koding. Enten du ønsker å legge til nye elementer på menyen, oppdatere priser eller endre overskrifter, kan du gjøre dette på en intuitiv måte gjennom et brukervennlig grensesnitt</p>
-          </div>
-          <div className='offer'>
-            <h3><FaCode className="icon-color"/> Kode</h3>
-            <p>Vi koder nettsider som fungerer feilfritt på laptop, nettbrett og mobil, og sikrer en optimal brukeropplevelse på alle enheter. I tillegg kan vi utvikle prosjekter med WordPress eller Shopify hvis det er ønskelig, slik at du får den løsningen som passer best for dine behov</p>
-          </div>
+        <div className='offer'>
+          <h3><FaExpand className="icon-color" /> Fleksibilitet</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div className='offer'>
+          <h3><FaCode className="icon-color" /> Kode</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
       </div>
+    </div>
       <div className='screen-wrapper'>
         {/* New Section with Orange Panel and Laptop */}
         <div className="panel orangeWrapper" ref={orangeWrapperRef}>

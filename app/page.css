@@ -259,14 +259,10 @@ html {
 }
 
 .offerPage h2 {
-  font-size: 2.5rem;
-  font-weight: 400;
-  background-size: 500px;
-  -webkit-background-clip: text;
-  background-clip: text;
+  font-size: 3.5rem;
+  font-weight: 600;
   color: black;
-  /* Ensure the text is aligned and positioned properly */
-  position: relative;
+  text-align: center;
 }
 
 .offercontainer {
@@ -277,6 +273,9 @@ html {
   margin: 0 auto;
   width: 90%;
   text-align: left;
+  opacity: 0;
+  transform: translateY(100px); /* Start below the view */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .offercontainer .offer {
