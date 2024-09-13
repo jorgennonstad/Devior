@@ -564,19 +564,19 @@ html {
 
 .contactButton {
   background-color: white;
-  color: #ff3c00;
+  color: black;
   padding: 10px 20px;
   border-radius: 25px;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 0.9rem;
-  border: solid 1px #ff3c00;
+  border: solid 1px black;
   cursor: pointer;
   margin-top: 15px;
 }
 
 .contactButton:hover {
-  background-color: #ff3c00;
+  background-color: black;
   color: white;
 }
 
