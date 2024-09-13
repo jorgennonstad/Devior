@@ -516,7 +516,7 @@ export default function Home() {
 </div>
 
       <footer>
-        <h2><img className="footerLogo" src="./favicon.ico" alt="Deviro Logo" /> Deviro</h2>
+        <h2><img className='footerLogo' src="/faviconWhite.png" alt="Logo" /> Deviro</h2>
         <ul>
           <li><span>Adr:</span> Storgata 2, 1821 Gjøvik </li>
           <li><span>Tlf:</span> +47 123 45 567</li>
