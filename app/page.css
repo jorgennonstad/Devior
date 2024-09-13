@@ -53,6 +53,82 @@ html {
 
 
 /* Navigation Bar Styles */
+/* Hamburger icon */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  margin: 20px 0 0 20px;
+}
+
+.hamburger-menu .bar{
+  z-index: 99;
+}
+
+.hamburger-menu .bar {
+  height: 3px;
+  width: 100%;
+  background-color: #000;
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu.open .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger-menu.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.open .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Full-screen overlay menu */
+.overlay-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  z-index: 90;
+}
+
+.overlay-menu.open {
+  display: flex;
+}
+
+.menu-nav ul {
+  list-style: none;
+  text-align: center;
+}
+
+.menu-nav ul li {
+  margin: 20px 0;
+}
+
+.menu-nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  transition: color 0.3s ease;
+}
+
+.menu-nav ul li a:hover {
+  color: #ff3c00;
+}
+
+
+
+/* big screen nav bar */
 .navbar {
   width: 100%;
   position: absolute;
@@ -516,7 +592,7 @@ footer ul li a:hover {
   text-decoration: underline; /* Add underline on hover */
 }
 
-.footerLogo {
+footer .footerLogo {
   height: 30px;
   width: 30px;
   margin-right: 5px;
@@ -634,6 +710,8 @@ footer ul li a:hover {
     font-size: 5rem; /* Adjust the size for mobile */
   }
 
+
+
   .introPage h2 {
     font-size: 1.5rem; /* Adjust the size for mobile */
   }
@@ -681,6 +759,16 @@ footer ul li a:hover {
 /* Media queries */
 /* Tablet (768px and below) */
 @media (max-width: 820px) {
+
+  /* Tablet nav bar */
+  .navbar {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: flex;
+  }
+
 
   /* Project for ipad size */
   .projectsPage > h2 {
@@ -848,3 +936,8 @@ footer ul li a:hover {
 .phonie{display: none;}
   
 }
+
+
+
+
+

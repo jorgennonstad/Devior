@@ -15,6 +15,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="../public/faviconblack.png" />
+        {/* You can also use other favicon formats if needed */}
+        {/* <link rel="icon" href="/favicon.png" type="image/png" /> */}
+        {/* <link rel="icon" href="/favicon.svg" type="image/svg+xml" /> */}
+      </head>
       <body className={inter.className}>
         {children}
       </body>

@@ -10,6 +10,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 export default function Home() {
   const [projects, setProjects] = useState([]);
   const [aboutInfo, setAboutInfo] = useState(null); // State for About info
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dataRef = useRef(null); // Create a ref to attach to the element
   const orangeWrapperRef = useRef(null);
   const orangePanelRef = useRef(null);
@@ -35,6 +36,10 @@ export default function Home() {
   });
 
   const introPageRef = useRef(null);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -304,6 +309,24 @@ export default function Home() {
         <FaArrowUp className="arrow-icon" />
       </button>
       <header>
+        {/* Hamburger menu icon */}
+        <div className={`hamburger-menu ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </div>
+
+        {/* Full-screen overlay menu */}
+        <div className={`overlay-menu ${isMenuOpen ? 'open' : ''}`}>
+          <nav className="menu-nav">
+            <ul>
+              <li><a href="#offerPage" onClick={toggleMenu}>Hva vi tilbyr</a></li>
+              <li><a href="#projectsPage" onClick={toggleMenu}>Prosjekter</a></li>
+              <li><a href="#whoAreWePage" onClick={toggleMenu}>Om oss</a></li>
+              <li><a href="#contactUsPage" onClick={toggleMenu}>Kontakt</a></li>
+            </ul>
+          </nav>
+        </div>
         <nav className="navbar">
           <ul className="navbar-list">
             <li className="navbar-item"><a href="#offerPage">Hva vi tilbyr</a></li>
@@ -349,7 +372,7 @@ export default function Home() {
             </g>
           </svg>
         </div>
-        <h1 className='fadeInUp'>DEVIRO</h1>
+        <h1 className='fadeInUp'> DEVIRO</h1>
         <h2 className='fadeInUp delay1'>Digitaliser ditt selskap</h2>
       </div>
       <div className='offerPage' ref={offerPageRef}>
@@ -459,8 +482,8 @@ export default function Home() {
 
 <div id="contactUsPage" className='contactUsPage' action="#" method="post">
   <div className='contactHeader'>
-      <h2 className="message-title">Contact us</h2>
-      <p>What are you waiting for? shoot us a message!</p>
+      <h2 className="message-title">Kontakt oss</h2>
+      <p>Hva venter du på? send oss en melding og digitilaser bedriften din</p>
   </div>
   <div className='contactBody'>
   <div className='contactBox'>
