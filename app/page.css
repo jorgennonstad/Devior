@@ -94,13 +94,15 @@ html {
   left: 0;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(0, 0, 0, 0.9);
-  display: none;
+  background-color: rgba(255, 255, 255, 0.9); /* Optional: Adjust the overlay color */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  display: none; /* Hide by default */
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease;
-  z-index: 90;
+  z-index: 90; /* Ensure it sits above other content */
 }
+
 
 .overlay-menu.open {
   display: flex;
@@ -118,10 +120,11 @@ html {
 }
 
 .menu-nav ul li a {
-  color: #fff;
+  color: black;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 30px;
   transition: color 0.3s ease;
+  font-weight: 500;
 }
 
 .menu-nav ul li a:hover {
