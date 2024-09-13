@@ -109,10 +109,12 @@ html {
 .menu-nav ul {
   list-style: none;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .menu-nav ul li {
-  margin: 20px 0;
+  margin: 40px 0;
 }
 
 .menu-nav ul li a {
