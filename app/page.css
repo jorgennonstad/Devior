@@ -158,13 +158,31 @@ html {
   font-size: 1.5rem;
   font-weight: 500;
   color: black;
-  transition: color 0.3s ease;
-  
+  position: relative;
+  padding-bottom: 5px;
+  transition: transform 0.3s ease;
 }
 
-.navbar-item a:hover {
-  color: #ff3c00;
+.navbar-item a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.2em;
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  opacity: 0;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.3s ease;
 }
+
+.navbar-item a:hover::after {
+  opacity: 1;
+  transform: translate3d(0, -0.2em, 0);
+  z-index: -1;
+}
+
+
 
 /* Intro page */
 .introPage {
@@ -226,7 +244,7 @@ html {
 }
 
 .icon-color {
-  color: #ff3c00;
+  color: black;
 }
 
 
@@ -254,7 +272,6 @@ html {
   justify-content: center;
   margin: 0 auto;
   width: 90%;
-  color: blacks;
   text-align: left;
 }
 
@@ -267,6 +284,13 @@ html {
   min-width: 300px;
   max-width: 400px;
 }
+
+.offer svg {
+  margin-bottom: -3px;
+  margin-right: 10px; /* Space between the SVG and h3 */
+}
+
+
 
 .offer h3{
   font-size: 30.46px;
@@ -288,7 +312,6 @@ html {
 /* Project */
 /* Overall container styling */
 .projectsPage > h2 {
-  margin-top: 0;
   font-size: 3.5rem;
   font-weight: 600;
   color: black;
@@ -518,7 +541,7 @@ html {
 }
 
 .contactBox svg{
-  color: red;
+  color: black;
 }
 
 .contactBox p {
@@ -646,10 +669,8 @@ footer .footerLogo {
   text-align: center;
   font-size: 2rem;
   font-weight: 200;
-  margin: 0;
 }
 .screen-wrapper h2 span{
-  
   color: #ff3c00;
 }
 .screen {
@@ -696,6 +717,10 @@ footer .footerLogo {
 
 .glow {
   filter: url(#gooify);
+}
+
+.screen-wrapper{
+  height: 1300px;
 }
 
 @media (max-width: 480px) {

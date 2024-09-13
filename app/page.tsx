@@ -483,7 +483,7 @@ export default function Home() {
 <div id="contactUsPage" className='contactUsPage' action="#" method="post">
   <div className='contactHeader'>
       <h2 className="message-title">Kontakt oss</h2>
-      <p>Hva venter du på? send oss en melding og digitilaser bedriften din</p>
+      <p>Kontakt oss for mer informasjon eller hjelp med dine behov.</p>
   </div>
   <div className='contactBody'>
   <div className='contactBox'>
@@ -491,7 +491,7 @@ export default function Home() {
     <p>Email</p>
     <a href='mailto:deviro.contact@gmail.com' target='_blank'>deviro.contact@gmail.com</a> {/* mailto for email */}
     <a href='mailto:deviro.contact@gmail.com' target='_blank'>
-      <button className="contactButton">Contact</button>
+      <button className="contactButton">Kontakt</button>
     </a>
   </div>
   
@@ -500,7 +500,7 @@ export default function Home() {
     <p>Phone</p>
     <a href='tel:+4712345567'>+47 123 45 567</a> {/* tel for phone */}
     <a href='tel:+4712345567'>
-      <button className="contactButton">Call</button>
+      <button className="contactButton">Ring</button>
     </a>
   </div>
   
@@ -509,7 +509,7 @@ export default function Home() {
     <p>Office</p>
     <a href="https://www.google.com/maps/place/Storgata+2,+1821,+2815+Gj%C3%B8vik/@60.7961651,10.6904173,17z/data=!3m1!4b1!4m5!3m4!1s0x4641da3d35be1823:0x7108834441c40703!8m2!3d60.7961625!4d10.6929922?entry=ttu&g_ep=EgoyMDI0MDkxMC4wIKXMDSoASAFQAw%3D%3D" target='_blank'>Storgata 2, 1821 Gjøvik</a>
     <a href="https://www.google.com/maps/place/Storgata+2,+1821,+2815+Gj%C3%B8vik/@60.7961651,10.6904173,17z/data=!3m1!4b1!4m5!3m4!1s0x4641da3d35be1823:0x7108834441c40703!8m2!3d60.7961625!4d10.6929922?entry=ttu&g_ep=EgoyMDI0MDkxMC4wIKXMDSoASAFQAw%3D%3D" target='_blank'>
-    <button className="contactButton">Location</button>
+    <button className="contactButton">Lokasjon</button>
     </a>
   </div>
 </div>
