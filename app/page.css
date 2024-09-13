@@ -661,7 +661,7 @@ footer .footerLogo {
 
 .orange {
   border-radius: 10px;
-  background-image: url('./work.jpg'); /* Path to your laptop image */
+  background-image: url('./store4.jpg'); /* Path to your laptop image */
   background-size: cover; /* Ensures the image covers the element */
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents the image from repeating */
