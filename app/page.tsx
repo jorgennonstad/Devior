@@ -515,8 +515,8 @@ export default function Home() {
   <div className='contactBox'>
     <FaPhone className="contactBoxIcon" /> {/* Icon for Phone */}
     <p>Phone</p>
-    <a href='tel:+4712345567'>+47 123 45 567</a> {/* tel for phone */}
-    <a href='tel:+4712345567'>
+    <a href='tel:+4793434688'>+47 934 34 688</a> {/* tel for phone */}
+    <a href='tel:+4793434688'>
       <button className="contactButton">Ring</button>
     </a>
   </div>
@@ -535,8 +535,8 @@ export default function Home() {
       <footer>
         <h2><img className='footerLogo' src="/faviconWhite.png" alt="Logo" /> Deviro</h2>
         <ul>
-          <li><span>Adr:</span> Storgata 2, 1821 Gjøvik </li>
-          <li><span>Tlf:</span> +47 123 45 567</li>
+          <li><span>Adr: </span><a href="https://www.google.com/maps/place/Storgata+2,+1821,+2815+Gj%C3%B8vik/@60.7961651,10.6904173,17z/data=!3m1!4b1!4m5!3m4!1s0x4641da3d35be1823:0x7108834441c40703!8m2!3d60.7961625!4d10.6929922?entry=ttu&g_ep=EgoyMDI0MDkxMC4wIKXMDSoASAFQAw%3D%3D" target='_blank'>Storgata 2, 1821 Gjøvik</a></li>
+          <li><span>Tlf: </span><a href='tel:+4793434688'>+47 934 34 688</a> {/* tel for phone */}</li>
           <li><span>Orgnr:</span> 4206969</li>
         </ul>
       </footer>

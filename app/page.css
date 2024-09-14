@@ -620,8 +620,8 @@ footer ul li span {
 }
 
 footer ul li a {
-  color: #f39c12; /* Custom link color */
-  text-decoration: none; /* Remove underline */
+  color: white;
+  text-decoration: none;
 }
 
 footer ul li a:hover {
