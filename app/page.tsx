@@ -108,9 +108,10 @@ export default function Home() {
         ease: 'power3.out',
         scrollTrigger: {
           trigger: offerContainerRef.current,
-          start: 'top 80%',  // Animation starts when the container is 80% from the top of the viewport
-          end: 'bottom 60%', // Animation completes before it's fully scrolled past
+          start: 'top 100%',  // Animation starts when the container is 80% from the top of the viewport
+          end: 'bottom 90%', // Animation completes before it's fully scrolled past
           toggleActions: 'play none none none',
+          markers: true, // Optional: remove or set to false to hide markers
         },
       }
     );
@@ -260,7 +261,7 @@ export default function Home() {
           start: "top 100%",  // Adjust this value to make the animation start further up
           end: "bottom 95%", // Keep this or adjust as needed
           scrub: 1,
-          markers: false, // Optional: remove or set to false to hide markers
+          markers: true, // Optional: remove or set to false to hide markers
         }
       }
     );
