@@ -635,7 +635,7 @@ footer .footerLogo {
 }
 
 
-/* New Section with Orange Panel and Laptop */
+/* New Section with screenpic Panel and Laptop */
 .panel {
   padding-top: 100px;
   height: 100vh;
@@ -647,32 +647,34 @@ footer .footerLogo {
   will-change: transform, opacity; /* Optimize for future changes */
 }
 
-.orangeWrapper,
-.orange {
+.screenpicWrapper,
+.screenpic {
   backface-visibility: hidden; /* Prevents flickering */
   perspective: 1000px; /* Ensures smooth 3D transformations */
 }
 
-.orangeWrapper {
+.screenpicWrapper {
   padding: 0;
   overflow: hidden;
   position: relative;
 }
 
-.orange {
+.screenpic {
   border-radius: 10px;
-  background-image: url('./store4.jpg'); /* Path to your laptop image */
-  background-size: cover; /* Ensures the image covers the element */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-image: url('./store4.jpg'); /* Path to your background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1150px;
-  height: 650px;
+  width: 1152px;
+  height: 645px;
   position: absolute;
-  top: 120px;
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centering */
   z-index: 1;
 }
 
@@ -688,13 +690,13 @@ footer .footerLogo {
   height: 600px;
   width: 740px;
   position: absolute;
-  top: 205px;
-  left: 50vw;
-  transform: translateX(-50%);
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Centering the element */
   background-image: url('./mac.png'); /* Path to your laptop image */
-  background-size:contain; /* Ensures the image covers the element */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   z-index: 0;
 }
 
@@ -850,7 +852,7 @@ footer .footerLogo {
   }
 
   /* Laptopscroll for ipad size */
-  .orange {
+  .screenpic {
     width: 850px;
     height: 480px;
   }
@@ -946,7 +948,7 @@ footer .footerLogo {
   }
 
   /* Laptopscroll for phone size */
-  .orange {
+  .screenpic {
     width: 420px;
     height: 180px;
   }
