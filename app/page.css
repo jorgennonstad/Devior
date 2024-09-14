@@ -851,20 +851,22 @@ footer .footerLogo {
     font-size: 1rem;
   }
 
-  /* Laptopscroll for ipad size */
-  .screenpic {
-    width: 850px;
-    height: 480px;
+   /* Adjust laptop image size */
+   .screenpic {
+    width: 845px;
+    height: 440px;
   }
 
-  .screen{
+  /* Adjust screen size and position */
+  .screen {
     height: 655px;
     width: 540px;
     position: absolute;
-    top: 85px;
+    top: 470px;
   }
 
-  .screen-wrapper{
+  /* Adjust wrapper height */
+  .screen-wrapper {
     height: 1200px;
   }
 }
@@ -944,7 +946,7 @@ footer .footerLogo {
 
   /* Offer edit for phone size */
   .offerPage{
-    padding: 0 15px 150px 15px;
+    padding: 0 15px 100px 15px;
   }
 
   /* Laptopscroll for phone size */
@@ -955,13 +957,13 @@ footer .footerLogo {
 
   .screen{
     height: 155px;
-    width: 320px;
+    width: 300px;
     position: absolute;
-    top: 185px;
+    top: 470px;
   }
 
   .screen-wrapper{
-    height: 800px;
+    height: 1200px;
   }
 
 
