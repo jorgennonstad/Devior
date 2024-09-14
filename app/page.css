@@ -672,7 +672,7 @@ footer .footerLogo {
   width: 1152px;
   height: 645px;
   position: absolute;
-  top: 49%;
+  top: 50.5%;
   left: 50%;
   transform: translate(-50%, -50%); /* Centering */
   z-index: 1;
