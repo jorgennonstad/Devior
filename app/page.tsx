@@ -12,8 +12,8 @@ export default function Home() {
   const [aboutInfo, setAboutInfo] = useState(null); // State for About info
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dataRef = useRef(null); // Create a ref to attach to the element
-  const orangeWrapperRef = useRef(null);
-  const orangePanelRef = useRef(null);
+  const screenpicWrapperRef = useRef(null);
+  const screenpicPanelRef = useRef(null);
   const lineRef = useRef(null);
   const offerPageRef = useRef(null);
   const offerContainerRef = useRef(null);
@@ -206,7 +206,7 @@ export default function Home() {
     // GSAP animations for the laptop section
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: orangeWrapperRef.current,
+        trigger: screenpicWrapperRef.current,
         scrub: true,
         pin: true,
         start: "top top",
@@ -215,11 +215,11 @@ export default function Home() {
     });
 
     tl.fromTo(
-      orangePanelRef.current,
+      screenpicPanelRef.current,
       { scale: 0.9 },
       { scale: 0.5, ease: "none" }
     ).to(
-      orangePanelRef.current,
+      screenpicPanelRef.current,
       { scale: 0.5, ease: "none" }
     );
 
@@ -416,10 +416,10 @@ export default function Home() {
       </div>
     </div>
       <div className='screen-wrapper'>
-        {/* New Section with Orange Panel and Laptop */}
-        <div className="panel orangeWrapper" ref={orangeWrapperRef}>
+        {/* New Section with screenpic Panel and Laptop */}
+        <div className="panel screenpicWrapper" ref={screenpicWrapperRef}>
           <div className='screen'></div>
-          <section className="panel orange" ref={orangePanelRef}>
+          <section className="panel screenpic" ref={screenpicPanelRef}>
             <h2>
               <span className="line line-2" ref={lineRef}></span>
             </h2>
