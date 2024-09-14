@@ -672,7 +672,7 @@ footer .footerLogo {
   width: 1152px;
   height: 645px;
   position: absolute;
-  top: 50.5%;
+  top: 49%;
   left: 50%;
   transform: translate(-50%, -50%); /* Centering */
   z-index: 1;
@@ -868,6 +868,10 @@ footer .footerLogo {
   /* Adjust wrapper height */
   .screen-wrapper {
     height: 1200px;
+  }
+
+  .screenpic {
+    top: 50.5%;
   }
 }
 
