@@ -983,6 +983,17 @@ footer .footerLogo {
     font-size: 2.3rem;
   }
 
+  .images-container {
+    justify-content: center;
+    padding: 0 10px; /* Add padding to create space on the sides */
+    gap: 1vw;
+  }
+
+  /* Adjust the image wrapper size */
+  .image-wrapper {
+    width: 150px;
+    height: 225px;
+  }
 
   /* Adjust the button size */
   .back-to-top {
