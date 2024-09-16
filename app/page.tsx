@@ -14,7 +14,7 @@ export default function Home() {
   const dataRef = useRef(null); // Create a ref to attach to the element
   const screenpicWrapperRef = useRef(null);
   const screenpicPanelRef = useRef(null);
-  const [label, setLabel] = useState("fra butikk");
+  const [label, setLabel] = useState("Fra butikk");
   const lineRef = useRef(null);
   const offerPageRef = useRef(null);
   const offerContainerRef = useRef(null);
