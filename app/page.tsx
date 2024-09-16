@@ -206,10 +206,10 @@ export default function Home() {
       trigger: screenpicWrapperRef.current,
       start: "top center", // When the image enters the viewport
       end: "bottom center", // When the image leaves the viewport
-      onEnter: () => setLabel("fra butikk"), // When scrolling into the view
-      onLeave: () => setLabel("til nettbutikk"), // When scrolling out of view
-      onEnterBack: () => setLabel("fra butikk"), // If scrolling back up
-      onLeaveBack: () => setLabel("til nettbutikk"), // If scrolling up out of view
+      onEnter: () => setLabel("Fra butikk"), // When scrolling into the view
+      onLeave: () => setLabel("Til nettbutikk"), // When scrolling out of view
+      onEnterBack: () => setLabel("Fra butikk"), // If scrolling back up
+      onLeaveBack: () => setLabel("Fra butikk"), // If scrolling up out of view
     });
   }, []);
 
@@ -231,7 +231,7 @@ export default function Home() {
 
     tl.fromTo(
       screenpicPanelRef.current,
-      { scale: 0.9 },
+      { scale: 0.7 },
       { scale: 0.5, ease: "none" }
     ).to(
       screenpicPanelRef.current,

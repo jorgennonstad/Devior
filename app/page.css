@@ -681,7 +681,7 @@ footer .footerLogo {
   font-size: 2rem;
   font-weight: 200;
   position: sticky;
-  top: 10px;
+  top: 100px;
 }
 
 .screentitle {
@@ -965,7 +965,7 @@ footer .footerLogo {
   }
 
   .screen-wrapper{
-    height: 1200px;
+    height: 1100px;
   }
 
 
