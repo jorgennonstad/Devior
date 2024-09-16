@@ -14,6 +14,7 @@ export default function Home() {
   const dataRef = useRef(null); // Create a ref to attach to the element
   const screenpicWrapperRef = useRef(null);
   const screenpicPanelRef = useRef(null);
+  const [label, setLabel] = useState("fra butikk");
   const lineRef = useRef(null);
   const offerPageRef = useRef(null);
   const offerContainerRef = useRef(null);
@@ -196,6 +197,20 @@ export default function Home() {
 
     fetchProjects();
     fetchAboutInfo(); // Fetch about info
+  }, []);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    ScrollTrigger.create({
+      trigger: screenpicWrapperRef.current,
+      start: "top center", // When the image enters the viewport
+      end: "bottom center", // When the image leaves the viewport
+      onEnter: () => setLabel("fra butikk"), // When scrolling into the view
+      onLeave: () => setLabel("til nettbutikk"), // When scrolling out of view
+      onEnterBack: () => setLabel("fra butikk"), // If scrolling back up
+      onLeaveBack: () => setLabel("til nettbutikk"), // If scrolling up out of view
+    });
   }, []);
 
   useEffect(() => {
@@ -416,9 +431,10 @@ export default function Home() {
       </div>
     </div>
       <div className='screen-wrapper'>
+      <div className='screentitle'><h2>{label}</h2> {/* The dynamic label text */}</div>
         {/* New Section with screenpic Panel and Laptop */}
         <div className="panel screenpicWrapper" ref={screenpicWrapperRef}>
-          <div className='screen'></div>
+        <div className="screen"></div>
           <section className="panel screenpic" ref={screenpicPanelRef}>
             <h2>
               <span className="line line-2" ref={lineRef}></span>

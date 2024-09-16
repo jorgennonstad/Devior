@@ -184,8 +184,6 @@ html {
   z-index: -1;
 }
 
-
-
 /* Intro page */
 .introPage {
   height: 100vh;
@@ -678,11 +676,20 @@ footer .footerLogo {
   z-index: 1;
 }
 
-.screen-wrapper h2{
+.screen-wrapper .screentitle h2{
   text-align: center;
   font-size: 2rem;
   font-weight: 200;
+  position: sticky;
+  top: 10px;
 }
+
+.screentitle {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
 .screen-wrapper h2 span{
   color: #ff3c00;
 }
@@ -740,10 +747,6 @@ footer .footerLogo {
 
   .metasvg circle {
     r: 100; /* Smaller radius for mobile */
-  }
-  
-  .phonie {
-    display: none;
   }
 
   .introPage h1 {
@@ -909,11 +912,6 @@ footer .footerLogo {
     r: 100; /* Smaller radius for mobile */
   }
 
-  /* contact page for phone size */
-  .phonie {
-    display: none;
-  }
-
   /* Intro page for phone size */
   .introPage h1 {
     font-size: 5rem; /* Adjust the size for mobile */
@@ -955,7 +953,7 @@ footer .footerLogo {
 
   /* Laptopscroll for phone size */
   .screenpic {
-    width: 420px;
+    width: 425px;
     height: 180px;
   }
 
@@ -978,10 +976,6 @@ footer .footerLogo {
   }
 }
 
-@media (max-width: 890px) {
-.phonie{display: none;}
-  
-}
 
 
 
