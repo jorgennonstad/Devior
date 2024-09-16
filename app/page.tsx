@@ -204,13 +204,14 @@ export default function Home() {
 
     ScrollTrigger.create({
       trigger: screenpicWrapperRef.current,
-      start: "top center", // When the image enters the viewport
-      end: "bottom center", // When the image leaves the viewport
+      start: "top 90%", // Start when the top of the image is 90% from the top of the viewport (switch sooner)
+      end: "bottom 60%", // End when the bottom of the image is 60% from the bottom of the viewport (switch sooner)
       onEnter: () => setLabel("Fra butikk"), // When scrolling into the view
       onLeave: () => setLabel("Til nettbutikk"), // When scrolling out of view
       onEnterBack: () => setLabel("Fra butikk"), // If scrolling back up
       onLeaveBack: () => setLabel("Fra butikk"), // If scrolling up out of view
     });
+    
   }, []);
 
   useEffect(() => {
