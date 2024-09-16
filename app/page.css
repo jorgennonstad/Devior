@@ -862,7 +862,7 @@ footer .footerLogo {
     height: 655px;
     width: 540px;
     position: absolute;
-    top: 470px;
+    top: 51%;
   }
 
   /* Adjust wrapper height */
@@ -963,7 +963,7 @@ footer .footerLogo {
     height: 155px;
     width: 300px;
     position: absolute;
-    top: 470px;
+    top: 51%;
   }
 
   .screen-wrapper{
