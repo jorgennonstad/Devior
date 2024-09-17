@@ -181,11 +181,12 @@ export default function Home() {
     ySpeed: number;
   }
   
+  
 
-  const updateCirclePosition = (circle) => {
+  const updateCirclePosition = (circle: Circle) => {
     const dampingFactor = 0.9; // Smoothly reduce speed
     const bounceBuffer = 1.5;  // Added buffer for smooth transitions
-    
+  
     // Update position and handle bounds with damping
     circle.x += circle.xSpeed;
     circle.y += circle.ySpeed;
@@ -198,6 +199,7 @@ export default function Home() {
       circle.ySpeed = -circle.ySpeed * dampingFactor;
     }
   };
+  
   
   
   
@@ -319,8 +321,9 @@ export default function Home() {
       }
     );
   
-    return () => headerAnimation.scrollTrigger.kill();
+    return () => headerAnimation.scrollTrigger?.kill();
   }, []);
+  
   
 
   useEffect(() => {
