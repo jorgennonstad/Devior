@@ -214,7 +214,7 @@ export default function Home() {
   const projectScrollTriggers = useRef<ScrollTrigger[]>([]);
 
   const scrollToTop = () => {
-    alert("HELLO");
+
   };
 
   useEffect(() => {
@@ -401,10 +401,12 @@ export default function Home() {
 
   
   return (
-    <div>
+    <div id="top">
+      <a href="#top">
       <button className="back-to-top" onClick={scrollToTop}>
         <FaArrowUp className="arrow-icon" />
       </button>
+      </a>
       <header>
         {/* Hamburger menu icon */}
         <div className={`hamburger-menu ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
