@@ -96,18 +96,20 @@ html {
   width: 100vw;
   background-color: rgba(255, 255, 255, 0.9); /* Optional: Adjust the overlay color */
   backdrop-filter: blur(10px); /* Apply blur effect */
-  display: none; /* Initially hidden */
+  opacity: 0; /* Initially transparent */
+  visibility: hidden; /* Initially hidden */
   justify-content: center;
   align-items: center;
-  transition: top 0.3s ease, display 0s 0.3s; /* Smooth transition for sliding and delay display change */
+  transition: top 0.3s ease, opacity 0.3s ease, visibility 0.3s ease; /* Smooth transitions for sliding, fading, and visibility */
   z-index: 90; /* Ensure it sits above other content */
 }
 
 .overlay-menu.open {
   top: 0; /* Slide in from the top */
-  display: flex; /* Show menu when open */
-  transition: top 0.3s ease; /* Smooth transition for sliding */
+  opacity: 1; /* Fully visible */
+  visibility: visible; /* Make it accessible */
 }
+
 
 
 .menu-nav ul {
