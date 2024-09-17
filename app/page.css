@@ -95,8 +95,8 @@ html {
   left: 0;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(255, 255, 255, 0.9); /* Optional: Adjust the overlay color */
-  backdrop-filter: blur(50px); /* Apply blur effect */
+  background-color: rgba(255, 255, 255, 0.97); /* Optional: Adjust the overlay color */
+  backdrop-filter: blur(80%); /* Apply blur effect */
   opacity: 0; /* Initially transparent */
   visibility: hidden; /* Initially hidden */
   justify-content: center;
@@ -134,7 +134,7 @@ html {
 
 .menu-nav ul li a {
   text-decoration: none;
-  font-size: 24px; /* Adjust as needed */
+  font-size: 2rem; /* Adjust as needed */
   color: #000;
   transition: color 0.3s ease;
 }
@@ -767,11 +767,7 @@ footer .footerLogo {
   height: 1300px;
 }
 
-@media (max-width: 480px) {
-
-  .metasvg circle {
-    r: 100; /* Smaller radius for mobile */
-  }
+@media (max-width: 480px) { 
 
   .introPage h1 {
     font-size: 5rem; /* Adjust the size for mobile */
@@ -864,11 +860,6 @@ footer .footerLogo {
   }
 
 
-  /* ballsize for ipad size */
-  .metasvg circle {
-    r: 150; /* Smaller radius for mobile */
-  }
-
   /* Intro  page for ipad size*/
   .introPage h1 {
     font-size: 8rem; /* Adjust the size for mobile */
@@ -935,10 +926,6 @@ footer .footerLogo {
     font-size: 0.7em;
   }
 
-  /* ball size for phone size */
-  .metasvg circle {
-    r: 100; /* Smaller radius for mobile */
-  }
 
   /* Intro page for phone size */
   .introPage h1 {
