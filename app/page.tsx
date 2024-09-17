@@ -128,36 +128,34 @@ export default function Home() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-  
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: screenpicWrapperRef.current,
-        scrub: 0.5, // Reduced scrub for faster response
-        start: "top top",
-        end: "+=50%",
-      },
-    });
-  
-    tl.fromTo(screenpicPanelRef.current, { scale: 0.7 }, { scale: 0.5, ease: "none" });
-    tl.from(lineRef.current, {
-      scaleX: 0,
-      ease: "none",
-      transformOrigin: "left top",
-    }, 0);
-  
-    return () => {
-      if (laptopScrollTrigger.current) laptopScrollTrigger.current.kill();
-    };
+
+    // Animation for offerContainer to pop up
+    gsap.fromTo(
+      offerContainerRef.current,
+      { y: 50, opacity: 0 }, // Start state: below and transparent
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: offerContainerRef.current,
+          start: 'top 100%',  // Animation starts when the container is 80% from the top of the viewport
+          end: 'bottom 90%', // Animation completes before it's fully scrolled past
+          toggleActions: 'play none none none',
+        },
+      }
+    );
   }, []);
-  
   
 
   useEffect(() => {
-    const interval = setInterval(() => updateAllCircles(), 30); // Increased interval from 10ms to 30ms
-  
+    const interval = setInterval(() => {
+      updateAllCircles();
+    }, 10);
+
     return () => clearInterval(interval);
   }, []);
-  
 
   const updateAllCircles = () => {
     setCirclePositions((prevState) => {
@@ -181,26 +179,33 @@ export default function Home() {
     ySpeed: number;
   }
   
-  
 
   const updateCirclePosition = (circle: Circle) => {
-    const dampingFactor = 0.9; // Smoothly reduce speed
-    const bounceBuffer = 1.5;  // Added buffer for smooth transitions
+    const dampingFactor = 0.9; // Reduce the speed gradually by 10%
+    const bounceBuffer = 1.5;  // The buffer space to prevent flickering
   
-    // Update position and handle bounds with damping
+    // Update position
     circle.x += circle.xSpeed;
     circle.y += circle.ySpeed;
   
-    if (circle.x < bounds.current.minX + bounceBuffer || circle.x > bounds.current.maxX - bounceBuffer) {
+    // Smoothly reverse X direction if hitting bounds
+    if (circle.x < bounds.current.minX + bounceBuffer) {
+      circle.x = bounds.current.minX + bounceBuffer;
+      circle.xSpeed = -circle.xSpeed * dampingFactor;
+    } else if (circle.x > bounds.current.maxX - bounceBuffer) {
+      circle.x = bounds.current.maxX - bounceBuffer;
       circle.xSpeed = -circle.xSpeed * dampingFactor;
     }
   
-    if (circle.y < bounds.current.minY + bounceBuffer || circle.y > bounds.current.maxY - bounceBuffer) {
+    // Smoothly reverse Y direction if hitting bounds
+    if (circle.y < bounds.current.minY + bounceBuffer) {
+      circle.y = bounds.current.minY + bounceBuffer;
+      circle.ySpeed = -circle.ySpeed * dampingFactor;
+    } else if (circle.y > bounds.current.maxY - bounceBuffer) {
+      circle.y = bounds.current.maxY - bounceBuffer;
       circle.ySpeed = -circle.ySpeed * dampingFactor;
     }
   };
-  
-  
   
   
 
@@ -303,7 +308,8 @@ export default function Home() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-  
+
+    // Initialize animations for header h2 elements
     const headerAnimation = gsap.fromTo(
       headerRefs.current,
       { x: "200%", opacity: 0 },
@@ -311,20 +317,24 @@ export default function Home() {
         x: "0%",
         opacity: 1,
         duration: 1,
-        stagger: 0.2, // Stagger added for smooth entry
+        stagger: 0.20,
         scrollTrigger: {
           trigger: offerPageRef.current,
-          start: "top 100%", // Start animation earlier for better visibility
+          start: "top 100%",  // Adjust this value to make the animation start further up
+          end: "bottom 95%", // Keep this or adjust as needed
           scrub: 1,
-          markers: false,
+          markers: false, // Optional: remove or set to false to hide markers
         }
       }
     );
-  
-    return () => headerAnimation.scrollTrigger?.kill();
+
+    return () => {
+      // Clean up specific ScrollTrigger
+      if (headerAnimation.scrollTrigger) {
+        headerAnimation.scrollTrigger.kill();
+      }
+    };
   }, []);
-  
-  
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -387,7 +397,7 @@ export default function Home() {
     };
   }, []);
 
-  const circleRadii = [150 ,100, 90];
+  const circleRadii = [0];
 
   
   return (
@@ -608,5 +618,3 @@ export default function Home() {
     </div>
   );
 }
-
-
