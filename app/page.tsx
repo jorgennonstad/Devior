@@ -15,7 +15,7 @@ export default function Home() {
   const screenpicWrapperRef = useRef<HTMLDivElement | null>(null);
   const screenpicPanelRef = useRef<HTMLDivElement | null>(null);
   const lineRef = useRef<HTMLDivElement | null>(null);
-  const [label, setLabel] = useState("Fra butikk");
+  const [label, setLabel] = useState("Fra Offline");
   const offerPageRef = useRef(null);
   const offerContainerRef = useRef(null);
   const headerRefs = useRef([]); // Create a ref to store multiple h2 elements
@@ -247,10 +247,10 @@ export default function Home() {
       trigger: screenpicWrapperRef.current,
       start: "top 90%", // Start when the top of the image is 90% from the top of the viewport (switch sooner)
       end: "bottom 60%", // End when the bottom of the image is 60% from the bottom of the viewport (switch sooner)
-      onEnter: () => setLabel("Fra butikk"), // When scrolling into the view
-      onLeave: () => setLabel("Til nettbutikk"), // When scrolling out of view
-      onEnterBack: () => setLabel("Fra butikk"), // If scrolling back up
-      onLeaveBack: () => setLabel("Fra butikk"), // If scrolling up out of view
+      onEnter: () => setLabel("Fra Offline"), // When scrolling into the view
+      onLeave: () => setLabel("Til Online"), // When scrolling out of view
+      onEnterBack: () => setLabel("Fra Offline"), // If scrolling back up
+      onLeaveBack: () => setLabel("Fra Offline"), // If scrolling up out of view
     });
     
   }, []);
