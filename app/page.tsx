@@ -397,7 +397,7 @@ export default function Home() {
     };
   }, []);
 
-  // const circleRadii = [170, 140, 110]; REMOVED THE BUBBLES
+  const circleRadii = [0];
 
   
   return (
