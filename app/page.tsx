@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { FaPaintBrush, FaCode, FaExpand, FaEnvelope, FaPhone, FaMapMarkerAlt, FaArrowUp } from 'react-icons/fa'; // Importing specific icons
 import { getProjects, getAboutInfo } from '../sanity/sanity-utils'; // Adjust the path if needed
 import './page.css'; // Ensure the path is correct
@@ -8,19 +8,19 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
 export default function Home() {
-  const [projects, setProjects] = useState([]);
-  const [aboutInfo, setAboutInfo] = useState(null); // State for About info
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [aboutInfo, setAboutInfo] = useState<AboutInfo | null>(null); // State for About info
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dataRef = useRef(null); // Create a ref to attach to the element
-  const screenpicWrapperRef = useRef(null);
-  const screenpicPanelRef = useRef(null);
+  const screenpicWrapperRef = useRef<HTMLDivElement | null>(null);
+  const screenpicPanelRef = useRef<HTMLDivElement | null>(null);
+  const lineRef = useRef<HTMLDivElement | null>(null);
   const [label, setLabel] = useState("Fra butikk");
-  const lineRef = useRef(null);
   const offerPageRef = useRef(null);
   const offerContainerRef = useRef(null);
   const headerRefs = useRef([]); // Create a ref to store multiple h2 elements
-  const projectCardRefs = useRef([]); // Create a ref for the project projectCardRef
-  const whoAreWeRef = useRef(null); // Ref for "Who are we?" section
+  const projectCardRefs = useRef<(HTMLAnchorElement | null)[]>([]); // Create a ref for the project projectCardRef
+  const whoAreWeRef = useRef<HTMLDivElement>(null); // Ref for "Who are we?" section
   const [circlePositions, setCirclePositions] = useState({
     circle1: { x: 400, y: 200, xSpeed: 0.1, ySpeed: 0.17 },  // Reduced speeds
     circle2: { x: 600, y: 400, xSpeed: -0.25, ySpeed: 0.25 }, // Reduced speeds
@@ -28,49 +28,80 @@ export default function Home() {
     circle4: { x: 1000, y: 500, xSpeed: -0.05, ySpeed: 0.3 }, // Reduced speeds
     circle5: { x: 900, y: 300, xSpeed: -0.1, ySpeed: 0.15 },  // Reduced speeds
   });
+
+  const setRef = useCallback((index: number) => (el: HTMLAnchorElement | null) => {
+    projectCardRefs.current[index] = el;
+  }, []);
+  
+  interface AboutInfo {
+    bio: string;
+    imageOneUrl: string;
+    imageOneAlt: string;
+    imageOneName: string;
+    imageTwoUrl: string;
+    imageTwoAlt: string;
+    imageTwoName: string;
+  }
+
+  interface Project {
+    _id: string;
+    url: string;
+    thumbnail: string;
+    hoverImage: string;
+    name: string;
+    bio: string;
+  }
   
 
   const bounds = useRef({
     minX: -150,
     minY: -150,
-    maxX: window.innerWidth + 100,
-    maxY: window.innerHeight + 100,
+    maxX: 100, //REMVOED WINDOW ITS NOW HARDCODED WIDTH AND HEIGHT
+    maxY: 100, //REMOVED WINDOW ITS NOW HARDCODED WIDTH AND HEIGHT
   });
 
-  const introPageRef = useRef(null);
+  const introPageRef = useRef<HTMLDivElement | null>(null); // Define as HTMLDivElement or the appropriate element type
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    if (whoAreWeRef.current) {
+      // GSAP animation for "Who are we?" section
+      const whoAreWeAnimation = gsap.fromTo(
+        whoAreWeRef.current.querySelectorAll('.person, .bio-container'),
+        { y: 50, opacity: 0 }, // Initial state
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.3, // Stagger effect for multiple elements
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: whoAreWeRef.current,
+            start: "top 80%", // Adjust start position as needed
+            end: "bottom 70%",
+            markers: false, // Set to true to see markers in development
+          },
+        }
+      );
 
-    // GSAP animation for "Who are we?" section
-    const whoAreWeAnimation = gsap.fromTo(
-      whoAreWeRef.current.querySelectorAll('.person, .bio-container'),
-      { y: 50, opacity: 0 }, // Initial state
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.3, // Stagger effect for multiple elements
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: whoAreWeRef.current,
-          start: "top 80%", // Adjust start position as needed
-          end: "bottom 70%",
-          markers: false, // Set to true to see markers in development
-        },
+      // Add ScrollTrigger instance to the ref array
+      if (whoAreWeAnimation.scrollTrigger) {
+        projectScrollTriggers.current.push(whoAreWeAnimation.scrollTrigger);
       }
-    );
+      
+    }
 
     return () => {
       // Clean up each ScrollTrigger
       projectScrollTriggers.current.forEach((trigger) => trigger.kill());
-      whoAreWeAnimation.scrollTrigger.kill(); // Clean up the ScrollTrigger for the "Who are we?" section
+      // Clear the array after cleanup
+      projectScrollTriggers.current = [];
     };
-  }, [projects, aboutInfo]); // Dependency array includes 'aboutInfo' to re-run when data is fetched
+  }, [projects, aboutInfo]); // Dependencies to re-run the effect when they change
+
   
   useEffect(() => {
     const updateBounds = () => {
@@ -129,15 +160,27 @@ export default function Home() {
   const updateAllCircles = () => {
     setCirclePositions((prevState) => {
       const newPositions = { ...prevState };
+      
+      // Ensure that circleKey is a valid key of newPositions
       Object.keys(newPositions).forEach((circleKey) => {
-        const circle = newPositions[circleKey];
+        const key = circleKey as keyof typeof newPositions; // Explicitly assert the key type
+        const circle = newPositions[key];
         updateCirclePosition(circle);
       });
+      
       return newPositions;
     });
   };
+  
+  interface Circle {
+    x: number;
+    y: number;
+    xSpeed: number;
+    ySpeed: number;
+  }
+  
 
-  const updateCirclePosition = (circle) => {
+  const updateCirclePosition = (circle: Circle) => {
     const dampingFactor = 0.9; // Reduce the speed gradually by 10%
     const bounceBuffer = 1.5;  // The buffer space to prevent flickering
   
@@ -164,16 +207,14 @@ export default function Home() {
     }
   };
   
+  
 
   // Refs to store ScrollTriggers
-  const laptopScrollTrigger = useRef(null);
-  const projectScrollTriggers = useRef([]);
+  const laptopScrollTrigger = useRef<ScrollTrigger | null>(null);
+  const projectScrollTriggers = useRef<ScrollTrigger[]>([]);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth' // Smooth scroll effect
-    });
+    alert("HELLO");
   };
 
   useEffect(() => {
@@ -249,7 +290,13 @@ export default function Home() {
       0
     );
 
-    laptopScrollTrigger.current = tl.scrollTrigger; // Store the ScrollTrigger instance
+    // Explicitly handle `undefined` case
+    const scrollTrigger = tl.scrollTrigger as ScrollTrigger | undefined;
+    if (scrollTrigger) {
+      laptopScrollTrigger.current = scrollTrigger;
+    } else {
+      laptopScrollTrigger.current = null;
+    }
 
     return () => {
       // Clean up specific ScrollTrigger
@@ -323,18 +370,28 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const introPageHeight = document.querySelector('.introPage').offsetHeight;
-      const scrollPosition = window.scrollY;
-  
-      if (scrollPosition > introPageHeight) {
-        document.querySelector('.back-to-top').classList.add('show');
-      } else {
-        document.querySelector('.back-to-top').classList.remove('show');
+      // Use type assertion to ensure the elements are treated as HTMLElement
+      const introPageElement = document.querySelector('.introPage') as HTMLElement | null;
+      const backToTopElement = document.querySelector('.back-to-top') as HTMLElement | null;
+
+      // Check if elements exist before accessing properties or methods
+      if (introPageElement && backToTopElement) {
+        const introPageHeight = introPageElement.offsetHeight;
+        const scrollPosition = window.scrollY;
+
+        if (scrollPosition > introPageHeight) {
+          backToTopElement.classList.add('show');
+        } else {
+          backToTopElement.classList.remove('show');
+        }
       }
     };
-  
+
     window.addEventListener('scroll', handleScroll);
-  
+
+    // Initial call to handle scroll state on mount
+    handleScroll();
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -342,6 +399,7 @@ export default function Home() {
 
   const circleRadii = [170, 140, 110];
 
+  
   return (
     <div>
       <button className="back-to-top" onClick={scrollToTop}>
@@ -448,13 +506,13 @@ export default function Home() {
   <div className='projects-container'>
     {projects.map((project, index) => (
       <a
-        key={project._id}
-        href={project.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="project-link"
-        ref={(el) => projectCardRefs.current[index] = el}
-      >
+      key={project._id}
+      href={project.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="project-link"
+      ref={setRef(index)}
+    >
         <div className="project-card">
           <div className="image-container">
             <img
@@ -514,7 +572,7 @@ export default function Home() {
 </div>
 
 
-<div id="contactUsPage" className='contactUsPage' action="#" method="post">
+<div id="contactUsPage" className='contactUsPage'>
   <div className='contactHeader'>
       <h2 className="message-title">Kontakt oss</h2>
       <p>Kontakt oss for mer informasjon eller hjelp med dine behov.</p>
