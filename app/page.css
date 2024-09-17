@@ -214,6 +214,11 @@ body.menu-open {
   text-align: center;
   position: relative; /* Ensure it's positioned relative for absolute children */
   overflow: hidden; /* Hide anything outside of the container */
+  background-image: url("./ball2.gif");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: black;
+  background-position: center;
 }
 
 @keyframes fadeInUp {
