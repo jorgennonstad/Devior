@@ -234,7 +234,7 @@ body.menu-open {
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center center;
-  filter:brightness(1) contrast(1.8) ; 
+  filter:brightness(1) ; 
   opacity: 0.5; /* Example: make it fade into the background */
   transition: filter 0.3s ease-in-out; /* Optional transition effect */
 }
