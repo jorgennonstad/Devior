@@ -57,12 +57,13 @@ html {
 /* Hamburger icon */
 .hamburger-menu {
   display: none;
+  position: absolute;
   flex-direction: column;
   justify-content: space-between;
   width: 30px;
   height: 21px;
   cursor: pointer;
-  margin: 20px 0 0 20px;
+  padding: 20px 0 0 20px;
 }
 
 .hamburger-menu .bar{
@@ -72,7 +73,7 @@ html {
 .hamburger-menu .bar {
   height: 3px;
   width: 100%;
-  background-color: #000;
+  background-color: white;
   transition: all 0.3s ease;
 }
 
@@ -95,7 +96,7 @@ html {
   left: 0;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(255, 255, 255, 0.97); /* Optional: Adjust the overlay color */
+  background-color: rgba(0, 0, 0, 0.97); /* Optional: Adjust the overlay color */
   backdrop-filter: blur(80%); /* Apply blur effect */
   opacity: 0; /* Initially transparent */
   visibility: hidden; /* Initially hidden */
@@ -140,7 +141,7 @@ html {
 }
 
 .menu-nav ul li a:hover {
-  color: #333; /* Hover effect */
+  text-decoration: underline;
 }
 
 /* Disable body scroll when overlay is open */
@@ -177,7 +178,7 @@ body.menu-open {
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: 500;
-  color: black;
+  color: white;
   position: relative;
   padding-bottom: 5px;
   transition: transform 0.3s ease;
@@ -301,7 +302,6 @@ body.menu-open {
 .gif15:before{
   background-image: url("../public//img//gifs/gif15.gif");
   filter: blur(10px) brightness(3) contrast(1.8) ;
-  background-size: 50%;
 }
 
 .gif16:before{
