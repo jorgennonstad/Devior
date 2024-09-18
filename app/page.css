@@ -317,6 +317,24 @@ body.menu-open {
   /*filter: blur(0px) brightness(1) contrast(1) ; */
 }
 
+.gif19:before{
+  background-image: url("../public//img//gifs/gif19.gif");
+}
+
+.gif20:before{
+  background-image: url("../public//img//gifs/gif20.gif");
+  filter: brightness(1.5);
+}
+
+.gif21:before{
+  background-image: url("../public//img//gifs/gif21.gif");
+  opacity: 0.7;
+}
+
+.gif22:before{
+  background-image: url("../public//img//gifs/gif22.gif");
+  opacity: 0.7;
+}
 
 
 
@@ -341,25 +359,18 @@ body.menu-open {
   animation-delay: 0.5s;
 }
 
-.introPage h1{
-  color: black;
-  padding-left: 10%;
-}
-
-.introPage h2{
-  padding-left: 10.6%;
-}
-
 .introPage h1 {
   margin-top: 30vh;
   margin-bottom: 10px;
   font-size: 10rem;
   color: white;
+  padding-left: 10%;
 }
 
 .introPage h2 {
   font-size: 3rem;
   color: white;
+  padding-left: 10%;
 }
 
 /* offerPage */
@@ -639,6 +650,10 @@ body.menu-open {
   }
 
   .introPage h1{
+    padding: 0;
+  }
+
+  .introPage h2{
     padding: 0;
   }
 

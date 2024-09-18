@@ -22,13 +22,6 @@ export default function Home() {
   const headerRefs = useRef([]); // Create a ref to store multiple h2 elements
   const projectCardRefs = useRef<(HTMLAnchorElement | null)[]>([]); // Create a ref for the project projectCardRef
   const whoAreWeRef = useRef<HTMLDivElement>(null); // Ref for "Who are we?" section
-  const [circlePositions, setCirclePositions] = useState({
-    circle1: { x: 400, y: 200, xSpeed: 0.1, ySpeed: 0.17 },  // Reduced speeds
-    circle2: { x: 600, y: 400, xSpeed: -0.25, ySpeed: 0.25 }, // Reduced speeds
-    circle3: { x: 800, y: 600, xSpeed: 0.15, ySpeed: 0.3 },   // Reduced speeds
-    circle4: { x: 1000, y: 500, xSpeed: -0.05, ySpeed: 0.3 }, // Reduced speeds
-    circle5: { x: 900, y: 300, xSpeed: -0.1, ySpeed: 0.15 },  // Reduced speeds
-  });
 
   const setRef = useCallback((index: number) => (el: HTMLAnchorElement | null) => {
     projectCardRefs.current[index] = el;
@@ -52,14 +45,6 @@ export default function Home() {
     name: string;
     bio: string;
   }
-  
-
-  const bounds = useRef({
-    minX: -150,
-    minY: -150,
-    maxX: 100, //REMVOED WINDOW ITS NOW HARDCODED WIDTH AND HEIGHT
-    maxY: 100, //REMOVED WINDOW ITS NOW HARDCODED WIDTH AND HEIGHT
-  });
 
   const introPageRef = useRef<HTMLDivElement | null>(null); // Define as HTMLDivElement or the appropriate element type
 
@@ -110,29 +95,6 @@ export default function Home() {
     };
   }, [projects, aboutInfo]); // Dependencies to re-run the effect when they change
 
-  
-  useEffect(() => {
-    const updateBounds = () => {
-      if (introPageRef.current) {
-        const introPageHeight = introPageRef.current.offsetHeight;
-        const navbarHeight = 220; // Adjust this value based on your navbar height
-        
-        bounds.current = {
-          minX: -150,
-          minY: navbarHeight, // Adjust to ensure circles don't go under the navbar
-          maxX: window.innerWidth + 100,
-          maxY: introPageHeight - 180, // Adjusted for circles
-        };
-      }
-    };
-  
-    // Initial update
-    updateBounds();
-  
-    // Update bounds on window resize
-    window.addEventListener('resize', updateBounds);
-    return () => window.removeEventListener('resize', updateBounds);
-  }, []);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -155,67 +117,6 @@ export default function Home() {
       }
     );
   }, []);
-  
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      updateAllCircles();
-    }, 10);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const updateAllCircles = () => {
-    setCirclePositions((prevState) => {
-      const newPositions = { ...prevState };
-      
-      // Ensure that circleKey is a valid key of newPositions
-      Object.keys(newPositions).forEach((circleKey) => {
-        const key = circleKey as keyof typeof newPositions; // Explicitly assert the key type
-        const circle = newPositions[key];
-        updateCirclePosition(circle);
-      });
-      
-      return newPositions;
-    });
-  };
-  
-  interface Circle {
-    x: number;
-    y: number;
-    xSpeed: number;
-    ySpeed: number;
-  }
-  
-
-  const updateCirclePosition = (circle: Circle) => {
-    const dampingFactor = 0.9; // Reduce the speed gradually by 10%
-    const bounceBuffer = 1.5;  // The buffer space to prevent flickering
-  
-    // Update position
-    circle.x += circle.xSpeed;
-    circle.y += circle.ySpeed;
-  
-    // Smoothly reverse X direction if hitting bounds
-    if (circle.x < bounds.current.minX + bounceBuffer) {
-      circle.x = bounds.current.minX + bounceBuffer;
-      circle.xSpeed = -circle.xSpeed * dampingFactor;
-    } else if (circle.x > bounds.current.maxX - bounceBuffer) {
-      circle.x = bounds.current.maxX - bounceBuffer;
-      circle.xSpeed = -circle.xSpeed * dampingFactor;
-    }
-  
-    // Smoothly reverse Y direction if hitting bounds
-    if (circle.y < bounds.current.minY + bounceBuffer) {
-      circle.y = bounds.current.minY + bounceBuffer;
-      circle.ySpeed = -circle.ySpeed * dampingFactor;
-    } else if (circle.y > bounds.current.maxY - bounceBuffer) {
-      circle.y = bounds.current.maxY - bounceBuffer;
-      circle.ySpeed = -circle.ySpeed * dampingFactor;
-    }
-  };
-  
-  
 
   // Refs to store ScrollTriggers
   const laptopScrollTrigger = useRef<ScrollTrigger | null>(null);
@@ -405,10 +306,8 @@ export default function Home() {
     };
   }, []);
 
-  const circleRadii = [0];
-
   useEffect(() => {
-    const totalGifs = 18; // Total number of gif classes
+    const totalGifs = 22; // Total number of gif classes
     const randomIndex = Math.floor(Math.random() * totalGifs) + 1; // Random number between 1 and 14
     const randomClass = `gif${randomIndex}`;
 
@@ -460,41 +359,6 @@ export default function Home() {
         </nav>
       </header>
       <div className='introPage' ref={introPageRef}>
-        <div className="metaballs">
-          <svg className="metasvg">
-            <defs>
-              <filter id="gooify" width="400%" x="-10%" height="400%" y="-150%">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur" />
-                <feColorMatrix
-                  in="blur"
-                  mode="matrix"
-                  values="1 0 0 0 0
-                          0 1 0 0 0
-                          0 0 1 0 0
-                          0 0 0 25 -10"
-                />
-              </filter>
-              <linearGradient id="yourGradientId" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#000" />
-                <stop offset="100%" stopColor="#000" />
-                <stop offset="0%" stopColor="#00000" />
-                <stop offset="100%" stopColor="#00000" />
-              </linearGradient>
-            </defs>
-            <g filter="url(#gooify)">
-              {Object.entries(circlePositions).map(([key, circle], index) => (
-                <circle
-                  key={key}
-                  className="blobb glow"
-                  fill="url(#yourGradientId)"
-                  cx={circle.x}
-                  cy={circle.y}
-                  r={circleRadii[index]}
-                />
-              ))}
-            </g>
-          </svg>
-        </div>
         <h1 className='fadeInUp'> DEVIRO</h1>
         <h2 className='fadeInUp delay1'>Digitaliser ditt selskap</h2>
       </div>
