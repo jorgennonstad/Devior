@@ -254,7 +254,7 @@ body.menu-open {
 
 .gif4:before{
   background-image: url("../public//img//gifs/gif4.gif");
-  /*background-size: 80%;*/
+  background-size: 80%;
 }
 
 .gif5:before{
@@ -267,8 +267,8 @@ body.menu-open {
 
 .gif7:before{
   background-image: url("../public//img//gifs/gif7.gif");
-  /* filter: blur(9px) brightness(3) contrast(1.8) ;
-  background-size: 70%; */
+  /* filter: blur(9px) brightness(3) contrast(1.8) ; */
+  background-size: 70%;
 }
 
 .gif8:before{
