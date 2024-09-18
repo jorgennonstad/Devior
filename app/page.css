@@ -341,9 +341,13 @@ body.menu-open {
   animation-delay: 0.5s;
 }
 
-.introPage h1, .introPage h2 {
+.introPage h1{
   color: black;
   padding-left: 10%;
+}
+
+.introPage h2{
+  padding-left: 10.6%;
 }
 
 .introPage h1 {
@@ -634,7 +638,7 @@ body.menu-open {
     text-align: center;
   }
 
-  .introPage h1, .introPage h2{
+  .introPage h1{
     padding: 0;
   }
 
