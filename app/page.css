@@ -234,7 +234,7 @@ body.menu-open {
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center center;
-  filter: blur(9px) brightness(3) contrast(1.8) ;
+  /*filter: blur(9px) brightness(3) contrast(1.8) ; */
   opacity: 0.5; /* Example: make it fade into the background */
   transition: filter 0.3s ease-in-out; /* Optional transition effect */
 }
@@ -245,7 +245,7 @@ body.menu-open {
 
 .gif2:before{
   background-image: url("../public//img//gifs/gif2.gif");
-  filter: blur(7px) brightness(1.5) contrast(1.8) ;
+  /*filter: blur(7px) brightness(1.5) contrast(1.8) ;*/
 }
 
 .gif3:before{
@@ -254,7 +254,7 @@ body.menu-open {
 
 .gif4:before{
   background-image: url("../public//img//gifs/gif4.gif");
-  background-size: 80%;
+  /*background-size: 80%;*/
 }
 
 .gif5:before{
@@ -267,8 +267,8 @@ body.menu-open {
 
 .gif7:before{
   background-image: url("../public//img//gifs/gif7.gif");
-  filter: blur(9px) brightness(3) contrast(1.8) ;
-  background-size: 70%;
+  /* filter: blur(9px) brightness(3) contrast(1.8) ;
+  background-size: 70%; */
 }
 
 .gif8:before{
@@ -301,7 +301,7 @@ body.menu-open {
 
 .gif15:before{
   background-image: url("../public//img//gifs/gif15.gif");
-  filter: blur(10px) brightness(3) contrast(1.8) ;
+  /*filter: blur(10px) brightness(3) contrast(1.8) ; */
 }
 
 .gif16:before{
@@ -310,12 +310,12 @@ body.menu-open {
 
 .gif17:before{
   background-image: url("../public//img//gifs/gif17.gif");
-  filter: blur(20px) brightness(1) contrast(1.8) ;
+  /*filter: blur(20px) brightness(1) contrast(1.8) ;*/
 }
 
 .gif18:before{
   background-image: url("../public//img//gifs/gif18.gif");
-  filter: blur(0px) brightness(1) contrast(1) ;
+  /*filter: blur(0px) brightness(1) contrast(1) ; */
 }
 
 
