@@ -135,7 +135,7 @@ html {
 .menu-nav ul li a {
   text-decoration: none;
   font-size: 2rem; /* Adjust as needed */
-  color: #000;
+  color: white;
   transition: color 0.3s ease;
 }
 
@@ -212,14 +212,114 @@ body.menu-open {
   justify-content: flex-start;
   align-items: center;
   text-align: center;
-  position: relative; /* Ensure it's positioned relative for absolute children */
-  overflow: hidden; /* Hide anything outside of the container */
-  background-image: url("./ball2.gif");
+  position: relative;
+  overflow: hidden;
+  background-color: black; /* Background color remains black */
   background-repeat: no-repeat;
-  background-size: 100%;
-  background-color: black;
-  background-position: center;
+  background-size: 50%;
+  background-position: center center;
+  position: relative;
 }
+
+
+
+.introPage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  filter: blur(9px) brightness(3) contrast(1.8) ;
+  opacity: 0.5; /* Example: make it fade into the background */
+  transition: filter 0.3s ease-in-out; /* Optional transition effect */
+}
+
+.gif1:before{
+  background-image: url("../public//img//gifs/gif1.gif");
+}
+
+.gif2:before{
+  background-image: url("../public//img//gifs/gif2.gif");
+  filter: blur(7px) brightness(1.5) contrast(1.8) ;
+}
+
+.gif3:before{
+  background-image: url("../public//img//gifs/gif3.gif");
+}
+
+.gif4:before{
+  background-image: url("../public//img//gifs/gif4.gif");
+  background-size: 80%;
+}
+
+.gif5:before{
+  background-image: url("../public//img//gifs/gif5.gif");
+}
+
+.gif6:before{
+  background-image: url("../public//img//gifs/gif6.gif");
+}
+
+.gif7:before{
+  background-image: url("../public//img//gifs/gif7.gif");
+  filter: blur(9px) brightness(3) contrast(1.8) ;
+  background-size: 70%;
+}
+
+.gif8:before{
+  background-image: url("../public//img//gifs/gif8.gif");
+}
+
+.gif9:before{
+  background-image: url("../public//img//gifs/gif9.gif");
+}
+
+.gif10:before{
+  background-image: url("../public//img//gifs/gif10.gif");
+}
+
+.gif11:before{
+  background-image: url("../public//img//gifs/gif11.gif");
+}
+
+.gif12:before{
+  background-image: url("../public//img//gifs/gif12.gif");
+}
+
+.gif13:before{
+  background-image: url("../public//img//gifs/gif13.gif");
+}
+
+.gif14:before{
+  background-image: url("../public//img//gifs/gif14.gif");
+}
+
+.gif15:before{
+  background-image: url("../public//img//gifs/gif15.gif");
+  filter: blur(10px) brightness(3) contrast(1.8) ;
+  background-size: 50%;
+}
+
+.gif16:before{
+  background-image: url("../public//img//gifs/gif16.gif");
+}
+
+.gif17:before{
+  background-image: url("../public//img//gifs/gif17.gif");
+  filter: blur(20px) brightness(1) contrast(1.8) ;
+}
+
+.gif20:before{
+  background-image: url("../public//img//gifs/gif20.gif");
+  filter: blur(0px) brightness(1) contrast(1) ;
+}
+
+
+
 
 @keyframes fadeInUp {
   0% {
@@ -249,13 +349,11 @@ body.menu-open {
   margin-top: 30vh;
   margin-bottom: 10px;
   font-size: 10rem;
-  mix-blend-mode:difference;
   color: white;
 }
 
 .introPage h2 {
   font-size: 3rem;
-  mix-blend-mode: difference;
   color: white;
 }
 
@@ -827,6 +925,10 @@ footer .footerLogo {
 /* Media queries */
 /* Tablet (768px and below) */
 @media (max-width: 820px) {
+ /* intro background img */
+ .introPage::before {
+  background-size: 100%;
+}
 
   /* Tablet nav bar */
   .navbar {
@@ -905,6 +1007,12 @@ footer .footerLogo {
 
 /* Phone (480px and below) */
 @media (max-width: 480px) {
+
+  /* Intro baclgrohdn */
+  .introPage::before {
+    background-size: 100%;
+  }
+
   /* Project edits for phone size */
   .projectsPage > h2 {
     font-size: 1.8rem;

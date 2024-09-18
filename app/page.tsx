@@ -6,6 +6,7 @@ import { getProjects, getAboutInfo } from '../sanity/sanity-utils'; // Adjust th
 import './page.css'; // Ensure the path is correct
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import gif from '../public/img/gifs/gif1.gif'; // Import the GIF image
 
 export default function Home() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -405,6 +406,22 @@ export default function Home() {
   }, []);
 
   const circleRadii = [0];
+
+  useEffect(() => {
+    const totalGifs = 16; // Total number of gif classes
+    const randomIndex = Math.floor(Math.random() * totalGifs) + 1; // Random number between 1 and 14
+    const randomClass = `gif${randomIndex}`;
+
+    if (introPageRef.current) {
+      // Remove any previous gifX class
+      for (let i = 1; i <= totalGifs; i++) {
+        introPageRef.current.classList.remove(`gif${i}`);
+      }
+
+      // Add the new random gif class
+      introPageRef.current.classList.add(randomClass);
+    }
+  }, []); // Runs only once on component mount
 
   
   return (
