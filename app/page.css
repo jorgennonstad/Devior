@@ -313,10 +313,15 @@ body.menu-open {
   filter: blur(20px) brightness(1) contrast(1.8) ;
 }
 
-.gif20:before{
+.gif18:before{
   background-image: url("../public//img//gifs/gif20.gif");
   filter: blur(0px) brightness(1) contrast(1) ;
 }
+
+.gif19:before{
+  background-image: url("../public//img//gifs/gif1.gif");
+}
+
 
 
 

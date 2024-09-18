@@ -408,7 +408,7 @@ export default function Home() {
   const circleRadii = [0];
 
   useEffect(() => {
-    const totalGifs = 16; // Total number of gif classes
+    const totalGifs = 19; // Total number of gif classes
     const randomIndex = Math.floor(Math.random() * totalGifs) + 1; // Random number between 1 and 14
     const randomClass = `gif${randomIndex}`;
 
