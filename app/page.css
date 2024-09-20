@@ -24,7 +24,7 @@ html {
   opacity: 0;
   visibility: hidden;
   z-index: 1000;
-  border: none; /* Remove any border */
+  border: white 1px solid; 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
 }
 
