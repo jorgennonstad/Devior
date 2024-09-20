@@ -1002,6 +1002,10 @@ footer .footerLogo {
     font-size: 15px;
   }
 
+  .bio-container p {
+    font-size: 15px;
+  }
+
   /* Project edits for phone size */
   .projectsPage > h2 {
     font-size: 1.8rem;
