@@ -24,7 +24,7 @@ html {
   opacity: 0;
   visibility: hidden;
   z-index: 1000;
-  border: white 1px solid; 
+  border: white 3px solid; 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
 }
 
@@ -286,7 +286,7 @@ body.menu-open {
 
 .gif10:before{
   background-image: url("../public//img//gifs/gif10.gif");
-  background-size: 40%;
+  background-size: 50%;
 }
 
 @keyframes fadeInUp {
@@ -609,6 +609,7 @@ body.menu-open {
 
   .introPage::before{
     background-position: center center;
+    background-size: 70%;
   }
 }
 
