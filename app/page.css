@@ -998,6 +998,10 @@ footer .footerLogo {
     background-size: 100%;
   }
 
+  .offer p {
+    font-size: 15px;
+  }
+
   /* Project edits for phone size */
   .projectsPage > h2 {
     font-size: 1.8rem;
