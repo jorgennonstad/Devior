@@ -1002,6 +1002,10 @@ footer .footerLogo {
     font-size: 15px;
   }
 
+  .person h1 {
+    font-size: 1.2rem;
+  }
+
   .bio-container {
     font-size: 15px;
   }

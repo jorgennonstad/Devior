@@ -6,7 +6,6 @@ import { getProjects, getAboutInfo } from '../sanity/sanity-utils'; // Adjust th
 import './page.css'; // Ensure the path is correct
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import gif from '../public/img/gifs/gif1.gif'; // Import the GIF image
 
 export default function Home() {
   const [projects, setProjects] = useState<Project[]>([]);
