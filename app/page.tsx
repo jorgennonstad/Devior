@@ -307,7 +307,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const totalGifs = 22; // Total number of gif classes
+    const totalGifs = 10; // Total number of gif classes
     const randomIndex = Math.floor(Math.random() * totalGifs) + 1; // Random number between 1 and 14
     const randomClass = `gif${randomIndex}`;
 

@@ -233,7 +233,7 @@ body.menu-open {
   background-size: 900px;
   background-repeat: no-repeat;
   background-position: right center;
-  filter:brightness(1) ; 
+  filter:brightness(1); 
   opacity: 0.5; /* Example: make it fade into the background */
   transition: filter 0.3s ease-in-out; /* Optional transition effect */
 }
@@ -245,99 +245,49 @@ body.menu-open {
 .gif2:before{
   background-image: url("../public//img//gifs/gif2.gif");
   /*filter: blur(7px) brightness(1.5) contrast(1.8) ;*/
+  filter: contrast(1.3)
 }
 
 .gif3:before{
   background-image: url("../public//img//gifs/gif3.gif");
+  background-size: 40%;
 }
 
 .gif4:before{
   background-image: url("../public//img//gifs/gif4.gif");
-  background-size: 80%;
 }
 
 .gif5:before{
   background-image: url("../public//img//gifs/gif5.gif");
+  /*filter: blur(20px) brightness(1) contrast(1.8) ;*/
+  filter: contrast(1.3)
 }
 
 .gif6:before{
   background-image: url("../public//img//gifs/gif6.gif");
+  /*filter: blur(0px) brightness(1) contrast(1) ; */
 }
 
 .gif7:before{
   background-image: url("../public//img//gifs/gif7.gif");
-  /* filter: blur(9px) brightness(3) contrast(1.8) ; */
-  background-size: 70%;
+  filter: brightness(1.5);
 }
 
 .gif8:before{
   background-image: url("../public//img//gifs/gif8.gif");
+  opacity: 0.7;
+  filter: contrast(1.3)
 }
 
 .gif9:before{
   background-image: url("../public//img//gifs/gif9.gif");
+  background-size: 40%;
 }
 
 .gif10:before{
   background-image: url("../public//img//gifs/gif10.gif");
+  background-size: 40%;
 }
-
-.gif11:before{
-  background-image: url("../public//img//gifs/gif11.gif");
-}
-
-.gif12:before{
-  background-image: url("../public//img//gifs/gif12.gif");
-}
-
-.gif13:before{
-  background-image: url("../public//img//gifs/gif13.gif");
-}
-
-.gif14:before{
-  background-image: url("../public//img//gifs/gif14.gif");
-}
-
-.gif15:before{
-  background-image: url("../public//img//gifs/gif15.gif");
-  /*filter: blur(10px) brightness(3) contrast(1.8) ; */
-}
-
-.gif16:before{
-  background-image: url("../public//img//gifs/gif16.gif");
-}
-
-.gif17:before{
-  background-image: url("../public//img//gifs/gif17.gif");
-  /*filter: blur(20px) brightness(1) contrast(1.8) ;*/
-}
-
-.gif18:before{
-  background-image: url("../public//img//gifs/gif18.gif");
-  /*filter: blur(0px) brightness(1) contrast(1) ; */
-}
-
-.gif19:before{
-  background-image: url("../public//img//gifs/gif19.gif");
-}
-
-.gif20:before{
-  background-image: url("../public//img//gifs/gif20.gif");
-  filter: brightness(1.5);
-}
-
-.gif21:before{
-  background-image: url("../public//img//gifs/gif21.gif");
-  opacity: 0.7;
-}
-
-.gif22:before{
-  background-image: url("../public//img//gifs/gif22.gif");
-  opacity: 0.7;
-}
-
-
-
 
 @keyframes fadeInUp {
   0% {
