@@ -995,6 +995,13 @@ footer .footerLogo {
   .screenpic {
     top: 50.5%;
   }
+
+   /* Adjust the image wrapper size */
+   .image-wrapper {
+    width: 94%;
+    min-width: 120px;
+    height: 200px;
+  }
 }
 
 
@@ -1117,8 +1124,9 @@ footer .footerLogo {
 
   /* Adjust the image wrapper size */
   .image-wrapper {
-    width: 150px;
-    height: 225px;
+    width: 100%;
+    min-width: 90px;
+    height: 125px;
   }
 
   /* Adjust the button size */
