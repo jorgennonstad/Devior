@@ -501,7 +501,7 @@ export default function Home() {
         <ul>
           <li><span>Adr: </span><a href="https://www.google.com/maps/place/Storgata+2,+1821,+2815+Gj%C3%B8vik/@60.7961651,10.6904173,17z/data=!3m1!4b1!4m5!3m4!1s0x4641da3d35be1823:0x7108834441c40703!8m2!3d60.7961625!4d10.6929922?entry=ttu&g_ep=EgoyMDI0MDkxMC4wIKXMDSoASAFQAw%3D%3D" target='_blank'>Storgata 2, 2815 Gjøvik</a></li>
           <li><span>Tlf: </span><a href='tel:+4793434688'>+47 934 34 688</a> {/* tel for phone */}</li>
-          <li><span>Orgnr:</span> comming soon</li>
+          <li><span>Orgnr:</span> 934159306</li>
         </ul>
       </footer>
     </div>
