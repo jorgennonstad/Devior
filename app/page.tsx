@@ -34,7 +34,11 @@ export default function Home() {
     imageTwoUrl: string;
     imageTwoAlt: string;
     imageTwoName: string;
+    imageThreeUrl: string;
+    imageThreeAlt: string;
+    imageThreeName: string;
   }
+  
 
   interface Project {
     _id: string;
@@ -428,25 +432,33 @@ export default function Home() {
 
 <div id="whoAreWePage" className="who-are-we-page" ref={whoAreWeRef}>
       <h2>Hvem er vi?</h2>
-    {aboutInfo && (
-      <div className="images-container">
-        <div className="person">
-          <div className="image-wrapper">
-            <img src={aboutInfo.imageOneUrl} alt={aboutInfo.imageOneAlt} />
-            <div className="glow-wrap"><i className="glow"></i></div>
-          </div>
-          <h1>{aboutInfo.imageOneName}</h1>
-        </div>
-        <div className="person">
-          <div className="image-wrapper">
-            <img src={aboutInfo.imageTwoUrl} alt={aboutInfo.imageTwoAlt} />
-            <div className="glow-wrap"><i className="glow"></i></div>
-          </div>
-          <h1>{aboutInfo.imageTwoName}</h1>
-        </div>
+      {aboutInfo && (
+  <div className="images-container">
+    <div className="person">
+      <div className="image-wrapper">
+        <img src={aboutInfo.imageOneUrl} alt={aboutInfo.imageOneAlt} />
+        <div className="glow-wrap"><i className="glow"></i></div>
       </div>
-    )}
-    
+      <h1>{aboutInfo.imageOneName}</h1>
+    </div>
+    <div className="person">
+      <div className="image-wrapper">
+        <img src={aboutInfo.imageTwoUrl} alt={aboutInfo.imageTwoAlt} />
+        <div className="glow-wrap"><i className="glow"></i></div>
+      </div>
+      <h1>{aboutInfo.imageTwoName}</h1>
+    </div>
+    <div className="person">
+      <div className="image-wrapper">
+        <img src={aboutInfo.imageThreeUrl} alt={aboutInfo.imageThreeAlt} />
+        <div className="glow-wrap"><i className="glow"></i></div>
+      </div>
+      <h1>{aboutInfo.imageThreeName}</h1>
+    </div>
+  </div>
+)}
+
+
   <div className="content-container">
     <div className="text-container">
       {aboutInfo ? (

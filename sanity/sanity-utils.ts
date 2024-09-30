@@ -25,18 +25,23 @@ export async function getProjects() {
 // Query for About Information
 export async function getAboutInfo() {
     return client.fetch(
-        groq`*[_type == "about"][0] {
-            _id,
-            title,
-            bio,
-            "imageOneUrl": imageOne.asset->url,
-            "imageOneAlt": imageOne.alt,
-            "imageOneName": imageOne.name,
-            "imageOneAge": imageOne.age,
-            "imageTwoUrl": imageTwo.asset->url,
-            "imageTwoAlt": imageTwo.alt,
-            "imageTwoName": imageTwo.name,
-            "imageTwoAge": imageTwo.age
-        }`
+      groq`*[_type == "about"][0] {
+        _id,
+        title,
+        bio,
+        "imageOneUrl": imageOne.asset->url,
+        "imageOneAlt": imageOne.alt,
+        "imageOneName": imageOne.name,
+        "imageOneAge": imageOne.age,
+        "imageTwoUrl": imageTwo.asset->url,
+        "imageTwoAlt": imageTwo.alt,
+        "imageTwoName": imageTwo.name,
+        "imageTwoAge": imageTwo.age,
+        "imageThreeUrl": imageThree.asset->url,
+        "imageThreeAlt": imageThree.alt,
+        "imageThreeName": imageThree.name,
+        "imageThreeAge": imageThree.age
+      }`
     );
-}
+  }
+  
