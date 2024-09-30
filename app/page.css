@@ -511,7 +511,7 @@ body.menu-open {
 /* Text section */
 .text-container {
   flex: 1;
-  padding: 0 200px;
+  padding: 0 10vw;
   white-space: pre-wrap; /* Preserves whitespace and line breaks */
 }
 
@@ -586,7 +586,6 @@ body.menu-open {
   }
 
   .text-container {
-    padding-right: 0;
     margin-bottom: 30px;
     
   }
@@ -984,7 +983,7 @@ footer .footerLogo {
   }
 
   .text-container {
-    padding: 0 100px;
+    padding: 0 10vw;
   }
 
   /* Adjust wrapper height */
