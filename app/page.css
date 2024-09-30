@@ -511,7 +511,7 @@ body.menu-open {
 /* Text section */
 .text-container {
   flex: 1;
-  padding-right: 50px;
+  padding: 0 200px;
   white-space: pre-wrap; /* Preserves whitespace and line breaks */
 }
 
