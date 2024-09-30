@@ -540,7 +540,7 @@ body.menu-open {
 
 .person {
   text-align: center;
-  filter: grayscale(50%);
+  filter: grayscale(30%);
 }
 
 .image-wrapper {

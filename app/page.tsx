@@ -428,17 +428,6 @@ export default function Home() {
 
 <div id="whoAreWePage" className="who-are-we-page" ref={whoAreWeRef}>
       <h2>Hvem er vi?</h2>
-  <div className="content-container">
-    <div className="text-container">
-      {aboutInfo ? (
-        <div className="bio-container">
-          <p>{aboutInfo.bio}</p>
-        </div>
-      ) : (
-        <p>Laster inn...</p>
-      )}
-    </div>
-    
     {aboutInfo && (
       <div className="images-container">
         <div className="person">
@@ -457,6 +446,18 @@ export default function Home() {
         </div>
       </div>
     )}
+    
+  <div className="content-container">
+    <div className="text-container">
+      {aboutInfo ? (
+        <div className="bio-container">
+          <p>{aboutInfo.bio}</p>
+        </div>
+      ) : (
+        <p>Laster inn...</p>
+      )}
+    </div>
+    
   </div>
 </div>
 
