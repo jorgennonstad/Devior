@@ -983,6 +983,10 @@ footer .footerLogo {
     top: 51%;
   }
 
+  .text-container {
+    padding: 0 100px;
+  }
+
   /* Adjust wrapper height */
   .screen-wrapper {
     height: 1200px;
@@ -1018,6 +1022,10 @@ footer .footerLogo {
   .projectsPage > h2 {
     font-size: 1.8rem;
     margin: 50px 0 0 0;
+  }
+
+  .text-container {
+    padding: 0;
   }
 
   .projects-container {
