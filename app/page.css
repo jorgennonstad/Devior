@@ -543,6 +543,10 @@ body.menu-open {
   filter: grayscale(30%);
 }
 
+.person h1 {
+  font-size: 1.5rem;
+}
+
 .image-wrapper {
   position: relative;
   margin: 0 auto;
