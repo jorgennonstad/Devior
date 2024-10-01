@@ -310,20 +310,17 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const totalGifs = 10; // Total number of gif classes
-    const randomIndex = Math.floor(Math.random() * totalGifs) + 1; // Random number between 1 and 14
-    const randomClass = `gif${randomIndex}`;
-
+    const gifClass = 'gif4'; // Single gif class
+  
     if (introPageRef.current) {
-      // Remove any previous gifX class
-      for (let i = 1; i <= totalGifs; i++) {
-        introPageRef.current.classList.remove(`gif${i}`);
-      }
-
-      // Add the new random gif class
-      introPageRef.current.classList.add(randomClass);
+      // Remove any previous gifX class, though in this case it's always gif1
+      introPageRef.current.classList.remove('gif4');
+  
+      // Add the gif class
+      introPageRef.current.classList.add(gifClass);
     }
   }, []); // Runs only once on component mount
+  
 
   
   return (
